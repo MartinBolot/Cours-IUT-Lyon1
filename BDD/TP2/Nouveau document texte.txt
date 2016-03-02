@@ -1,0 +1,80 @@
+Compte rendu tp2 bd
+
+1)
+create table piece (
+  nop number(3) not null,
+  designation varchar2(20),
+  couleur varchar2(15),
+  poids number(5,2)
+);
+create table service(
+  nos number(3) not null,
+  intitule varchar2(20),
+  localisation varchar2(30)
+);
+create table ordre(
+  nop number(3),
+  nos number(3),
+  quantite number(3)
+);
+create table nomenclature(
+  nopa number(3),
+  nopc number(3),
+  quantite number(3)
+);
+
+2)
+Les insertions fonctionnent. On les supprime car elles ne respectent pas les contraintes que l’on va mettre en place.
+alter table piece add(
+  constraint pk_piece primary key(nop)
+);
+
+alter table service add(
+  constraint pk_service primary key(nos)
+);
+
+alter table ordre add(
+  constraint pk_ordre primary key(nop,nos),
+  constraint fk_ordre_nop foreign key(nop) references piece(nop),
+  constraint fk_ordre_nos foreign key(nos) references piece(nos)
+);
+
+alter table nomenclature add(
+  constraint pk_nomenclature primary key(nopa,nopc),
+  constraint fk_nomenclature_nopa foreign key(nopa) references piece(nop),
+  constraint fk_nomenclature_nopc foreign key(nopc) references piece(nop)
+);
+
+alter table piece add(
+  constraint ck_piece check(couleur in ('ROUGE','VERTE','BLEUE','JAUNE'))
+);
+?	On ajoute la contrainte de domaine, mais il faut modifier les valeurs déjà présentes dans la table en se conformant à celle-ci pour qu’elle soit prise en compte par Oracle.
+
+3)
+alter table piece modify(
+  designation varchar2(30) 
+);
+
+alter table service modify(
+  intitule varchar2(30)
+);
+update service set localisation = substr(localisation,1,20);
+
+alter table service modify(
+  localisation varchar2(20)
+);
+alter table service add(
+  directeur varchar2(20) 
+);
+
+alter table service drop column localisation;
+
+On ne peut pas supprimer la clé primaire.
+
+alter table piece drop constraint ck_piece;
+drop table nomenclature;
+
+drop table ordre cascade constraints;
+select * from piece;
+select * from service;
+Ça n’a pas d’effet sur les tables « piece » et « service ».
