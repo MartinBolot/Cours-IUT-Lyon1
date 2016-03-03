@@ -1,3 +1,6 @@
 [submodule "tp_java"]
-	path = tp_java
+	path = Java
 	url = https://github.com/MarionCrp/tp_java.git
+[submodule "Projet-Web-Cours-IUT-Lyon1"]
+	path = Web
+	url = https://github.com/MartinBolot/Projet-Web-Cours-IUT-Lyon1.git
