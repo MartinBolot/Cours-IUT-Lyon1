@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Question()
+comment1.params=_sentence\ _answer\ _difficulty
+comment1.target=Question(java.lang.String,\ boolean,\ int)
+comment10.params=_difficulty
+comment10.target=void\ setDifficulty(int)
+comment11.params=
+comment11.target=void\ displayQuestion()
+comment2.params=
+comment2.target=int\ getIdMax()
+comment3.params=
+comment3.target=int\ getId()
+comment4.params=
+comment4.target=java.lang.String\ getSentence()
+comment5.params=
+comment5.target=boolean\ getAnswer()
+comment6.params=
+comment6.target=int\ getDifficulty()
+comment7.params=
+comment7.target=boolean\ getUsed()
+comment8.params=_sentence
+comment8.target=void\ setSentence(java.lang.String)
+comment9.params=_answer
+comment9.target=void\ setAnswer(boolean)
+numComments=12
