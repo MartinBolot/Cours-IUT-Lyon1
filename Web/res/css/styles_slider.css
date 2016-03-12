@@ -1,0 +1,407 @@
+/*styles main slider*/
+/*
+    /!\ code récupéré ici http://www.creativejuiz.fr/blog/tutoriels/css3-creer-slideshow-automatique-controlable-transition
+    et adapté pour fonctionner sur ce site
+*/
+@keyframes slider {
+	0%, 20%, 100%	{ left: 0 }
+	25%, 45%		{ left: -100% }
+	50%, 70%		{ left: -200% }
+	75%, 95%		{ left: -300% }
+}
+@-webkit-keyframes slider {
+ 	0%, 20%, 100%	{ left: 0 }
+ 	25%, 45%		{ left: -100% }
+ 	50%, 70%		{ left: -200% }
+ 	75%, 95%		{ left: -300% }
+}
+@-moz-keyframes slider {
+ 	0%, 20%, 100%	{ left: 0 }
+ 	25%, 45%		{ left: -100% }
+ 	50%, 70%		{ left: -200% }
+ 	75%, 95%		{ left: -300% }
+}
+@keyframes timeliner {
+ 	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
+ 	20%, 45%, 70%, 90%		{ width: 640px;	}
+}
+@-webkit-keyframes timeliner {
+	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
+	20%, 45%, 70%, 90%		{ width: 640px;	}
+}
+@-moz-keyframes timeliner {
+   	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
+   	20%, 45%, 70%, 90%		{ width: 640px;	}
+}
+@keyframes description {
+	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
+	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
+}
+@-webkit-keyframes description {
+	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
+	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
+}
+@-moz-keyframes description {
+	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
+	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
+}
+@keyframes dotser {
+	0%, 100% 	{ opacity: 1; left: 0; 		}
+
+	20%			{ opacity: 1; left: 0;		}
+	22%			{ opacity: 0; left: 0;		}
+	23%			{ opacity: 0; left: 18px;	}
+	25%			{ opacity: 1; left: 18px;	}
+
+	45%			{ opacity: 1; left: 18px;	}
+	47%			{ opacity: 0; left: 18px;	}
+	48%			{ opacity: 0; left: 36px;	}
+	50%			{ opacity: 1; left: 36px;	}
+
+	70%			{ opacity: 1; left: 36px;	}
+	72%			{ opacity: 0; left: 36px;	}
+	73%			{ opacity: 0; left: 54px;	}
+	75%			{ opacity: 1; left: 54px;	}
+
+	95%			{ opacity: 1; left: 54px;	}
+	97%			{ opacity: 0; left: 54px;	}
+	98%			{ opacity: 0; left: 0;	}
+}
+@-webkit-keyframes dotser {
+	0%, 100% 	{ opacity: 1; left: 0; 		}
+
+	20%			{ opacity: 1; left: 0;		}
+	22%			{ opacity: 0; left: 0;		}
+	23%			{ opacity: 0; left: 18px;	}
+	25%			{ opacity: 1; left: 18px;	}
+
+	45%			{ opacity: 1; left: 18px;	}
+	47%			{ opacity: 0; left: 18px;	}
+	48%			{ opacity: 0; left: 36px;	}
+	50%			{ opacity: 1; left: 36px;	}
+
+	70%			{ opacity: 1; left: 36px;	}
+	72%			{ opacity: 0; left: 36px;	}
+	73%			{ opacity: 0; left: 54px;	}
+	75%			{ opacity: 1; left: 54px;	}
+
+	95%			{ opacity: 1; left: 54px;	}
+	97%			{ opacity: 0; left: 54px;	}
+	98%			{ opacity: 0; left: 0;	}
+}
+@-moz-keyframes dotser {
+	0%, 100% 	{ opacity: 1; left: 0; 		}
+
+	20%			{ opacity: 1; left: 0;		}
+	22%			{ opacity: 0; left: 0;		}
+	23%			{ opacity: 0; left: 18px;	}
+	25%			{ opacity: 1; left: 18px;	}
+
+	45%			{ opacity: 1; left: 18px;	}
+	47%			{ opacity: 0; left: 18px;	}
+	48%			{ opacity: 0; left: 36px;	}
+	50%			{ opacity: 1; left: 36px;	}
+
+	70%			{ opacity: 1; left: 36px;	}
+	72%			{ opacity: 0; left: 36px;	}
+	73%			{ opacity: 0; left: 54px;	}
+	75%			{ opacity: 1; left: 54px;	}
+
+	95%			{ opacity: 1; left: 54px;	}
+	97%			{ opacity: 0; left: 54px;	}
+	98%			{ opacity: 0; left: 0;	}
+}
+
+#promotions {
+	position: relative;
+	width: 640px;
+	height: 310px;
+	padding: 15px;
+	margin: 0 auto 4em;
+	border: 1px solid #ddd;
+	background: #FFF;
+	/* CSS3 effects */
+	background: linear-gradient(#FFF, #FFF 20%, #EEE 80%, #DDD);
+	border-radius: 2px 2px 2px 2px;
+	box-shadow: 0 0 3px rgba(0,0,0, 0.2);
+}
+#promotions:before,
+#promotions:after {
+	position: absolute;
+	bottom:16px;
+	z-index: -10;
+	width: 50%;
+	height: 20px;
+	content: " ";
+	background: rgba(0,0,0,0.1);
+	border-radius: 50%;
+	box-shadow: 0 0 3px rgba(0,0,0, 0.4), 0 20px 10px rgba(0,0,0, 0.7);
+}
+#promotions:before {
+	left:0;
+	transform: rotate(-4deg);
+}
+#promotions:after {
+	right:0;
+	transform: rotate(4deg);
+}
+/* gestion des dimensions et débordement du conteneur */
+#promotions .container {
+	position:relative;
+	width: 640px;
+	height: 310px;
+	overflow: hidden;
+}
+
+/* on prévoit un petit espace gris pour la timeline */
+#promotions .container:after {
+	position:absolute;
+	bottom: 0; left:0;
+	content: " ";
+	width: 100%;
+	height: 1px;
+	background: #999;
+}
+/*
+   le conteneur des slides
+   en largeur il fait 100% x le nombre de slides
+*/
+#promotions .slider {
+	position: absolute;
+	left:0; top:0;
+	width: 400%;
+	height: 310px;
+}
+
+/* annulation des marges sur article */
+#promotions article {
+	position:relative;
+	display:inline-block;
+	padding:0; margin:0;
+}
+/* petit effet de vignette sur les images */
+#promotions article:after {
+	position: absolute;
+	display:block;
+	content: " ";
+	top:0; left:0;
+	width: 100%; height: 100%;
+	box-shadow: 0 0 65px rgba(0,0,0, 0.5) inset;
+}
+#promotions .slider {
+	/* ... avec la propriété animation */
+	animation: slider 32s infinite;
+}
+/* complétez le sélecteur : */
+#promotions .slider {
+	/* ... avec la propriété animation */
+	animation: slider 32s infinite;
+}
+#timeline {
+	position: absolute;
+	background: #999;
+	bottom: 15px;
+	left: 15px;
+	height: 1px;
+	background: rgb(214,98,13);
+	background: rgba(214,98,13,.8);
+	width: 0;
+	/* fonction d'animation */
+	animation: timeliner 32s infinite;
+}
+/* ajouter à l'élément : */
+#promotions .description_hover {
+	/* ... la propriété animation */
+	animation: description 32s infinite;
+}
+.play_commands {
+	/* positionnement en haut à droite */
+	position: absolute;
+	top: 25px; right: 25px;
+	z-index: 10;
+	/* dimensionnement des icônes */
+	width: 22px;
+	height: 22px;
+	text-indent: -9999px;
+	border:0 none;
+	/* placez l'opacité à 1 si vous souhaitez voir les commandes */
+	opacity: 0;
+	/* préparation de transition sur opacicty et right */
+	transition: opacity 1s, right 1s;
+}
+/* on décale play légèrement sur la gauche */
+.play { right: 55px; cursor: default; }
+
+/* création de l'icône pause avec 2 pseudos éléments */
+.pause:after,
+.pause:before {
+	position: absolute;
+	display: block;
+	content: " ";
+	top:0;
+	width:38%;
+	height: 22px;
+	background: #fff;
+	background: rgba(255,255,255,0.5);
+}
+.pause:after { right:0; }
+.pause:before {	left:0; }
+
+/* création de l'icône play avec des bordures */
+.play {
+	width: 1px;
+	height: 1px;
+	/* les transparentes forment la flèche */
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 20px solid #fff;
+	border-left: 20px solid rgba(255,255,255,0.5);
+	/* renseignez 1 pour voir l'icône de suite */
+	opacity: 0;
+}
+
+/* apparition du bouton pause au survole */
+/* apparition des boutons au focus */
+#promotions:hover .pause,
+.play_commands:focus {
+	opacity: 1;
+	outline: none;
+}
+/* stopper les animation */
+.sl_command:target ~ #promotions .slider,
+.sl_command:target ~ #promotions .description_hover,
+.sl_command:target ~ #promotions #timeline,
+.sl_command:target ~ #promotions .dots_commands li:first-child a:after {
+	animation-play-state: paused;
+}
+
+#sl_play:target ~ #promotions .slider,
+#sl_play:target ~ #promotions .description_hover,
+#sl_play:target ~ #promotions #timeline,
+#sl_play:target ~ #promotions .dots_commands li:first-child a:after {
+	animation-play-state: running;
+}
+
+/* switch entre les boutons */
+.sl_command:target ~ #promotions .pause 		{ opacity:0; }
+#sl_play:target ~ #promotions:hover .pause,
+#sl_play:target ~ #promotions .pause:focus 	{ opacity:1; }
+.sl_command:target ~ #promotions .play 		{ opacity:1; right: 25px; cursor: pointer; }
+#sl_play:target ~ #promotions .play 			{ opacity:0; right: 55px; cursor: default; }
+#promotions .commands {
+	position: absolute;
+	top: 45%;
+	padding: 5px 13px;
+	border-bottom:0;
+	font-size: 1.3em;
+	color: #aaa;
+	text-decoration:none;
+	background-color: #eee;
+	background-image: linear-gradient(#fff,#ddd);
+	text-shadow: 0 0 1px #aaa;
+	border-radius: 50%;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+#promotions .prev { left: -48px; }
+#promotions .next { right: -48px; }
+#promotions .commands { display:none; }
+#promotions .commands1 {	display: block; }
+#promotions .c_slider {
+	position: absolute;
+	left:0;
+    top:0;
+	width: 400%;
+	height: 310px;
+	transition: background 1s;
+}
+/*
+#promotions .c_slider{
+	background: url("../img/interface/logo_original.jpg") 0 0 no-repeat,
+	            url("../img/interface/logo_original_grayscale.jpg") 597px 0 no-repeat,
+	            url("../img/interface/logo_original.jpg") 1194px 0 no-repeat,
+	            url("../img/interface/logo_original_grayscale.jpg") 1791px 0 no-repeat;
+}*/
+
+/* on cache le slider */
+.sl_i:target ~ #promotions .slider									{ visibility: hidden }
+/* on planque la 1ère pastille (cf. bonux suivant) */
+.sl_i:target ~ #promotions .dots_commands li:first-child a:after		{ display:none; }
+/* pour afficher la 2ème pastille (cf. bonux suivant) */
+.sl_i:target ~ #promotions .dots_commands li:first-child a:before	{ display:block; }
+
+/* lorsque on cible le premier slider */
+/* on cache tous les "précédent" et "suivant" */
+#sl_i1:target ~ #promotions .commands								{ display: none; }
+/* on affiche seulement deux flèches */
+#sl_i1:target ~ #promotions .commands1								{ display: block; }
+/* correspond au décalage des images */
+#sl_i1:target ~ #promotions .c_slider								{ background-position: 0 0, 640px 0, 1280px 0, 1920px 0; }
+/* on place la pastille tout à gauche */
+#sl_i1:target ~ #promotions .dots_commands li:first-child a:before	{ left:0; }
+
+/* même procédé lorsqu'on cible le second slide */
+#sl_i2:target ~ #promotions .commands								{ display: none; }
+#sl_i2:target ~ #promotions .commands2								{ display: block; }
+#sl_i2:target ~ #promotions .c_slider								{ background-position: -640px 0, 0 0, 640px 0, 1280px 0; }
+#sl_i2:target ~ #promotions .dots_commands li:first-child a:before	{ left:18px; }
+
+/* puis le 3ème */
+#sl_i3:target ~ #promotions .commands								{ display: none; }
+#sl_i3:target ~ #promotions .commands3								{ display: block; }
+#sl_i3:target ~ #promotions .c_slider								{ background-position: -1280px 0, -640px 0, 0 0, 640px 0; }
+#sl_i3:target ~ #promotions .dots_commands li:first-child a:before	{ left:36px; }
+
+/* et enfin le 4ème */
+#sl_i4:target ~ #promotions .commands								{ display: none; }
+#sl_i4:target ~ #promotions .commands4								{ display: block; }
+#sl_i4:target ~ #promotions .c_slider								{ background-position: -1920px 0, -1280px 0, -640px 0, 0 0; }
+#sl_i4:target ~ #promotions .dots_commands li:first-child a:before	{ left:54px; }
+.dots_commands  {
+	padding:0;
+	margin:32px 0 0;
+	text-align: center;
+}
+.dots_commands li {
+	display: inline;
+	padding:0; margin:0;
+}
+.dots_commands a {
+	position: relative;
+	display: inline-block;
+	height:8px; width: 8px;
+	margin: 0 5px;
+	text-indent: -9999px;
+	background: #fff;
+
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.55) inset;
+
+}
+/* quelques styles au focus */
+.dots_commands a:focus {
+	outline: none;
+	background: orange;
+}
+.dots_commands li:first-child a { z-index: 25; }
+/* on style after et before, on utilisera les deux */
+.dots_commands li:first-child a:after,
+.dots_commands li:first-child a:before {
+	position: absolute;
+	top: 0; left: 0;
+	content: " ";
+	width: 8px; height: 8px;
+	background: #bd9b83;
+	z-index:20;
+
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.55) inset;
+}
+/* on anime "after" */
+.dots_commands li:first-child a:after {
+	animation: dotser 32s infinite;
+}
+/* on cache "before", on l'utilise uniquement au clic (cf. bonux précédent) */
+.dots_commands li:first-child a:before { display:none; }
+
+/* c'est parti pour l'animation ! */
