@@ -1,10 +1,13 @@
 <!doctype html>
-<html>
+<html lang="fr">
     <head>
         <title>AdopteUneLoutre - Accueil</title>
         <meta charset="utf-8"/>
+        <meta name="robots" content="noindex,nofolow"/>
+        <meta name="author" content="Martin Bolot et Antoine Daigremont" />
+
         <link rel="stylesheet" href="res/css/fonts.css" />
-        <link rel="stylesheet" href="res/css/styles_accueil.css" />
+        <link rel="stylesheet" href="res/css/styles.css" />
         <link rel="stylesheet" href="res/css/styles_slider.css" />
     </head>
     <body>
@@ -12,8 +15,8 @@
             <div class="header_container">
                 <nav>
                     <ul>
-                        <li class="active"><a href="#">Accueil</a></li>
-                        <li><a href="#">Mon panier</a></li>
+                        <li class="active"><a href="index.html">Accueil</a></li>
+                        <li><a href="pages/mon_panier.html">Mon panier</a></li>
                         <li><a href="#">Produits</a></li>
                     </ul>
                 </nav>
@@ -32,16 +35,15 @@
                             </ul>
                         </div>
                         <div class="validate_panier_top">
-                            <button>Passer la commande</button>
+                            <button>Commander</button>
                         </div>
                     </div>
                 </div>
                 <div class="recherche_top bloc_blanc_top">
-                    <form action="#">
+                    <form action="pages/resultat_recherche.html">
                         <label>
                             <span class="recherche_top_label_text">Rechercher :</span>
                             <input type="text" placeholder=" Recherche loutre" />
-                            <!-- <input class="submit_loupe" type="submit" value="valider"/> -->
                         </label>
                         <button><span class="button_loupe glyphicon"></span></button>
                     </form>
@@ -49,130 +51,102 @@
             </div>
         </header>
         <main>
+            <h1>Adopte une loutre</h1>
             <!-- template accueil -->
-            <!--<section id="promotions" class="slider_css">
-                <a class="commands prev commands1" href="#sl_i4" title="Aller à la dernière slide">&lt;</a>
-                <a class="commands next commands1" href="#sl_i2" title="Aller à la 2ème slide">&gt;</a>
-                <a class="commands prev commands2" href="#sl_i1" title="Aller à la 1ère slide">&lt;</a>
-                <a class="commands next commands2" href="#sl_i3" title="Aller à la 3ème slide">&gt;</a>
-                <a class="commands prev commands3" href="#sl_i2" title="Aller à la 2ème slide">&lt;</a>
-                <a class="commands next commands3" href="#sl_i4" title="Aller à la 4ème slide">&gt;</a>
-                <a class="commands prev commands4" href="#sl_i3" title="Aller à la 3ème slide">&lt;</a>
-                <a class="commands next commands4" href="#sl_i1" title="Aller à la 1ère slide">&gt;</a>
-                <a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
-                <a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
-                <div class="container">
-                    <div class="c_slider"></div>
-                    <div class="slider">
-                        <article>
-                            <div class="description_hover">Promotion 1</div>
-                            <img src="res/img/interface/logo_original.jpg"/>
-                        </article>
-                        <article>
-                            <div class="description_hover">Promotion 2</div>
-                            <img src="res/img/interface/logo_original_grayscale.jpg"/>
-                        </article>
-                        <article>
-                            <div class="description_hover">Promotion 3</div>
-                            <img src="res/img/interface/logo_original.jpg"/>
-                        </article>
+            <div class="bloc_blanc_main">
+                <span id="sl_play" class="sl_command"></span>
+                <span id="sl_pause" class="sl_command"></span>
+                <span id="sl_i1" class="sl_command sl_i"></span>
+                <span id="sl_i2" class="sl_command sl_i"></span>
+                <span id="sl_i3" class="sl_command sl_i"></span>
+                <span id="sl_i4" class="sl_command sl_i"></span>
+                <section id="promotions" class="slider_css">
+                    <a class="play_commands pause" href="#sl_pause">Pause</a>
+                    <a class="play_commands play" href="#sl_play">Play</a>
+                    <div class="container">
+                        <div class="c_slider"></div>
+                        <div class="slider">
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre : 10€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original.jpg"/>
+                            </article>
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre (noir et blanc): 20€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original_grayscale.jpg"/>
+                            </article>
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre : 10€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original.jpg"/>
+                            </article>
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre (noir et blanc): 20€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original_grayscale.jpg"/>
+                            </article>
+                        </div>
                     </div>
-                </div>
-                <span id="timeline"></span>
-                <ul class="dots_commands">
-                	<li><a title="Afficher la slide 1" href="#sl_i1">Slide 1</a></li>
-                	<li><a title="Afficher la slide 2" href="#sl_i2">Slide 2</a></li>
-                	<li><a title="Afficher la slide 3" href="#sl_i3">Slide 3</a></li>
-                	<li><a title="Afficher la slide 4" href="#sl_i4">Slide 4</a></li>
-                </ul>
-            </section>-->
-            <section id="liste_articles_accueil">
-                <article>
-                    <div class="article_content">
-                        <h2 class="article_title"><a href="#">Objet article</a></h2>
-                        <span class="description_hover"><span class="description_hover_inner">Description au survol</span></span>
-                        <img alt="" src="res/img/rouleauscotch.jpg"/>
-                    </div>
-                    <div class="article_price">
-                        <span class="article_price_details"><span class="article_price_details_name"><a href="#">Nom de l’objet</a></span> - 100 €</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="article_content">
-                        <h2 class="article_title"><a href="#">Objet article</a></h2>
-                        <span class="description_hover"><span class="description_hover_inner">Description au survol</span></span>
-                        <img alt="" src="res/img/tasacafe.jpg"/>
-                    </div>
-                    <div class="article_price">
-                        <span class="article_price_details"><span class="article_price_details_name"><a href="#">Nom de l’objet</a></span> - 100 €</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="article_content">
-                        <h2 class="article_title"><a href="#">Objet article</a></h2>
-                        <span class="description_hover"><span class="description_hover_inner">Description au survol</span></span>
-                        <img alt="" src="res/img/taxidermie-c.jpg"/>
-                    </div>
-                    <div class="article_price">
-                        <span class="article_price_details"><span class="article_price_details_name"><a href="#">Nom de l’objet</a></span> - 100 €</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="article_content">
-                        <h2 class="article_title"><a href="#">Objet article</a></h2>
-                        <span class="description_hover"><span class="description_hover_inner">Description au survol</span></span>
-                        <img alt="" src="res/img/tshirt_1.jpg"/>
-                    </div>
-                    <div class="article_price">
-                        <span class="article_price_details"><span class="article_price_details_name"><a href="#">Nom de l’objet</a></span> - 100 €</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="article_content">
-                        <h2 class="article_title"><a href="#">Objet article</a></h2>
-                        <span class="description_hover"><span class="description_hover_inner">Description au survol</span></span>
-                        <img alt="" src="res/img/tshirt_2.jpg"/>
-                    </div>
-                    <div class="article_price">
-                        <span class="article_price_details"><span class="article_price_details_name"><a href="#">Nom de l’objet</a></span> - 100 €</span>
-                    </div>
-                </article>
-            </section>
-
-            <!-- template detail -->
-            <section class="detail_article">
-                <div class="detail_nomarticle">
-                    <h1>Detail - Nom de l'article</h1>
-                </div>
-                <div class="detail_top">
-                    <div class="detail_top_left">
-                        <img alt="" src="res/img/rouleauscotch.jpg"/>
-                    </div>
-                    <div class="detail_top_right">
-                        <div class="detail_top_right_titre"><h2>Titre complet de l'article</h2></div>
-                        <div class="detail_top_right_info"><p>Inforamations à propos de l'article</p></div>
-                        <div class="detail_top_right_prix"><p>Prix de l'article : 100€</p></div>
-                        <button>Ajouter au panier</button>
-                    </div>
-                </div>
-                <div class="detail_bot">
-                    <div class="detail_bot_description">
-                        Description de l'article - Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </section>
+                    <span id="timeline"></span>
+                </section>
+                <section id="liste_articles_accueil">
+                    <h1>Liste des articles en promotion</h1>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">Scotch loutre</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">Un support pour rouleau de scotch à l'effigie d'une loutre</span></span>
+                            <img alt="" src="res/img/rouleauscotch.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">Scotch loutre</a></span> - 99.99 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">Mug loutre</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">Un mug avec une devise de loutre spatiale pour les matins difficiles</span></span>
+                            <img alt="" src="res/img/tasacafe.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">Nom de l’objet</a></span> - 20 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">Statue loutre</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">Une loutre empaillée</span></span>
+                            <img alt="" src="res/img/taxidermie-c.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">Statue loutre</a></span> - 30 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">T-shirt loutre hipster</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">T-shirt avec loutre hipster</span></span>
+                            <img alt="" src="res/img/tshirt_1.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">T-shirt loutre hipster</a></span> - 70 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">T-shirt loutre moustache</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">T-shirt avec loutre moustachue</span></span>
+                            <img alt="" src="res/img/tshirt_2.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">T-shirt loutre moustache</a></span> - 25 €</span>
+                        </div>
+                    </article>
+                </section>
+            </div>
         </main>
         <footer>
             <nav>
                 <ul>
-                    <li><a href="#">Mention légales</a></li>
-                    <li><a href="#">Qui sommes-nous ?</a></li>
-                    <li><a href="#">Détails techniques</a></li>
+                    <li><a href="pages/mentions_legales.html">Mention légales</a></li>
+                    <li><a href="pages/qui_sommes_nous.html">Qui sommes-nous ?</a></li>
+                    <li><a href="pages/details_techniques.html">Détails techniques</a></li>
                 </ul>
             </nav>
             <div class="gif_loutre"></div>

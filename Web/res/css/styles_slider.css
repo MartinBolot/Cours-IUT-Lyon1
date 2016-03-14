@@ -23,48 +23,48 @@
 }
 @keyframes timeliner {
  	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
- 	20%, 45%, 70%, 90%		{ width: 640px;	}
+ 	20%, 45%, 70%, 90%		{ width: 597px;	}
 }
 @-webkit-keyframes timeliner {
 	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
-	20%, 45%, 70%, 90%		{ width: 640px;	}
+	20%, 45%, 70%, 90%		{ width: 597px;	}
 }
 @-moz-keyframes timeliner {
    	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
-   	20%, 45%, 70%, 90%		{ width: 640px;	}
+   	20%, 45%, 70%, 90%		{ width: 597px;	}
 }
 @keyframes description {
 	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
-	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
+	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 0;		}
 }
 @-webkit-keyframes description {
 	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
-	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
+	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 0;		}
 }
 @-moz-keyframes description {
 	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
-	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 5px;		}
+	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 0;		}
 }
 @keyframes dotser {
 	0%, 100% 	{ opacity: 1; left: 0; 		}
 
 	20%			{ opacity: 1; left: 0;		}
 	22%			{ opacity: 0; left: 0;		}
-	23%			{ opacity: 0; left: 18px;	}
-	25%			{ opacity: 1; left: 18px;	}
+	23%			{ opacity: 0; left: 24px;	}
+	25%			{ opacity: 1; left: 24px;	}
 
-	45%			{ opacity: 1; left: 18px;	}
-	47%			{ opacity: 0; left: 18px;	}
-	48%			{ opacity: 0; left: 36px;	}
-	50%			{ opacity: 1; left: 36px;	}
+	45%			{ opacity: 1; left: 24px;	}
+	47%			{ opacity: 0; left: 24px;	}
+	48%			{ opacity: 0; left: 46px;	}
+	50%			{ opacity: 1; left: 46px;	}
 
-	70%			{ opacity: 1; left: 36px;	}
-	72%			{ opacity: 0; left: 36px;	}
-	73%			{ opacity: 0; left: 54px;	}
-	75%			{ opacity: 1; left: 54px;	}
+	70%			{ opacity: 1; left: 46px;	}
+	72%			{ opacity: 0; left: 46px;	}
+	73%			{ opacity: 0; left: 68px;	}
+	75%			{ opacity: 1; left: 68px;	}
 
-	95%			{ opacity: 1; left: 54px;	}
-	97%			{ opacity: 0; left: 54px;	}
+	95%			{ opacity: 1; left: 68px;	}
+	97%			{ opacity: 0; left: 68px;	}
 	98%			{ opacity: 0; left: 0;	}
 }
 @-webkit-keyframes dotser {
@@ -72,21 +72,21 @@
 
 	20%			{ opacity: 1; left: 0;		}
 	22%			{ opacity: 0; left: 0;		}
-	23%			{ opacity: 0; left: 18px;	}
-	25%			{ opacity: 1; left: 18px;	}
+	23%			{ opacity: 0; left: 24px;	}
+	25%			{ opacity: 1; left: 24px;	}
 
-	45%			{ opacity: 1; left: 18px;	}
-	47%			{ opacity: 0; left: 18px;	}
-	48%			{ opacity: 0; left: 36px;	}
-	50%			{ opacity: 1; left: 36px;	}
+	45%			{ opacity: 1; left: 24px;	}
+	47%			{ opacity: 0; left: 24px;	}
+	48%			{ opacity: 0; left: 46px;	}
+	50%			{ opacity: 1; left: 46px;	}
 
-	70%			{ opacity: 1; left: 36px;	}
-	72%			{ opacity: 0; left: 36px;	}
-	73%			{ opacity: 0; left: 54px;	}
-	75%			{ opacity: 1; left: 54px;	}
+	70%			{ opacity: 1; left: 46px;	}
+	72%			{ opacity: 0; left: 46px;	}
+	73%			{ opacity: 0; left: 68px;	}
+	75%			{ opacity: 1; left: 68px;	}
 
-	95%			{ opacity: 1; left: 54px;	}
-	97%			{ opacity: 0; left: 54px;	}
+	95%			{ opacity: 1; left: 68px;	}
+	97%			{ opacity: 0; left: 68px;	}
 	98%			{ opacity: 0; left: 0;	}
 }
 @-moz-keyframes dotser {
@@ -94,30 +94,30 @@
 
 	20%			{ opacity: 1; left: 0;		}
 	22%			{ opacity: 0; left: 0;		}
-	23%			{ opacity: 0; left: 18px;	}
-	25%			{ opacity: 1; left: 18px;	}
+	23%			{ opacity: 0; left: 24px;	}
+	25%			{ opacity: 1; left: 24px;	}
 
-	45%			{ opacity: 1; left: 18px;	}
-	47%			{ opacity: 0; left: 18px;	}
-	48%			{ opacity: 0; left: 36px;	}
-	50%			{ opacity: 1; left: 36px;	}
+	45%			{ opacity: 1; left: 24px;	}
+	47%			{ opacity: 0; left: 24px;	}
+	48%			{ opacity: 0; left: 46px;	}
+	50%			{ opacity: 1; left: 46px;	}
 
-	70%			{ opacity: 1; left: 36px;	}
-	72%			{ opacity: 0; left: 36px;	}
-	73%			{ opacity: 0; left: 54px;	}
-	75%			{ opacity: 1; left: 54px;	}
+	70%			{ opacity: 1; left: 46px;	}
+	72%			{ opacity: 0; left: 46px;	}
+	73%			{ opacity: 0; left: 68px;	}
+	75%			{ opacity: 1; left: 68px;	}
 
-	95%			{ opacity: 1; left: 54px;	}
-	97%			{ opacity: 0; left: 54px;	}
+	95%			{ opacity: 1; left: 68px;	}
+	97%			{ opacity: 0; left: 68px;	}
 	98%			{ opacity: 0; left: 0;	}
 }
 
 #promotions {
 	position: relative;
-	width: 640px;
+	width: 597px;
 	height: 310px;
-	padding: 15px;
-	margin: 0 auto 4em;
+	padding: 0;
+	margin: 2em auto 4em;
 	border: 1px solid #ddd;
 	background: #FFF;
 	/* CSS3 effects */
@@ -148,7 +148,7 @@
 /* gestion des dimensions et débordement du conteneur */
 #promotions .container {
 	position:relative;
-	width: 640px;
+	width: 597px;
 	height: 310px;
 	overflow: hidden;
 }
@@ -176,8 +176,10 @@
 /* annulation des marges sur article */
 #promotions article {
 	position:relative;
-	display:inline-block;
+	display: inline-block;
 	padding:0; margin:0;
+	height: 310px;
+	float: left;
 }
 /* petit effet de vignette sur les images */
 #promotions article:after {
@@ -191,28 +193,37 @@
 #promotions .slider {
 	/* ... avec la propriété animation */
 	animation: slider 32s infinite;
+	-webkit-animation: slider 32s infinite;
+	-moz-animation: slider 32s infinite;
 }
 /* complétez le sélecteur : */
 #promotions .slider {
 	/* ... avec la propriété animation */
 	animation: slider 32s infinite;
+	-webkit-animation: slider 32s infinite;
+	-moz-animation: slider 32s infinite;
 }
 #timeline {
 	position: absolute;
 	background: #999;
-	bottom: 15px;
-	left: 15px;
+	bottom: 0;
+	left: 0;
 	height: 1px;
 	background: rgb(214,98,13);
 	background: rgba(214,98,13,.8);
 	width: 0;
+	z-index: 20;
 	/* fonction d'animation */
 	animation: timeliner 32s infinite;
+	-webkit-animation: timeliner 32s infinite;
+	-moz-animation: timeliner 32s infinite;
 }
 /* ajouter à l'élément : */
 #promotions .description_hover {
 	/* ... la propriété animation */
 	animation: description 32s infinite;
+	-webkit-animation: description 32s infinite;
+	-moz-animation: description 32s infinite;
 }
 .play_commands {
 	/* positionnement en haut à droite */
@@ -260,7 +271,7 @@
 	opacity: 0;
 }
 
-/* apparition du bouton pause au survole */
+/* apparition du bouton pause au survol */
 /* apparition des boutons au focus */
 #promotions:hover .pause,
 .play_commands:focus {
@@ -273,6 +284,14 @@
 .sl_command:target ~ #promotions #timeline,
 .sl_command:target ~ #promotions .dots_commands li:first-child a:after {
 	animation-play-state: paused;
+	-webkit-animation-play-state: paused;
+	-moz-animation-play-state: paused;
+}
+/*avoid getting anoyed by anchors*/
+#sl_play,#sl_pause,#sl_i1,#sl_i2,#sl_i3,#sl_i4{
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 #sl_play:target ~ #promotions .slider,
@@ -280,18 +299,21 @@
 #sl_play:target ~ #promotions #timeline,
 #sl_play:target ~ #promotions .dots_commands li:first-child a:after {
 	animation-play-state: running;
+	-webkit-animation-play-state: running;
+	-moz-animation-play-state: running;
 }
 
 /* switch entre les boutons */
 .sl_command:target ~ #promotions .pause 		{ opacity:0; }
 #sl_play:target ~ #promotions:hover .pause,
-#sl_play:target ~ #promotions .pause:focus 	{ opacity:1; }
-.sl_command:target ~ #promotions .play 		{ opacity:1; right: 25px; cursor: pointer; }
+#sl_play:target ~ #promotions .pause:focus 		{ opacity:1; }
+.sl_command:target ~ #promotions .play 			{ opacity:1; right: 25px; cursor: pointer; }
 #sl_play:target ~ #promotions .play 			{ opacity:0; right: 55px; cursor: default; }
+
 #promotions .commands {
 	position: absolute;
 	top: 45%;
-	padding: 5px 13px;
+	padding: 6px 10px;
 	border-bottom:0;
 	font-size: 1.3em;
 	color: #aaa;
@@ -315,13 +337,29 @@
 	height: 310px;
 	transition: background 1s;
 }
-/*
+
 #promotions .c_slider{
 	background: url("../img/interface/logo_original.jpg") 0 0 no-repeat,
 	            url("../img/interface/logo_original_grayscale.jpg") 597px 0 no-repeat,
 	            url("../img/interface/logo_original.jpg") 1194px 0 no-repeat,
 	            url("../img/interface/logo_original_grayscale.jpg") 1791px 0 no-repeat;
-}*/
+}
+
+#promotions .description_hover{
+	position:absolute;
+	left:0; right:0; bottom: 0;
+	padding: 20px;
+	margin:0;
+	border-top: 1px solid rgb(225,225,225);
+	text-align:center;
+	letter-spacing: 0.05em;
+	word-spacing: 0.05em;
+	background: #fff;
+	background: rgba(255,255,255,0.7);
+	color: #555;
+	text-shadow: -1px -1px 0 rgba(255,255,255,0.3);
+	z-index: 10;
+}
 
 /* on cache le slider */
 .sl_i:target ~ #promotions .slider									{ visibility: hidden }
@@ -336,27 +374,27 @@
 /* on affiche seulement deux flèches */
 #sl_i1:target ~ #promotions .commands1								{ display: block; }
 /* correspond au décalage des images */
-#sl_i1:target ~ #promotions .c_slider								{ background-position: 0 0, 640px 0, 1280px 0, 1920px 0; }
+#sl_i1:target ~ #promotions .c_slider								{ background-position: 0 0, 597px 0, 1194px 0, 1791px 0; }
 /* on place la pastille tout à gauche */
 #sl_i1:target ~ #promotions .dots_commands li:first-child a:before	{ left:0; }
 
 /* même procédé lorsqu'on cible le second slide */
 #sl_i2:target ~ #promotions .commands								{ display: none; }
 #sl_i2:target ~ #promotions .commands2								{ display: block; }
-#sl_i2:target ~ #promotions .c_slider								{ background-position: -640px 0, 0 0, 640px 0, 1280px 0; }
-#sl_i2:target ~ #promotions .dots_commands li:first-child a:before	{ left:18px; }
+#sl_i2:target ~ #promotions .c_slider								{ background-position: -597px 0, 0 0, 597px 0, 1194px 0; }
+#sl_i2:target ~ #promotions .dots_commands li:first-child a:before	{ left:24px; }
 
 /* puis le 3ème */
 #sl_i3:target ~ #promotions .commands								{ display: none; }
 #sl_i3:target ~ #promotions .commands3								{ display: block; }
-#sl_i3:target ~ #promotions .c_slider								{ background-position: -1280px 0, -640px 0, 0 0, 640px 0; }
-#sl_i3:target ~ #promotions .dots_commands li:first-child a:before	{ left:36px; }
+#sl_i3:target ~ #promotions .c_slider								{ background-position: -1194px 0, -597px 0, 0 0, 597px 0; }
+#sl_i3:target ~ #promotions .dots_commands li:first-child a:before	{ left:46px; }
 
 /* et enfin le 4ème */
 #sl_i4:target ~ #promotions .commands								{ display: none; }
 #sl_i4:target ~ #promotions .commands4								{ display: block; }
-#sl_i4:target ~ #promotions .c_slider								{ background-position: -1920px 0, -1280px 0, -640px 0, 0 0; }
-#sl_i4:target ~ #promotions .dots_commands li:first-child a:before	{ left:54px; }
+#sl_i4:target ~ #promotions .c_slider								{ background-position: -1791px 0, -1194px 0, -597px 0, 0 0; }
+#sl_i4:target ~ #promotions .dots_commands li:first-child a:before	{ left:68px; }
 .dots_commands  {
 	padding:0;
 	margin:32px 0 0;
@@ -365,6 +403,7 @@
 .dots_commands li {
 	display: inline;
 	padding:0; margin:0;
+	width: 18px;
 }
 .dots_commands a {
 	position: relative;

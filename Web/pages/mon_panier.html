@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <title>AdopteUneLoutre - Mon panier</title>
+        <meta charset="utf-8"/>
+        <meta name="robots" content="noindex,nofolow"/>
+        <meta name="author" content="Martin Bolot et Antoine Daigremont" />
+
+        <link rel="stylesheet" href="../res/css/fonts.css" />
+        <link rel="stylesheet" href="../res/css/styles.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header_container">
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Accueil</a></li>
+                        <li class="active"><a href="mon_panier.html">Mon panier</a></li>
+                        <li><a href="#">Produits</a></li>
+                    </ul>
+                </nav>
+                <div class="logo_home">
+                    <span class="img_logo">AdopteUneLoutre</span>
+                </div>
+                <div class="panier_top bloc_blanc_top">
+                    <div class="button_panier glyphicon"></div>
+                    <div class="content_panier_top bloc_blanc_top">
+                        <div class="panier_top_header">Panier (3 articles)</div>
+                        <div class="panier_top_content">
+                            <ul>
+                                <li>Bonnet Loutre</li>
+                                <li>T-Shirt Loutre</li>
+                                <li>Statuette Loutre</li>
+                            </ul>
+                        </div>
+                        <div class="validate_panier_top">
+                            <button>Commander</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recherche_top bloc_blanc_top">
+                    <form action="resultat_recherche.html">
+                        <label>
+                            <span class="recherche_top_label_text">Rechercher :</span>
+                            <input type="text" placeholder=" Recherche loutre" />
+                        </label>
+                        <button><span class="button_loupe glyphicon"></span></button>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="mon_panier">
+                <h1>Mon panier</h1>
+                <div class="bloc_blanc_main">
+                    <form action="#" class="form_commande">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th clospan="2">Nom article</th>
+                                    <th>Prix</th>
+                                    <th>Quantité</th>
+                                    <th>Prix total</th>
+                                </th>
+                                <tr>
+                                    <td><label for="commande_quantite_1">Bonnet Loutre</label></td>
+                                    <td>99.99€</td>
+                                    <td><input id="commande_quantite_1" type="number" value="1" name="commande_1"/></td>
+                                    <td>99.99€</td>
+                                </tr>
+                                <tr>
+                                    <td><label for="commande_quantite_2">T-Shirt Loutre</label></td>
+                                    <td>20€</td>
+                                    <td><input id="commande_quantite_2" type="number" value="2" name="commande_2"/></td>
+                                    <td>40€</td>
+                                </tr>
+                                <tr>
+                                    <td><label for="commande_quantite_3">Statuette Loutre</label></td>
+                                    <td>30€</td>
+                                    <td><input id="commande_quantite_3" type="number" value="1" name="commande_3"/></td>
+                                    <td>30€</td>
+                                </tr>
+                                <tr class="total_achats">
+                                    <td colspan="3"></td>
+                                    <td><strong>Total achats</strong> : 169.99€</td>
+                                </tr>
+                                <tr class="table_submit">
+                                    <td colspan="3"></td>
+                                    <td><input type="submit" value="Commander"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="mentions_legales.html">Mention légales</a></li>
+                    <li><a href="qui_sommes_nous.html">Qui sommes-nous ?</a></li>
+                    <li><a href="details_techniques.html">Détails techniques</a></li>
+                </ul>
+            </nav>
+            <div class="gif_loutre"></div>
+        </footer>
+    </body>
+</html>
