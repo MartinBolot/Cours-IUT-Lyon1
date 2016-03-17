@@ -1,22 +1,155 @@
 <!doctype html>
-<html>
+<html lang="fr">
     <head>
         <title>AdopteUneLoutre - Accueil</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="res/css/styles_accueil.css" />
+        <meta name="robots" content="noindex,nofolow"/>
+        <meta name="author" content="Martin Bolot et Antoine Daigremont" />
+
+        <link rel="stylesheet" href="res/css/fonts.css" />
+        <link rel="stylesheet" href="res/css/styles.css" />
+        <link rel="stylesheet" href="res/css/styles_slider.css" />
     </head>
     <body>
         <header>
-            <nav></nav>
+            <div class="header_container">
+                <nav>
+                    <ul>
+                        <li class="active"><a href="index.html">Accueil</a></li>
+                        <li><a href="pages/mon_panier.html">Mon panier</a></li>
+                        <li><a href="#">Produits</a></li>
+                    </ul>
+                </nav>
+                <div class="logo_home">
+                    <span class="img_logo">AdopteUneLoutre</span>
+                </div>
+                <div class="panier_top bloc_blanc_top">
+                    <div class="button_panier glyphicon"></div>
+                    <div class="content_panier_top bloc_blanc_top">
+                        <div class="panier_top_header">Panier (3 articles)</div>
+                        <div class="panier_top_content">
+                            <ul>
+                                <li>Bonnet Loutre</li>
+                                <li>T-Shirt Loutre</li>
+                                <li>Statuette Loutre</li>
+                            </ul>
+                        </div>
+                        <div class="validate_panier_top">
+                            <button>Commander</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recherche_top bloc_blanc_top">
+                    <form action="pages/resultat_recherche.html">
+                        <label>
+                            <span class="recherche_top_label_text">Rechercher :</span>
+                            <input type="text" placeholder=" Recherche loutre" />
+                        </label>
+                        <button><span class="button_loupe glyphicon"></span></button>
+                    </form>
+                </div>
+            </div>
         </header>
         <main>
-            <section id="promotions"></section>
-            <section id="liste_articles_accueil">
-                <article></article>
+            <h1>Adopte une loutre</h1>
+            <!-- template accueil -->
+            <div class="bloc_blanc_main">
+                <span id="sl_play" class="sl_command"></span>
+                <span id="sl_pause" class="sl_command"></span>
+                <span id="sl_i1" class="sl_command sl_i"></span>
+                <span id="sl_i2" class="sl_command sl_i"></span>
+                <span id="sl_i3" class="sl_command sl_i"></span>
+                <span id="sl_i4" class="sl_command sl_i"></span>
+                <section id="promotions" class="slider_css">
+                    <a class="play_commands pause" href="#sl_pause">Pause</a>
+                    <a class="play_commands play" href="#sl_play">Play</a>
+                    <div class="container">
+                        <div class="c_slider"></div>
+                        <div class="slider">
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre : 10€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original.jpg"/>
+                            </article>
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre (noir et blanc): 20€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original_grayscale.jpg"/>
+                            </article>
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre : 10€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original.jpg"/>
+                            </article>
+                            <article>
+                                <div class="description_hover"><a href="pages/detail_article.html">Portrait de loutre (noir et blanc): 20€ (-50%)</a></div>
+                                <img src="res/img/interface/logo_original_grayscale.jpg"/>
+                            </article>
+                        </div>
+                    </div>
+                    <span id="timeline"></span>
+                </section>
+                <section id="liste_articles_accueil">
+                    <h1>Liste des articles en promotion</h1>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">Scotch loutre</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">Un support pour rouleau de scotch à l'effigie d'une loutre</span></span>
+                            <img alt="" src="res/img/rouleauscotch.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">Scotch loutre</a></span> - 99.99 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">Mug loutre</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">Un mug avec une devise de loutre spatiale pour les matins difficiles</span></span>
+                            <img alt="" src="res/img/tasacafe.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">Nom de l’objet</a></span> - 20 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">Statue loutre</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">Une loutre empaillée</span></span>
+                            <img alt="" src="res/img/taxidermie-c.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">Statue loutre</a></span> - 30 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">T-shirt loutre hipster</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">T-shirt avec loutre hipster</span></span>
+                            <img alt="" src="res/img/tshirt_1.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">T-shirt loutre hipster</a></span> - 70 €</span>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="article_content">
+                            <h2 class="article_title"><a href="pages/detail_article.html">T-shirt loutre moustache</a></h2>
+                            <span class="description_hover"><span class="description_hover_inner">T-shirt avec loutre moustachue</span></span>
+                            <img alt="" src="res/img/tshirt_2.jpg"/>
+                        </div>
+                        <div class="article_price">
+                            <span class="article_price_details"><span class="article_price_details_name"><a href="pages/detail_article.html">T-shirt loutre moustache</a></span> - 25 €</span>
+                        </div>
+                    </article>
+                </section>
             </div>
         </main>
         <footer>
-            <nav></nav>
+            <nav>
+                <ul>
+                    <li><a href="pages/mentions_legales.html">Mention légales</a></li>
+                    <li><a href="pages/qui_sommes_nous.html">Qui sommes-nous ?</a></li>
+                    <li><a href="pages/details_techniques.html">Détails techniques</a></li>
+                </ul>
+            </nav>
+            <div class="gif_loutre"></div>
         </footer>
     </body>
 </html>

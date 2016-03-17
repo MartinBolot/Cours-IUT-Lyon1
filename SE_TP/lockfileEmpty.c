@@ -1,16 +1,16 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #define BUFF_SIZE 30
 #define VARIANT_LOCK 2	//0: pas de verrouillage 1: verrouillage bloquant 2: tentative de verrouillage (non bloquant)
 
-typedef struct contact contact;
+//typedef struct contact contact;
 struct contact
 {
     int id;                		//ID suppose unique
@@ -19,7 +19,7 @@ struct contact
 };
 
 
-contact litUneEntree(int fd);
+struct contact litUneEntree(int fd);
 void scanContact(struct contact* unContact);
 void affichage(char* fileName);
 void ajout(char* fileName);
@@ -69,14 +69,10 @@ int main(int argc, char* argv[])
     return(0);
 }//fin du main
 
-//Lit une entree struct contact dans le fichier pointer par le descripteur fd
-contact litUneEntree(int fd){
-	contact toto;
-	scanContact(&toto);
-	
-	//printf("%d",fd);
-	
-	return toto;
+//Lit une entree struct contact dans le fichier pointe par le descripteur fd
+struct contact litUneEntree(int fd){
+	char* buffer[10];
+	int lecture = read(fd,buffer,sizeof(struct contact));
 }//fin de affiche
 
 //Met a jour un contact saisit au clavier
@@ -94,22 +90,33 @@ void scanContact(struct contact* unContact)
 //Affiche la totalite du fichier 
 void affichage(char* fileName)
 {
-	int myFile = open(fileName,O_BINARY|O_RDONLY,S_IREAD);
-	printf("%d",myFile);
+	
 }
 
 //Demande a l'utilisateur le numero de l'entree (ieme entree dans le fichier) a afficher puis l'affiche
 void affichageEntree(char* fileName)
 {
-
+	int entree=0;
+	do{
+		printf("entree a lire : ");
+		scanf("%d",&entree);
+		while(getchar()!='\n');
+	}while(entree<0);
+	
+	int openFile = open(fileName, O_CREAT|O_APPEND|O_WRONLY, 664);
+	lseek(openFile,(sizeof(struct contact)*(entree-1)),SEEK_SET);
+	litUneEntree(openFile);
 }
 
 
 //Ajoute une entree en fin de fichier
 void ajout(char* fileName)
 {
-	/*int test = open("test.txt", O_TEXT, S_IWRITE); 
-	litUneEntree(test);*/
+	int openFile = open(fileName, O_CREAT|O_APPEND|O_WRONLY, 664);
+	
+	struct contact newContact;
+	scanContact(&newContact);
+	write(openFile,&newContact,sizeof(struct contact));
 }
 
 

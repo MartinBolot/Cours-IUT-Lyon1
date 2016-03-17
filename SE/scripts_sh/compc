@@ -1,0 +1,45 @@
+#-----------------------------------------------------------------------#
+#  procedure de compilation d'un programme C ANSI en background
+# auteur : Mr Pillot  
+#-----------------------------------------------------------------------#
+
+clear
+
+# on teste s'il y a un parametre sur la ligne de commande
+if test $1
+then
+  # on elimine l'extension .c du nom du fichier si elle existe
+  x=`basename $1 .c `
+
+  # y est la variable qui va contenir le nom de l'executable
+  y=$x.e
+
+  # ERREUR contient le nom du fichier des erreurs
+  ERREUR=$x.err
+
+  # on teste si le fichier a compiler existe et est de type regulier
+  if test -f $x.c
+  then
+    echo "Procedure personnelle de compilation de $x.c en cours......"
+    (
+      # on cree le fichier des erreurs
+      >$ERREUR
+
+      # on compile
+      gcc -o $y $x.c 2>$ERREUR
+
+      # on teste le code retour du compilateur
+      if [ $? -ne 0 ]
+      then
+			echo " Des erreurs sont apparues: voir le fichier $ERREUR."
+      else
+			echo " Fin de compilation de $x.c .....Execution en tapant $y"
+			rm $ERREUR
+      fi
+    ) &  # fin de la sequence lancee en arriere plan
+  else
+    echo "Le fichier $x.c n'existe pas"
+  fi
+
+else  echo "Attention a la syntaxe : $0 nom du fichier source "
+fi
