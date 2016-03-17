@@ -1,0 +1,6 @@
+create table PARTICIPE (
+NO_ADHERENT NUMBER(4),
+NO_SORTIE NUMBER(4),
+PAYEE CHAR(1) not null,
+constraint PK_PARTICIPE primary key (NO_ADHERENT, NO_SORTIE)
+);

@@ -1,0 +1,5 @@
+create table UTILISE (
+NO_PAQUETAGE NUMBER(4),
+NO_SORTIE NUMBER(4),
+constraint PK_UTILISE primary key (NO_PAQUETAGE, NO_SORTIE)
+);
