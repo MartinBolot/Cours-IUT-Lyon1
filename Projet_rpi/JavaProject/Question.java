@@ -5,7 +5,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Question{
+public class Question extends Main{
     //constructors
     public Question(){
         id=idMax++;
@@ -55,6 +55,9 @@ public class Question{
         if(_difficulty <= 3 &&_difficulty >= 1){
             difficulty=_difficulty;
         }else{throw new Error("error : diffculty out of range");}
+    }
+    public void setUsed ( boolean _use){
+        used=_use;
     }
     //methods
     public void displayQuestion(){

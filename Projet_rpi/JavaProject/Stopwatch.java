@@ -34,6 +34,7 @@ public class Stopwatch
             public void run() {
                 System.out.println(setInterval());
                 ans = sc2.nextLine();
+                //sc2.close();
                 
                 
             }
