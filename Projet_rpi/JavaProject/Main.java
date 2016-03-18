@@ -21,12 +21,21 @@ public class Main
         System.out.println("You pressed enter ! congratulations");
         
         //Game newGameInstance = new Game("easy");
-        Question q1 = new Question("Is Arthur a cool guy ?",true,1);
-        q1.displayQuestion();
+        do{
+        TakeRanDomLine takeRanDomLine = new TakeRanDomLine();
+        String test = takeRanDomLine.RamdonLine();
+    
+         Question ques = new Question();
+         ques.setSentence(test);
         
+         ques.setUsed(true);
+         
+         ques.displayQuestion();
+         System.out.println(ques.getUsed());
+         System.out.println("Press enter for another question");
+          input = sc.nextLine();
+        }while (input.equals(""));
         
-        
-       
     }
     
 }

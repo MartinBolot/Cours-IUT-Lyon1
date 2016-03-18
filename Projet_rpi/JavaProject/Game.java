@@ -10,7 +10,14 @@ import java.util.Scanner;
 
 public class Game
 {
-   public Game(){currentscore=0;maxScore=0;}
+   public Game(){
+       currentscore=0;
+       maxScore=0;
+       for(i=0;i<27;i++)
+       {
+           questions[i].sentence
+       }
+    }
    //getters
    
    //setters
@@ -32,7 +39,7 @@ public class Game
     }
     
    //array ? not array ?
-   //private Question[][] questions = new Question[3][100];
+   private Question[] questions = new Question[100];
    private int currentScore;
    private static int maxScore;
    private int remainingLives=3;
