@@ -16,9 +16,18 @@ h1,h2,h3,h4,h5,h6{
     padding: 0 0 1em;
 }
 h1{
+    color: #3F1F1C;
+    font-family: arial,verdana;
     font-size: 2em;
     margin: 1em 0 0;
     text-align: center;
+}
+h1:after{
+    border-bottom: 1px solid #aaa;
+    content: "";
+    display: block;
+    margin: 1em auto 0;
+    width: 10%;
 }
 h2{
     font-size: 1.5em;
@@ -79,7 +88,10 @@ header,main,footer{
     width: 100%;
 }
 header,footer{
-    background: #D7CCC8;
+    background: #dbcfbb;
+}
+.bodytext{
+    font-size: 0.90em;
 }
 /*header*/
 header{
@@ -140,7 +152,7 @@ header nav > ul li:first-child{
     border-left: 1px solid #ccc;
 }
 header nav > ul li.active,header nav > ul li:hover{
-    background: #eee;
+    background: #edebea;
 }
 /*heder logo*/
 .logo_home{
@@ -192,7 +204,7 @@ header nav > ul li.active,header nav > ul li:hover{
     position: absolute;
     text-align: center;
     top: 100%;
-    width: 100.5%;
+    width: 101%;
     z-index: 30;
 }
 .panier_top_header,.panier_top_content{
@@ -256,7 +268,7 @@ header nav > ul li.active,header nav > ul li:hover{
 }
 /*main*/
 main{
-    background: #eee;
+    background: #F5F5F5;
     padding: 0 0 2em;
 }
 main > section{
@@ -464,13 +476,21 @@ main ul > li{
 .table_submit input[type="submit"]{
     width: auto;
 }
+.form_commande table label{
+    display: block;
+}
+.form_commande table label:before{
+    color: #F14336;
+    content: "\e014";
+    cursor: pointer;
+    display: block;
+    float: left;
+    clear: both;
+}
 /*details techniques*/
 #detail_techniques hr{
     margin: 2em auto;
     width: 10%;
-}
-#detail_techniques{
-    font-size: 0.95em;
 }
 /*footer*/
 footer{
@@ -503,6 +523,9 @@ footer > nav > ul > li{
     }
 }
 @media (max-width: 1100px) {
+    .recherche_top{
+        display: none;
+    }
     #liste_articles_accueil article{
         height: 280px;
     }
@@ -513,14 +536,16 @@ footer > nav > ul > li{
     }
 }
 @media (max-width: 768px) {     /*styles mobile*/
-    main{
-        padding: 0 1em;
-    }
     header nav{
         width: 100%;
     }
     header nav > ul{
         display: block;
+    }
+    header nav > ul li{
+        padding-left: 0;
+        padding-right: 0;
+        width: 32%;
     }
     #promotions{
         display: none;
@@ -537,5 +562,12 @@ footer > nav > ul > li{
     }
     .detail_top{
         height: auto;
+    }
+    table{
+        max-width: 100%;
+    }
+    table th,table td{
+        display: inline-block;
+        width: 100%;
     }
 }
