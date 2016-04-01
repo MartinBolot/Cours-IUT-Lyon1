@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="fr">
     <head>
-        <title>AdopteUneLoutre - Accueil</title>
+        <title>AdopteUneLoutre - Détails techniques</title>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="robots" content="noindex,nofolow"/>
         <meta name="author" content="Martin Bolot et Antoine Daigremont" />
 
@@ -17,7 +18,7 @@
                     <ul>
                         <li><a href="../index.html">Accueil</a></li>
                         <li><a href="mon_panier.html">Mon panier</a></li>
-                        <li><a href="#">Produits</a></li>
+                        <li><a href="produits.html">Produits</a></li>
                     </ul>
                 </nav>
                 <div class="logo_home">
@@ -35,7 +36,7 @@
                             </ul>
                         </div>
                         <div class="validate_panier_top">
-                            <button>Commander</button>
+                            <a href="mon_panier.html">Commander</a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +52,7 @@
             </div>
         </header>
         <main>
-            <section id="detail_techniques">
+            <section id="detail_techniques" class="bodytext">
                 <h1>Détails techniques</h1>
                 <div class="bloc_blanc_main">
                     <h2>
@@ -63,7 +64,7 @@
                     <ol>
                         <li>Réalisation d'une maquette sommaire sous word</li>
                         <li><a href="#real_html">Réalisation du template HTML</a> en une seule page, création de la sémantique du document et du contenu</li>
-                        <li><a href="#real_styles_header">Réalisation des styles du header</a>, au départ souhaté fixe puis finalement gardé en position statique</li>
+                        <li><a href="#real_styles_header">Réalisation des styles du header</a>, au départ souhaité fixe puis finalement gardé en position statique</li>
                         <li><a href="#real_styles_slider">Réalisation des styles du slider</a>, <em>copié/collé depuis un site tutoriel !</em></li>
                         <li><a href="#real_styles_liste">Réalisation des styles de la liste d'articles</a></li>
                         <li><a href="#real_styles_detail">Réalisation des styles du détail d'article</a></li>
@@ -80,7 +81,7 @@
                         <div id="real_html">
                             <hr/>
                             <h3>Réalisation du template HTML</h3>
-                            Ici nous avons utilisé au maximum les balises ayant un fort potentiel sémentique proposées par HTML5,
+                            Ici nous avons utilisé au maximum les balises ayant un fort potentiel sémantique proposées par HTML5,
                             telles que les <code class="html">&lt;<span class="balise">section</span>&gt;</code> et les <code class="html">&lt;<span class="balise">article</span>&gt;</code>.<br/>
                             Il est toutefois resté nécessaire d'avoir recours aux <code class="html">&lt;<span class="balise">div</span>&gt;</code> et <code class="html">&lt;<span class="balise">span</span>&gt;</code>
                             dans le cadre de conteneurs dédiés uniquement à la présentation.
@@ -93,11 +94,11 @@
                                 <li>
                                     Le logo du site utilise une balise <code class="html">&lt;<span class="balise">span</span>&gt;</code>
                                     avec une image en noir et blanc comme background. Au survol de cette image, la taille du span augmente avec un propriété "transition" permettant un effet
-                                    animé. L'image de background est changé au survol également pour passer en couleur
-                                    (a noter qu'une solution plus optimale aurait été l'utilisation d'un sprite css contenant les deux images avec changement de position uniquement au survol)
+                                    animé. L'image de background est changée au survol également pour passer en couleur
+                                    (à noter qu'une solution plus optimale aurait été l'utilisation d'un sprite css contenant les deux images avec changement de position uniquement au survol)
                                 </li>
                                 <li>
-                                    La liste du panier s'affiche au survol. L'astuce consite à définir la liste comme positionnée en absolue, son parent étant en relative et de la cacher. On l'affichera
+                                    La liste du panier s'affiche au survol. L'astuce consiste à définir la liste comme positionnée en absolue, son parent étant en relative et de la cacher. On l'affichera
                                     non pas au survol mais au survol de son parent : <br/><br/>
                                     <code class="css">
                                         <span class="classe">.enfant</span>{
@@ -113,8 +114,8 @@
                         <div id="real_styles_slider">
                             <hr/>
                             <h3>Réalisation des styles du slider</h3>
-                            Attention ce slider a été <em>copié/collé depuis un site tutoriel !</em> Il est trouvable <a href="http://www.creativejuiz.fr/blog/tutoriels/css3-creer-slideshow-automatique-controlable-transition" target="_blank">via ce lien</a>.<br/>
-                            Il a été remanié pour s'intégrer dans le site, nous n'en tirons pas crédit, il ajoute simplement un peu de dynamisme à la page d'accueil.</br>
+                            Attention ce slider a été <em>copié/collé depuis un site tutoriel !</em> Il est accessible <a href="http://www.creativejuiz.fr/blog/tutoriels/css3-creer-slideshow-automatique-controlable-transition" target="_blank">via ce lien</a>.<br/>
+                            Il a été remanié pour s'intégrer dans le site, nous n'en tirons pas crédit, il ajoute simplement un peu de dynamisme à la page d'accueil.<br/>
                             Sa conception est assez ingénieuse : les animations sont gérées avec des <code class="css"><span class="atselector">@keyframes</span></code> qui permettent de définir les timming d'animation en pourcentage, en décalant le slider (en position absolue)
                             de (nombre de pixels d'une image * nombre d'images déjà slidées).<br/>
                             Il est rendu interactif par le pseudo-élément <code class="css"><span class="pseudoselecteur">:target</span></code> qui s'active lorsque l'élément est ciblé via une ancre dans l'url.<br/>
@@ -126,7 +127,7 @@
                             Utilisation d'articles avec une image positionnée en absolute pour faire toile de fond. Au survol on augmente légerement la largeur
                             de l'image pour donner un effet "zoom", avec une transition qui aura le même délai que l'aparition de la description du produit en bas du cadre.<br/>
                             Une astuce ici est la gestion de la transition de la desciption en hauteur (bloc blanc qui apparait en bas). Le problème initial est le suivant : il faut faire passer cet élément d'une hauteur de 0 (masqué)
-                            à une auteur de "auto". Or il n'est pas possible pour le moteur CSS de faire une transition sur un attribut avec pour valeur d'arrivée "auto".<br/>
+                            à une hauteur de "auto". Or il n'est pas possible pour le moteur CSS de faire une transition sur un attribut avec pour valeur d'arrivée "auto".<br/>
                             La solution pour résoudre le problème est de jouer sur la hauteur maximum comme le montre le code CSS ci-dessous :<br/><br/>
                             <code class="css">
                                 <span class="id">#liste_articles_accueil</span> <span class="element">article</span> <span class="classe">.description_hover</span>{
@@ -143,9 +144,9 @@
                             <hr/>
                             <h3>Réalisation des styles du détail d'article</h3>
                             Pas de difficultés particulières ici, on notera simplement que nous avons préféré utiliser la propriété
-                            <code class="css"><span class="valeur">display</span>:<span class="attribut">inline-block</span>;</code>
+                            <code class="css"><span class="attribut">display</span>:<span class="valeur">inline-block</span>;</code>
                             par rapport à
-                            <code class="css"><span class="valeur">float</span>:<span class="attribut">left</span>;</code>.
+                            <code class="css"><span class="attribut">float</span>:<span class="valeur">left</span>;</code>.
                             Cette dernière est plus simple d'utilisation mais aurait pu poser problème par rapport au reste de nos styles.
                         </div>
                         <div id="real_styles_panier">
@@ -158,7 +159,7 @@
                             <h3>Réalisation du contenu des pages "Mentions légales", "Qui-somme nous?" et "Détails techniques"</h3>
                             Définition des styles généraux d'une page interne.
                             Comme il fallait décrire du code CSS, nous avons stylé, comme on peut le voir plus haut et ci-contre, la balise <code class="html">&lt;<span class="balise">code</span>&gt;</code>
-                            pour qu'elle se colore si on lui donne la bonne classe. Couleurs inspirées par l'éditeur <a href="https://atom.io/">Atom</a>.
+                            pour qu'elle se colore si on lui donne la bonne classe. Couleurs inspirées par l'éditeur <a href="https://atom.io/" target="_blank">Atom</a>.
                         </div>
                     </article>
                 </div>

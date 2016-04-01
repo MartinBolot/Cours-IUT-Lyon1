@@ -9,87 +9,15 @@
 	50%, 70%		{ left: -200% }
 	75%, 95%		{ left: -300% }
 }
-@-webkit-keyframes slider {
- 	0%, 20%, 100%	{ left: 0 }
- 	25%, 45%		{ left: -100% }
- 	50%, 70%		{ left: -200% }
- 	75%, 95%		{ left: -300% }
-}
-@-moz-keyframes slider {
- 	0%, 20%, 100%	{ left: 0 }
- 	25%, 45%		{ left: -100% }
- 	50%, 70%		{ left: -200% }
- 	75%, 95%		{ left: -300% }
-}
 @keyframes timeliner {
  	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
  	20%, 45%, 70%, 90%		{ width: 597px;	}
-}
-@-webkit-keyframes timeliner {
-	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
-	20%, 45%, 70%, 90%		{ width: 597px;	}
-}
-@-moz-keyframes timeliner {
-   	0%, 25%, 50%, 75%, 100%	{ width: 0;		}
-   	20%, 45%, 70%, 90%		{ width: 597px;	}
 }
 @keyframes description {
 	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
 	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 0;		}
 }
-@-webkit-keyframes description {
-	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
-	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 0;		}
-}
-@-moz-keyframes description {
-	0%, 25%, 50%, 75%, 100%						{ bottom: -55px;	}
-	5%, 20%, 30%, 45%, 55%, 70%, 80%, 95%		{ bottom: 0;		}
-}
 @keyframes dotser {
-	0%, 100% 	{ opacity: 1; left: 0; 		}
-
-	20%			{ opacity: 1; left: 0;		}
-	22%			{ opacity: 0; left: 0;		}
-	23%			{ opacity: 0; left: 24px;	}
-	25%			{ opacity: 1; left: 24px;	}
-
-	45%			{ opacity: 1; left: 24px;	}
-	47%			{ opacity: 0; left: 24px;	}
-	48%			{ opacity: 0; left: 46px;	}
-	50%			{ opacity: 1; left: 46px;	}
-
-	70%			{ opacity: 1; left: 46px;	}
-	72%			{ opacity: 0; left: 46px;	}
-	73%			{ opacity: 0; left: 68px;	}
-	75%			{ opacity: 1; left: 68px;	}
-
-	95%			{ opacity: 1; left: 68px;	}
-	97%			{ opacity: 0; left: 68px;	}
-	98%			{ opacity: 0; left: 0;	}
-}
-@-webkit-keyframes dotser {
-	0%, 100% 	{ opacity: 1; left: 0; 		}
-
-	20%			{ opacity: 1; left: 0;		}
-	22%			{ opacity: 0; left: 0;		}
-	23%			{ opacity: 0; left: 24px;	}
-	25%			{ opacity: 1; left: 24px;	}
-
-	45%			{ opacity: 1; left: 24px;	}
-	47%			{ opacity: 0; left: 24px;	}
-	48%			{ opacity: 0; left: 46px;	}
-	50%			{ opacity: 1; left: 46px;	}
-
-	70%			{ opacity: 1; left: 46px;	}
-	72%			{ opacity: 0; left: 46px;	}
-	73%			{ opacity: 0; left: 68px;	}
-	75%			{ opacity: 1; left: 68px;	}
-
-	95%			{ opacity: 1; left: 68px;	}
-	97%			{ opacity: 0; left: 68px;	}
-	98%			{ opacity: 0; left: 0;	}
-}
-@-moz-keyframes dotser {
 	0%, 100% 	{ opacity: 1; left: 0; 		}
 
 	20%			{ opacity: 1; left: 0;		}

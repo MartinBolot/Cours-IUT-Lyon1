@@ -3,6 +3,7 @@
     <head>
         <title>AdopteUneLoutre - Mon panier</title>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="robots" content="noindex,nofolow"/>
         <meta name="author" content="Martin Bolot et Antoine Daigremont" />
 
@@ -16,7 +17,7 @@
                     <ul>
                         <li><a href="../index.html">Accueil</a></li>
                         <li class="active"><a href="mon_panier.html">Mon panier</a></li>
-                        <li><a href="#">Produits</a></li>
+                        <li><a href="produits.html">Produits</a></li>
                     </ul>
                 </nav>
                 <div class="logo_home">
@@ -34,7 +35,7 @@
                             </ul>
                         </div>
                         <div class="validate_panier_top">
-                            <button>Commander</button>
+                            <a href="mon_panier.html">Commander</a>
                         </div>
                     </div>
                 </div>
@@ -50,32 +51,32 @@
             </div>
         </header>
         <main>
-            <section id="mon_panier">
+            <section id="mon_panier" class="bodytext">
                 <h1>Mon panier</h1>
                 <div class="bloc_blanc_main">
-                    <form action="#" class="form_commande">
+                    <form action="commande_validee.html" class="form_commande">
                         <table>
                             <tbody>
                                 <tr>
-                                    <th clospan="2">Nom article</th>
+                                    <th>Nom article</th>
                                     <th>Prix</th>
                                     <th>Quantité</th>
                                     <th>Prix total</th>
-                                </th>
+                                </tr>
                                 <tr>
-                                    <td><label for="commande_quantite_1">Bonnet Loutre</label></td>
+                                    <td><label class="glyphicon" for="commande_quantite_1">Bonnet Loutre</label></td>
                                     <td>99.99€</td>
                                     <td><input id="commande_quantite_1" type="number" value="1" name="commande_1"/></td>
                                     <td>99.99€</td>
                                 </tr>
                                 <tr>
-                                    <td><label for="commande_quantite_2">T-Shirt Loutre</label></td>
+                                    <td><label class="glyphicon" for="commande_quantite_2">T-Shirt Loutre</label></td>
                                     <td>20€</td>
                                     <td><input id="commande_quantite_2" type="number" value="2" name="commande_2"/></td>
                                     <td>40€</td>
                                 </tr>
                                 <tr>
-                                    <td><label for="commande_quantite_3">Statuette Loutre</label></td>
+                                    <td><label class="glyphicon" for="commande_quantite_3">Statuette Loutre</label></td>
                                     <td>30€</td>
                                     <td><input id="commande_quantite_3" type="number" value="1" name="commande_3"/></td>
                                     <td>30€</td>
