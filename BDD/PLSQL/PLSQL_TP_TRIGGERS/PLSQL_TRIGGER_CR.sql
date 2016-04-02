@@ -1,4 +1,4 @@
-1)
+--1)
 
     create or replace trigger auto_increment
     before insert
@@ -19,7 +19,7 @@
     end;
     /
 
-2)
+--2)
     create or replace trigger dept_conjoint
     before insert on customer
     for each row
@@ -52,7 +52,7 @@
     end;
     /
 
-3)
+--3)
     create or replace trigger log_action
     after insert or update or delete
     on dept
