@@ -1,9 +1,8 @@
-1)
+--1)
 
 DECLARE
   CURSOR c_emp is
     select * from emp;
-  --v_emp c_emp%rowtype;
 BEGIN
   FOR v_emp in c_emp LOOP
     IF (v_emp.comm!=null or v_emp.comm!=0) THEN
@@ -20,7 +19,7 @@ BEGIN
   END LOOP;
 END;
 
-2)
+--2)
 create table employees as (select * from hr.employees);
 alter table employees add(
   Etoiles varchar2(50)
@@ -51,7 +50,7 @@ BEGIN
   close c_employee;
 END;
 
-3)
+--3)
 create table departments as (select * from hr.departments);
 
 DECLARE

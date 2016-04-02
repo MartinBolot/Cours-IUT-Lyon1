@@ -1,4 +1,4 @@
-1)
+--1)
 create or replace procedure insertJob(jobId varchar2,jobTitle varchar2)
   is
   begin
@@ -8,7 +8,7 @@ create or replace procedure insertJob(jobId varchar2,jobTitle varchar2)
 
 exec insertJob('AD_CEO','Chief Executive Officer');
 
-2)
+--2)
 
 create or replace procedure modif_job(idPoste varchar2,newIdPoste varchar2)
   is
@@ -39,7 +39,7 @@ create or replace procedure modif_job(idPoste varchar2,newIdPoste varchar2)
   end;
 /
 
-3)
+--3)
 
 create or replace procedure nom_employes_chefs
   is
@@ -62,7 +62,7 @@ create or replace procedure nom_employes_chefs
 
 exec nom_employes_chefs();
 
-4)
+--4)
 
 create or replace procedure plus_haut_salaire(nomEmploye varchar2)
   is
@@ -89,7 +89,7 @@ create or replace procedure plus_haut_salaire(nomEmploye varchar2)
 
 exec plus_haut_salaire('Austin');
 
-5)
+--5)
 
 create or replace procedure meme_job_ou_salsup(nomEmploye1 varchar2,nomEmploye2 varchar2)
   is
@@ -109,7 +109,7 @@ create or replace procedure meme_job_ou_salsup(nomEmploye1 varchar2,nomEmploye2 
   end;
 /
 
-6)
+--6)
 
 create or replace procedure n_sal_sup(n number)
   is
@@ -126,7 +126,7 @@ create or replace procedure n_sal_sup(n number)
   end;
 /
 
-7)
+--7)
 
 create or replace procedure affiche_deptvides
   is
@@ -144,7 +144,7 @@ create or replace procedure affiche_deptvides
   end;
 /
 
-8)
+--8)
 
 create or replace procedure affiche_hierarchie(numEmploye number)
   is
@@ -161,7 +161,7 @@ create or replace procedure affiche_hierarchie(numEmploye number)
   end;
 /
 
-9)
+--9)
 
 create view myView as
   select department_id,sum((salary*(1+decode(commission_pct,null,0,0)))) as salaire
@@ -184,7 +184,7 @@ create or replace procedure affiche_numdept(sommeMaximum number)
   end;
 /
 
-10)
+--10)
 
 create or replace procedure depasse_salmoyen
   is
@@ -209,7 +209,7 @@ create or replace procedure depasse_salmoyen
   end;
 /
 
-11)
+--11)
 
 -- a) fonction
 create or replace function check_sal(idEmployee number) return boolean is

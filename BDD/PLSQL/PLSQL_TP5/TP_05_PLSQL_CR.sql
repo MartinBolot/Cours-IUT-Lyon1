@@ -1,4 +1,4 @@
-1)
+--1)
 
 create or replace procedure alimenter_credit(numAdherent varchar2, somme number) is
   --declarations
@@ -22,7 +22,7 @@ create or replace procedure alimenter_credit(numAdherent varchar2, somme number)
 exec alimenter_credit(9,22);
 
 
-2)
+--2)
 
 /*
 	Il va falloir utiliser les triggers qui vont permettre d'�couter des �venements et
@@ -94,9 +94,9 @@ create or replace trigger prelevement_auto
   --tests
   update participe set payee='v' where no_adherent=1 and no_sortie=3;
 
- 3)
+ --3)
 
- 
+
  create or replace function generer_prets(numsortie in number) return number is
    --declarations
    e_fatalError exception; --exception fatal error
