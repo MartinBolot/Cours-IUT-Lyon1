@@ -1,0 +1,67 @@
+body{
+	background:#fff;
+}
+form{
+	background: #eee;
+	border-radius: 5px;
+	padding: 20px 10px;
+	text-align: center;
+}
+input{
+	border: 1px solid #aaa;
+}
+table{
+	text-align: center;
+}
+th,td{
+	padding: 10px;
+}
+/**/
+#menu,#content{
+	display: inline-block;
+	vertical-align: top;
+}
+#menu{
+	width: 25%;
+}
+#content{
+	width: 50%;
+}
+/* gestion films*/
+.form_buttons{
+	padding: 20px 0 0;
+	text-align: center;
+}
+.form_buttons span{
+	display: inline-block;
+	margin: 0 10px;
+}
+.form_table{
+	border-bottom: 1px solid #eee;
+	padding: 0 0 20px;
+}
+.form_table table{
+	margin: 0 auto;
+}
+.form_table tr:nth-child(2n-1){
+    background: #eee;
+}
+/**/
+#global{
+	margin: 50px 0 0;
+	width: 100%;
+}
+.form_field{
+	margin: 0 0 20px;
+}
+.label_title{
+	display: block;
+	margin: 0 0 5px;
+}
+.back_link,.success_confirm{
+	text-align: center;
+}
+.success_confirm{
+	margin: 0 0 20px;
+}
+/**/
