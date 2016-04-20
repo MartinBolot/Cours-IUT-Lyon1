@@ -11,9 +11,10 @@
 <!doctype html>
 <html>
 	<head>
-	<?php print(getHead("Ajouter un role")); ?>
-</head>
+		<?php print(getHead("Ajouter un role")); ?>
+	</head>
 <body>
+	<h1>Ajouter un role</h1>
 	<?php
 		// in case no entry has been submitted yet
 		if(count($_POST) === 0){
@@ -25,7 +26,7 @@
 				<div id="global" class=<?php echo "\"".$cssPageClass."\"" ?> >
 					<?php print(getMenu()); ?>
 					<div id="content">
-						<form action="" method="post">
+						<form action="#" method="post">
 							<div class="form_field">
 								<label>
 									<span class="label_title">Nom de l'acteur :</span>

@@ -58,6 +58,24 @@
 			}
         }
 
+        public function getStaringActors($idFilm){
+            $acteurArray = array();
+
+            if(isset($idFilm) && (int)$idFilm >= 0){
+                $acteurRepository = new acteurRepository();
+
+                $query = $this->pdoConnect->prepare("select id_acteur from casting where id_film=?");
+                $query->execute(array((int)$idFilm));
+                $acteurs = $query->fetchAll();
+
+                foreach($acteurs as $acteur){
+                    array_push($acteurArray,$acteurRepository->getActeurById($acteur["id_acteur"]));
+                }
+            }
+
+            return $acteurArray;
+        }
+
         /**
         *   get all films from DB
         *   @return a key=>value array containing all the films

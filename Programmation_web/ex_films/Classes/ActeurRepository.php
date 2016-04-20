@@ -48,6 +48,16 @@
             }
         }
 
+        public function getActeurById($id){
+            if(isset($id) && (int)$id >= 0){
+                foreach($this->acteurArray as $acteur){
+                    if($acteur->getId() === $id){
+                        return $acteur;
+                    }
+                }
+            }
+        }
+
         /**
         *   get all acteurs from DB
         *   @return a key=>value array containing all the acteurs
