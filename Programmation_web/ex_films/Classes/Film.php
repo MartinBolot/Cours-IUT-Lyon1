@@ -1,11 +1,10 @@
 <?php
 
     Class Film{
-        public function __construct($id,$nom,$annee,$score){
-            if($nom===null){
-                throw new Error("Impossible de creer un film sans nom");
+        public function __construct($nom,$annee,$score){
+            if($nom === null){
+                die("Erreur : impossible de creer un film sans nom");
             }
-            $this->id = $id;
             $this->nom = $nom;
             if(isset($annee)){
                 $this->annee = $annee;
@@ -24,6 +23,9 @@
         }
         public function getScore(){
             return $this->score;
+        }
+        public function getId(){
+            return $this->id;
         }
 
         /* setters*/
