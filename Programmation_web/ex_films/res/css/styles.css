@@ -16,6 +16,10 @@ table{
 th,td{
 	padding: 10px;
 }
+h2{
+	margin: 0 0 20px;
+	text-align: center;
+}
 /**/
 #menu,#content{
 	display: inline-block;
