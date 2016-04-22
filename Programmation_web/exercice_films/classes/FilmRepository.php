@@ -33,12 +33,12 @@
         */
         public function save($film){
 			$testQuery = $this->pdoConnect->prepare("select count(*) as nb from films where nom_film=?");
-			$testQuery->execute(array($_POST["nom_film"]));
+			$testQuery->execute(array($film->getNom()));
 
 			$data = $testQuery->fetch();
 
 			if($data["nb"] > 0){
-				$query = $this->pdoConnect->prepare("update p1506898.films set annee_film =:annee,score=:score where lower(nom_film)=lower(:nom)");
+				$query = $this->pdoConnect->prepare("update films set annee_film =:annee,score=:score where lower(nom_film)=lower(:nom)");
 				$insert = $query->execute(array(
 					'nom' => $film->getNom(),
 					'annee' => $film->getAnnee(),
@@ -47,7 +47,7 @@
 
                 return ($insert ? 1 : 2);
 			}else{
-				$query = $this->pdoConnect->prepare("insert into p1506898.films(nom_film,annee_film,score) values(:nom,:annee,:score)");
+				$query = $this->pdoConnect->prepare("insert into films(nom_film,annee_film,score) values(:nom,:annee,:score)");
 				$insert = $query->execute(array(
 					'nom' => $film->getNom(),
 					'annee' => $film->getAnnee(),

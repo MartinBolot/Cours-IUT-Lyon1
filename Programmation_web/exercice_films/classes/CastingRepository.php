@@ -7,13 +7,13 @@
             */
             public function __construct(){
                 $this->pdoConnect = connectDb();
-                $query = $this->pdoConnect->prepare("select id_casting,id_acteur from casting");
+                $query = $this->pdoConnect->prepare("select id_film,id_acteur from casting");
                 $query->execute();
                 $castings = $query->fetchAll();
 
                 foreach($castings as $casting){
                     $castingObject = new Casting(
-                        $casting['id_casting'],
+                        $casting['id_film'],
                         $casting['id_acteur']
                     );
                     array_push($this->castingArray,$castingObject);
@@ -31,14 +31,14 @@
             */
             public function save($casting){
     			$testQuery = $this->pdoConnect->prepare("select count(*) as nb from casting where id_film=? and id_acteur=?");
-    			$testQuery->execute(array($_POST["film"],$_POST["acteur"]));
+    			$testQuery->execute(array($casting->getIdFilm(),$casting->getIdActeur()));
 
     			$data = $testQuery->fetch();
 
     			if($data["nb"] > 0){
     				return 1;
     			}else{
-    				$query = $this->pdoConnect->prepare("insert into p1506898.casting values(:id_film,:id_acteur)");
+    				$query = $this->pdoConnect->prepare("insert into casting values(:id_film,:id_acteur)");
     				$insert = $query->execute(array(
     					'id_film' => $casting->getIdFilm(),
     					'id_acteur' => $casting->getIdActeur()
