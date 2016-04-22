@@ -1,5 +1,9 @@
 <?php
-    //Film row in film management table
+    /**
+    *   creates a html table row for a given Film object
+    *   @param Film $film the movie to display
+    *   @return string the html table row
+    */
     function getFilmRow($film){
         if($film->getNom()){
 

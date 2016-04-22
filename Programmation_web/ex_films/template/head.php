@@ -1,4 +1,9 @@
 <?php
+	/**
+	*	creates the "head" part of the html document
+	*	@param string $title the title to include
+	*	@return string the html "head" tag content
+	*/
 	function getHead($title){
 		return (
 			"
