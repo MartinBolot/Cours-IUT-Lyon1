@@ -3,7 +3,6 @@
 
         /**
         *   constructor wich queries DB for acteurs
-        *   @return void
         */
         public function __construct(){
             $this->pdoConnect = connectDb();
@@ -24,10 +23,10 @@
 
         /**
         *   add a film in the database
-        *   @param film a film object
+        *   @param $acteur a film object
         *   @return int if the update was executed correctly or not
         *       => 0 if insert was executed
-        *       => 1 if the acteur is already present
+        *       => 1 if the item is already present
         *       => 2 if an error happend
         */
         public function save($acteur){
@@ -48,6 +47,11 @@
             }
         }
 
+        /**
+        *   get an item given an id
+        *   @param $id the id
+        *   @return $acteur an object of type Acteur
+        */
         public function getActeurById($id){
             if(isset($id) && (int)$id >= 0){
                 foreach($this->acteurArray as $acteur){
@@ -60,12 +64,11 @@
 
         /**
         *   get all acteurs from DB
-        *   @return a key=>value array containing all the acteurs
+        *   @return a key=>value array containing all the items
         */
         public function getAll(){
             return $this->acteurArray;
         }
 
         private $acteurArray = array();
-        private $idMax = 0;
     }

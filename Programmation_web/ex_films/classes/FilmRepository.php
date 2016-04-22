@@ -58,6 +58,11 @@
 			}
         }
 
+        /**
+        *   gets the actors playing in the given movie
+        *   @param int $idFilm the id of the movie
+        *   @return Acteur array $acteurArray an array (possibly empty) representing the result of the query
+        */
         public function getStaringActors($idFilm){
             $acteurArray = array();
 
@@ -85,5 +90,4 @@
         }
 
         private $filmArray = array();
-        private $idMax=0;
     }

@@ -57,5 +57,4 @@
             }
 
             private $castingArray = array();
-            private $idMax = 0;
     }

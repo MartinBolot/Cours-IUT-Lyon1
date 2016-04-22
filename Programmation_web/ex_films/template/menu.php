@@ -1,4 +1,8 @@
 <?php
+	/**
+	*	creates the left menu part of the html document
+	*	@return string the html menu content
+	*/
     function getMenu(){
         return(
             "
