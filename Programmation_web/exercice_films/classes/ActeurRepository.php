@@ -55,7 +55,7 @@
         public function getActeurById($id){
             if(isset($id) && (int)$id >= 0){
                 foreach($this->acteurArray as $acteur){
-                    if($acteur->getId() === $id){
+                    if($acteur->getId() === (int)$id){
                         return $acteur;
                     }
                 }

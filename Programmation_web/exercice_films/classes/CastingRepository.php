@@ -49,6 +49,27 @@
             }
 
             /**
+            *   gets the actors playing in the given movie
+            *   @param int $idFilm the id of the movie
+            *   @return Acteur array $acteurArray an array (possibly empty) representing the result of the query
+            */
+            public function getStaringActors($idFilm){
+                $acteurArray = array();
+
+                if(isset($idFilm) && (int)$idFilm >= 0){
+                    $query = $this->pdoConnect->prepare("select id_acteur,nom,prenom from casting natural join acteurs where id_film=?");
+                    $query->execute(array((int)$idFilm));
+                    $acteurs = $query->fetchAll();
+
+                    foreach($acteurs as $acteur){
+                        array_push($acteurArray,new Acteur($acteur["nom"],$acteur["prenom"]));
+                    }
+                }
+
+                return $acteurArray;
+            }
+
+            /**
             *   get all castings from DB
             *   @return a key=>value array containing all the castings
             */
