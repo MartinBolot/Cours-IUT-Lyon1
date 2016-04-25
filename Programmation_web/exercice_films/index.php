@@ -14,6 +14,7 @@
 	/* getting the array of films from database */
 	$filmRepository = new FilmRepository();
 	$filmList = $filmRepository->getAll();
+	$castingRepository = new CastingRepository();
 ?>
 
 <!doctype html>
@@ -28,20 +29,15 @@
 			<div id="content">
 				<?php
 					if(isset($_GET["id_film"])){
-						echo("<h2>");
-						foreach($filmList as $film){
-							if($film->getId() === (int)$_GET["id_film"]){
-								echo($film->getNom());
-							}
-						}
-					 	echo("</h2>");
+						$film = $filmRepository->getFilmById((int)$_GET["id_film"]);
+						echo("<h2>".($film ? $film->getNom() : "" )."</h2>");
 					}
 				?>
 				<div class="form_table">
 					<table>
 						<?php
 							if(isset($_GET["id_film"])){
-								$acteurList = $filmRepository->getStaringActors($_GET["id_film"]);
+								$acteurList = $castingRepository->getStaringActors($_GET["id_film"]);
 								?>
 									<tr>
 										<th>Nom</th>

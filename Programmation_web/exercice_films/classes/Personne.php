@@ -1,5 +1,5 @@
 <?php
-
+    //classe pensée à la base pour gérer acteurs et réalisateurs
     abstract class Personne{
         /**
         *   gets the value of the field nom

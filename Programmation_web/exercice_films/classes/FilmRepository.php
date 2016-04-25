@@ -59,26 +59,18 @@
         }
 
         /**
-        *   gets the actors playing in the given movie
-        *   @param int $idFilm the id of the movie
-        *   @return Acteur array $acteurArray an array (possibly empty) representing the result of the query
+        *   get an item given an id
+        *   @param $id the id
+        *   @return $film an object of type Film
         */
-        public function getStaringActors($idFilm){
-            $acteurArray = array();
-
-            if(isset($idFilm) && (int)$idFilm >= 0){
-                $acteurRepository = new acteurRepository();
-
-                $query = $this->pdoConnect->prepare("select id_acteur from casting where id_film=?");
-                $query->execute(array((int)$idFilm));
-                $acteurs = $query->fetchAll();
-
-                foreach($acteurs as $acteur){
-                    array_push($acteurArray,$acteurRepository->getActeurById($acteur["id_acteur"]));
+        public function getFilmById($id){
+            if(isset($id) && (int)$id >= 0){
+                foreach($this->filmArray as $film){
+                    if($film->getId() === (int)$id){
+                        return $film;
+                    }
                 }
             }
-
-            return $acteurArray;
         }
 
         /**
