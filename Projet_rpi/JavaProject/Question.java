@@ -60,6 +60,9 @@ public class Question extends Main{
         used=_use;
     }
     //methods
+    @Override public String toString(){
+        return "Question : "+sentence+"\n"+" righteousness : "+(rightAnswer?"true":"false")+"\n difficulty : "+difficulty;
+    }
     public void displayQuestion(){
         System.out.println(sentence);
     }
@@ -68,6 +71,6 @@ public class Question extends Main{
     private int id;
     private String sentence;
     private boolean rightAnswer;
-    private int difficulty;
+    private int difficulty; //int between 1 and 3 => 1 : easy, 2 : medium, 3 : hard
     private boolean used;
 }

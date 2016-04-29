@@ -7,34 +7,19 @@
  */
 
 import java.util.Scanner;
-
+import java.io.*;
+/*import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;*/
 
 public class Main
 {
     //contains the only main method, is to be launched with launch.sh
     
     public static void main(String args[]){ 
-        System.out.println("Welcome In The Wrong Button. \n Press Enter to Start");
         
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        System.out.println("You pressed enter ! congratulations");
-        
-        //Game newGameInstance = new Game("easy");
-        do{
-        TakeRanDomLine takeRanDomLine = new TakeRanDomLine();
-        String test = takeRanDomLine.RamdonLine();
-    
-         Question ques = new Question();
-         ques.setSentence(test);
-        
-         ques.setUsed(true);
-         
-         ques.displayQuestion();
-         System.out.println(ques.getUsed());
-         System.out.println("Press enter for another question");
-          input = sc.nextLine();
-        }while (input.equals(""));
+       Game newGameInstance = new Game(/*"easy"*/);
+       newGameInstance.init();
         
     }
     
