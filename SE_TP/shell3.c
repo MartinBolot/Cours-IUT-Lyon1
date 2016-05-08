@@ -10,14 +10,23 @@
 #define MAX 50
 
 int main(){
-	char** saisie=NULL;				/* recuperation de la commande saisie */
-	pid_t pid,bg;						/* stockage du pid pour le fork */
-	int etat,status;							/* variable de retour pour le fork */
+	char** saisie=NULL;		/* recuperation de la commande saisie */
+	pid_t pid,bg,pipePid;	/* stockage du pid pour le fork */
+	int etat,status;	/* variable de retour pour le fork */
 	int commandToExecute;	/* variable de test pour le retour de l'exec */
-	char* param;					/* stockage du parametre passé pour export */
+	char* param;	/* stockage du parametre passé pour export */
 	char variable[MAX];		/* stockage du nom de la variable d'env passée pour export */
-	int cpt=0;						/* compteur pour récupérer la partie avant le "=" dans le parametre */
-	char* p;					/* pointeur pour parcourir la chaine passée en argument d'export */
+	int cpt=0;		/* compteur pour récupérer la partie avant le "=" dans le parametre */
+	char* p;		/* pointeur pour parcourir la chaine passée en argument d'export */
+	int i = 0;	/* variable d iteration */
+
+	/* pour la gestion des pipes */
+	int fd[2];	/* descripteur de fichier pour le pipe */
+	int indicePipe = 0;	/* indice du symbole "|" dans la commande*/
+	char copiePipe[MAX][MAX];	/* copie des arguments */
+	char *copieDebutPipe;	/* copie de la chaine avant le "|" */
+	char *copieFinPipe;		/* copie de la chaine apres le "|" */
+
 
 	do{
 		/* on affiche l'invite de base si INVITE n'existe pas, la personnalisée sinon */
@@ -31,6 +40,27 @@ int main(){
 
 		/* si l'utilisateur a rentré exit, on quitte */
 		if(strcmp(saisie[0],"exit")==0){ exit(0); }
+
+		/* on teste s'il y a un pipe dans la commande */
+		i = 0;
+		indicePipe = 0;
+		while(saisie[i]){
+			if(strcmp(saisie[i],"|") == 0){
+				if(i != 0){
+					indicePipe = i;
+				}
+			}
+			i++;
+		}
+		/* s il y a un pipe */
+		if(indicePipe){
+				pipe(fd);
+				for(i = 0; i < indicePipe; i++){
+					strcpy(copiePipe[i],saisie[i]);
+				}
+				copieDebutPipe = copiePipe[0];
+				copieFinPipe = saisie[indicePipe+1];
+		}
 
 		/* fork avec gestion d'erreur */
 		pid = fork();
@@ -54,7 +84,7 @@ int main(){
 						if(*p=='='){
 
 							/* on recupere la variable */
-							for(int i=0;i<MAX;i++){variable[i]='\0';}
+							for(i=0;i<MAX;i++){variable[i]='\0';}
 							strncpy(variable,saisie[1],cpt);
 
 							/* on recupere le paramètre */
@@ -84,17 +114,40 @@ int main(){
 							exit(0);
 		 				}
 				 }else{
-					 /* on lance une commande a partir du processus fils */
-		 			 commandToExecute = execvp(saisie[0],saisie);
+					 /* s'il y a un pipe */
+					 if(indicePipe){
+						 close(fd[0]);
+						 dup2(fd[1],1);
+						 commandToExecute = execvp(copiePipe[0],&copieDebutPipe);
+					 }else{
+						 /* on lance une commande a partir du processus fils */
+						 commandToExecute = execvp(saisie[0],saisie);
+					 }
 				 }
 
 				 if(commandToExecute==-1){
+					 printf("%s : ", saisie[0]);fflush(stdout);
 					 printf("la commande nexiste pas \n");fflush(stdout);
+					 printf("error on command '%s' - %s \n",saisie[0],strerror(errno));fflush(stdout);
 					 return 1;
 				 }
 			}
 		}else{
 			if(strcmp(saisie[0],"tf")!=0){
+				/* s'il y a un pipe */
+				if(indicePipe){
+					pipePid = fork();
+					if(pipePid == 0){
+						close(fd[1]);
+						dup2(fd[0],0);
+						if(execvp(saisie[indicePipe+1],&copieFinPipe) == -1){
+							 printf("%s : ", saisie[indicePipe+1]);fflush(stdout);
+							 printf("la commande nexiste pas \n");fflush(stdout);
+							 printf("error on command '%s' - %s \n",saisie[indicePipe+1],strerror(errno));fflush(stdout);
+							 return 1;
+						}
+					}else{ waitpid(-1,&etat,0); }
+				}
 				waitpid(-1,&etat,0);
 			}
 		}
