@@ -8,9 +8,6 @@
 
 import java.util.Scanner;
 import java.io.*;
-/*import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
-import java.awt.event.KeyEvent;*/
 
 public class Main
 {

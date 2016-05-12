@@ -24,12 +24,23 @@ public class Game
        //todo => add a if to test the level of difficulty
        //loop that creates true questions
         try{
-            FileReader fr = new FileReader("question/easyTrueQuestion.txt"); // Change adress of the file
+            FileReader fr = new FileReader("question/easyTrueQuestion.txt");
             BufferedReader reader = new BufferedReader(fr);
             String line;
             while((line = reader.readLine())!=null){
                 Question newQuestion = new Question(line,true,1);
                 questions.add(newQuestion);
+            }
+        }catch (IOException e){ e.getMessage(); }
+        
+       //loop that creates true questions
+        try{
+            FileReader fr2 = new FileReader("question/easyFalseQuestion.txt");
+            BufferedReader reader2 = new BufferedReader(fr2);
+            String line2;
+            while((line2 = reader2.readLine()) != null){
+                Question newQuestion2 = new Question(line2,false,1);
+                questions.add(newQuestion2);
             }
         }catch (IOException e){ e.getMessage(); }
         
@@ -47,24 +58,42 @@ public class Game
         
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-        System.out.println("You pressed enter ! congratulations");
+        
+        Scanner sc2 = new Scanner(System.in);
+        
+        System.out.println("You pressed enter ! congratulations \n");
+        System.out.println("RULE : press 'N' when the answer is TRUE, 'Y' otherwise");
+        System.out.println("Good Luck ! \n");
         do{
             Question currentQuestion = this.askRandomQuestion();
             try {
-            BufferedReader in = new BufferedReader (new InputStreamReader(System.in));
-            String line = "test";
-                while (line.equalsIgnoreCase("") == false) {
+                BufferedReader in = new BufferedReader (new InputStreamReader(System.in));
+                String line = "test";
+                while (!line.equalsIgnoreCase("y") && !line.equalsIgnoreCase("n")) {
                     line = in.readLine();
                 }
                 
-                in.close();
-            }catch (IOException e){ e.getMessage(); }
-            System.out.println(currentQuestion.getRightAnswer());
+                if(currentQuestion.getRightAnswer() == true){
+                    if(line.equalsIgnoreCase("n")){
+                        System.out.println("YEAH ! \n");
+                    }else{ System.out.println("WRONG ! \n"); }
+                }else{
+                    if(line.equalsIgnoreCase("y")){
+                        System.out.println("YEAH ! \n");
+                    }else{ System.out.println("WRONG ! \n"); }
+                }
+                //in.close();
+            }catch (IOException e){
+                e.getMessage(); 
+            }
                 
              //continue
-             System.out.println("Press enter for another question, type 'exit' to quit");
-             input = sc.nextLine();
-        }while (!(input.equals("")));
+             System.out.print("Type 'exit' for another question, press enter to quit : ");
+             String input2 = sc2.nextLine();
+             System.out.print("\n");
+             if(!input2.equals("exit")){ break; }
+            
+        }while (true);
    }
    
    public void displayAllQuestions(){
