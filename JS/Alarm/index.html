@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="alarm">
+      <div id="current_time">
+        <span id="current_hour"></span>
+        <span id="current_minutes"></span>
+        <span id="current_seconds"></span>
+      </div>
+      <div class="alarm" id="0">
+        <input type="checkbox" class="check_hour"/>
+        <input type="number" class="heures" />
+        <input type="number" class="minutes" />
+        <input type="text" class="message" />
+        <select class="alarm_sound">
+          <option value="1" selected="true">Alarm 1</option>
+          <option value="2">Alarm 2</option>
+          <option value="3">Alarm 3</option>
+        </select>
+        <button class="delete">-</button>
+      </div>
+    </div>
+    <div id="add">
+      <button id="add_alarm">+</button>
+    </div>
+
+    <script src="alarm.js"></script>
+  </body>
+</html>
