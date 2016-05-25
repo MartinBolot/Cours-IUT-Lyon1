@@ -2,15 +2,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 int main(int argc,char* argv[]){
 	int etat;
 	pid_t fils1,fils2,fils3;
 	int tubeFd[2];
-	char string[] = "Hello, world!\n";
-	//char readbuffer[80];
-	int *readbuffer;
-	int nbytes;
+	//char string[] = "Hello, world!\n";
+	char readbuffer[80];
+	int cpt = 0;
+	int average = 0;
 
 	pipe(tubeFd);
 
@@ -52,11 +53,14 @@ int main(int argc,char* argv[]){
 				waitpid(0,&etat,0);
 
 				close(tubeFd[0]);
-				/* Send "string" through the output side of pipe */
-	      //write(tubeFd[1], string, (strlen(string)+1));
 				dup2(tubeFd[1],1);
 				close(tubeFd[1]);
-				execvp("./test",NULL);
+				
+				//printf("%d",7);
+				
+				execvp("./calculateur1",argv);
+				
+				return 0;
 			}
 
 			return 0;
@@ -71,13 +75,19 @@ int main(int argc,char* argv[]){
 		/* Read in a string from the pipe */
 
 		//nbytes = read(tubeFd[0], readbuffer, sizeof(readbuffer));
-		//printf("Received string: %s \n", readbuffer);
 
-		nbytes = read(tubeFd[0], readbuffer, sizeof(int));
-		printf("Received number : %d \n", *readbuffer);
+		cpt = 1;
+		average = 0;
+		while(read(tubeFd[0], readbuffer, sizeof(readbuffer))){
+			average += atoi(readbuffer);
+			if(++cpt%10 == 0){
+				printf("Average : %d \n", average/cpt);
+			}
+			printf("Received number : %s \n", readbuffer);
+		}
 
 		waitpid(0,&etat,0);
 	}
-
+	
 	return 0;
 }
