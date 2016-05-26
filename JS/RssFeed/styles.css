@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+}
+h1{
+    border-bottom: 1px solid #ccc;
+    padding: 0 0 20px;
+}
+#root{
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+}
+#feed_setup,#feed_loading{
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+}
+/* setup */
+#feed_setup{
+    width: 50%;
+}
+label{
+    display: block;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+input[name="feed_request"]{
+    margin: 10px 0 0;
+    width: 300px;
+}
+.or_else{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px;
+    text-transform: uppercase;
+}
+#set_limit{
+    margin: 20px 0;
+}
+/* display */
+#feed_display img{
+    max-width: 100%;
+}
+#feed_display .feed_image,#feed_display .feed_description{
+    vertical-align: top;
+    display: inline-block;
+}
+#feed_display .feed_image{
+    width: 25%;
+}
+#feed_display .feed_description{
+    width: 74%;
+}
+.feed_title h3{
+    margin: 20px 0;
+    padding: 5px 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.feed_items h4{
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    padding: 10px 0;
+}
+.feed_items h5{
+    font-weight: bold;
+}

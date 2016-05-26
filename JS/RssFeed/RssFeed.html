@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <title>RSS Feed Reader</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+    </head>
+    <body>
+        <div id="root">
+            <h1>Lecteur de flux RSS</h1>
+            <div id="feed_setup">
+                <div class="podcast_header">
+                    <h2>Votre configuration : </h2>
+                </div>
+                <div id="feed_request">
+                    <label>
+                    Renseigner un flux : <br/>
+                        <input type="text" name="feed_request" id="feed_request_input" placeholder="http://www.toto.com/example.xml" />
+                    </label>
+                    <button type="submit" id="feed_request_submit">Récupérer</button>
+                </div>
+                <div class="or_else">
+                    <p>ou</p>
+                </div>
+                <div id="select_feed">
+                    <p>Sélectionner parmi les flux proposés</p>
+                    <div id="suggested_feeds">
+                        <!--<button class="btn btn-default suggested_feed" id="a_livre_ouvert">A livre ouvert</button>
+                        <button class="btn btn-default suggested_feed" id="">toto</button>-->
+                    </div>
+                </div>
+                <div id="set_limit">
+                    <label>
+                    Nombre d'entrées à récupérer : <br/>
+                        <input type="number" name="feed_request_limit" id="feed_request_limit" value="20" />
+                    </label>
+                </div>
+            </div>
+            <div id="feed_loading">
+                <div class="podcast_header">
+                    <h2>Votre podcast : </h2>
+                </div>
+                <div id="feed_display"></div>
+            </div>
+        </div>
+        <script src="rssFeed.js"></script>
+    </body>
+</html>
