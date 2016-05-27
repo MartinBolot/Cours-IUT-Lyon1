@@ -64,3 +64,9 @@ input[name="feed_request"]{
 .feed_items h5{
     font-weight: bold;
 }
+#global_audio{
+    margin: 20px auto;
+}
+#global_audio_description{
+    font-weight: bold;
+}
