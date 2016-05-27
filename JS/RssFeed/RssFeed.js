@@ -89,6 +89,8 @@ function makeHttpRequest(url){
 // affichage du flux
 function displayFeed(container,feed){
     if(container){
+        var format = document.getElementById("feed_request_format").value;
+
         // on crée les div qui vont afficher les différents éléments du flux
         var titleDiv = document.createElement("div");
         var descriptionDiv = document.createElement("div");
@@ -105,8 +107,16 @@ function displayFeed(container,feed){
         var limitInput = parseInt(document.getElementById("feed_request_limit").value);
         var limit = items.length > limitInput ? limitInput : items.length;
 
-        // on vide le conteneurs
-        container.innerHTML = "";
+        // si jamais on est au format simple, créer un lecteur global
+        if(parseInt(format) === 0){
+            var generalAudioPlayerDiv = document.createElement("div");
+            var generalAudioPlayerP = document.createElement("p");
+            var generalAudioPlayer = document.createElement("audio");
+            generalAudioPlayerDiv.setAttribute("id","global_audio");
+            generalAudioPlayerP.setAttribute("id","global_audio_description");
+            generalAudioPlayer.setAttribute("id","global_audio_player");
+            generalAudioPlayer.controls = true;
+        }
 
         // on donne des classes au conteneurs
         titleDiv.setAttribute("class","feed_title");
@@ -120,15 +130,29 @@ function displayFeed(container,feed){
         descriptionDiv.innerHTML = "<p>"+description+"</p>";
         itemsDiv.innerHTML = "<h4> Emissions </h4>";
 
-        // on ajout le tout à notre conteneur
+        // on vide le conteneurs
+        container.innerHTML = "";
+
+        // on ajoute le tout à notre conteneur
         container.appendChild(titleDiv);
         container.appendChild(imageDiv);
         container.appendChild(descriptionDiv);
+        if(parseInt(format) === 0){
+            container.appendChild(generalAudioPlayerDiv);
+            generalAudioPlayerDiv.appendChild(generalAudioPlayerP);
+            generalAudioPlayerDiv.appendChild(generalAudioPlayer);
+            window.addEventListener("hashchange",setAudioSource);
+        }
         container.appendChild(itemsDiv);
 
-        // on boucle sur les items pour les afficher
-        for(var i = 0; i < limit; i++){
-            displayFeedItem(itemsDiv,items[i]);
+        if(parseInt(format) === 0){
+            for(var i = 0; i < limit; i++){
+                displayFeedItem(itemsDiv,items[i],i,false);
+            }
+        }else if(parseInt(format) === 1){
+            for(var i = 0; i < limit; i++){
+                displayFeedItem(itemsDiv,items[i],i,true);
+            }
         }
     }else{
         throw new Error("A container must be set to display the feed");
@@ -136,22 +160,65 @@ function displayFeed(container,feed){
 }
 
 // affichage d'un item d'un flux
-function displayFeedItem(itemContainer,item){
+function displayFeedItem(itemContainer,item,index,hasOwnPlayer){
     var containingDiv = document.createElement("div");
     var titleHeader = document.createElement("h5");
     var descriptionP = document.createElement("p");
     var media = document.createElement("audio");
+    var audioLink = document.createElement("a");
     var hr = document.createElement("hr");
+
+    var audioUrl = item.getElementsByTagName("enclosure")[0].getAttribute("url");
 
     titleHeader.innerHTML = item.getElementsByTagName("title")[0].innerHTML;
     descriptionP.innerHTML = item.getElementsByTagName("description")[0].innerHTML;
-    media.src = item.getElementsByTagName("enclosure")[0].getAttribute("url");
-    media.controls = true;
 
+    if(hasOwnPlayer){
+        media.src = audioUrl;
+        media.controls = true;
+    }else{
+        audioLink.setAttribute("href","#" + index);
+        audioLink.setAttribute("id","podcast_id_" + index);
+        audioLink.setAttribute("data-url",audioUrl);
+    }
+
+    containingDiv.setAttribute("class","podcast");
     itemContainer.appendChild(containingDiv);
-    containingDiv.appendChild(titleHeader);
+
+    // set title or title + link
+    titleHeader.setAttribute("id","description_" + index);
+    if(hasOwnPlayer){
+        containingDiv.appendChild(titleHeader);
+    }else{
+        audioLink.appendChild(titleHeader);
+        containingDiv.appendChild(audioLink);
+    }
+
     containingDiv.appendChild(descriptionP);
-    containingDiv.appendChild(media);
+
+    // set media
+    if(hasOwnPlayer){
+        containingDiv.appendChild(media);
+    }
+
     containingDiv.appendChild(hr);
 
+}
+
+// change podcast on hash changed
+function setAudioSource(event){
+    // on récupère le hash sans le "#"
+    var hash = window.location.hash.slice(1);
+    var globalAudioPlayer = document.getElementById("global_audio_player");
+    var globalAudioDescription = document.getElementById("global_audio_description");
+    if(parseInt(hash) >= 0){
+        var element = document.getElementById("podcast_id_" + hash);
+        var description = document.getElementById("description_" + hash);
+        if(element){
+            globalAudioPlayer.src = element.getAttribute("data-url");
+        }
+        if(description){
+            globalAudioDescription.innerHTML = description.innerHTML;
+        }
+    }
 }
