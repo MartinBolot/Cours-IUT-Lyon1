@@ -13,7 +13,7 @@ int main(int argc,char* argv[]){
 	int tubeFd[2];
 	char readbuffer[2];
 	int cpt1 = 0;
-	int average = 0;
+	float average = 0;
 	int higher = 0;
 	int lower = 0;
 
@@ -113,7 +113,7 @@ int main(int argc,char* argv[]){
 			if(++cpt1%10 == 0){
 				printf("Higher : %d ", higher);
 				printf("Lower : %d ", lower);
-				printf("Average : %d \n", average/cpt1);
+				printf("Average : %.2f \n", average/cpt1);
 				cpt1 = 0;
 				average = 0;
 				higher = LOW;
