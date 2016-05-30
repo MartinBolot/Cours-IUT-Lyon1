@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.jeremie.seismeapp.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date-Heure"
+        android:id="@+id/DateHeure_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:nestedScrollingEnabled="false"
+        android:onClick="dateEtHeure" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texte HTML"
+        android:id="@+id/HTML_button"
+        android:layout_below="@+id/DateHeure_button"
+        android:layout_alignParentStart="true"
+        android:onClick="TextHTML" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S. LoadURL"
+        android:id="@+id/LoadURL_button"
+        android:layout_alignBottom="@+id/HTML_button"
+        android:layout_toEndOf="@+id/HTML_button"
+        android:onClick="loadURL"
+        android:nestedScrollingEnabled="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S. LoadData"
+        android:id="@+id/LoadData_button"
+        android:layout_alignTop="@+id/LoadURL_button"
+        android:layout_toEndOf="@+id/LoadURL_button"
+        android:onClick="loadData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Time"
+        android:id="@+id/Time_textView"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/HTML_button"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/DateHeure_button"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/webView"
+        android:layout_below="@+id/HTML_button"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
