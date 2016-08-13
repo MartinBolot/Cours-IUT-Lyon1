@@ -1,0 +1,3 @@
+- Vérfier la police
+- Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
+- ne pas oublier la pagination
