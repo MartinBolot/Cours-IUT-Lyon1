@@ -1,3 +1,4 @@
 - Vérfier la police
 - Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
 - ne pas oublier la pagination
+- p.5 "l’incubateur n’offre l’hospice", connotation péjorative ??
