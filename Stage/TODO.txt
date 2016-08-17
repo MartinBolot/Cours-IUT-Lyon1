@@ -2,3 +2,5 @@
 - Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
 - ne pas oublier la pagination
 - p.5 "l’incubateur n’offre l’hospice", connotation péjorative ??
+- ajouter un paragraphe sur git dans la première partie ?
+- ajouter un paragrahpe sur la gestion de projet (sprints, réus) dans la 1e partie
