@@ -5,4 +5,5 @@
 - ajouter un paragraphe sur git dans la première partie ?
 - ajouter un paragrahpe sur la gestion de projet (sprints, réus) dans la 1e partie
 	y décrire les notions dev, prod, qualif
+	y décrire le fait que tout se fait en anglais
 - ajouter les notions de collection, familles, variantes dans la présentation de l'appli
