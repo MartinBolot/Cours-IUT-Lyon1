@@ -1,10 +1,11 @@
-- VÈrfier la police du word
-- VÈrifier la cohÈrence des parties / sous-parties, et leur Èquilibre en taille
+- V√©rfier la police du word
+- V√©rifier la coh√©rence des parties / sous-parties, et leur √©quilibre en taille
 - ne pas oublier la pagination
-- p.5 "líincubateur níoffre líhospice", connotation pÈjorative ??
-- ajouter un paragraphe sur git dans la premiËre partie ?
-- ajouter un paragrahpe sur la gestion de projet (sprints, rÈus) dans la 1e partie
-	y dÈcrire les notions dev, prod, qualif
-	y dÈcrire le fait que tout se fait en anglais
-- ajouter les notions de collection, familles, variantes dans la prÈsentation de l'appli
-- faire le lien avec la formation ‡ l'IUT
+- p.5 "l'incubateur n'offre l'hospice", connotation p√©jorative ??
+- ajouter un paragraphe sur git dans la premi√®re partie ?
+- ajouter un paragrahpe sur la gestion de projet (sprints, r√©us) dans la 1e partie
+	y d√©crire les notions dev, prod, qualif
+	y d√©crire le fait que tout se fait en anglais
+- ajouter les notions de collection, familles, variantes dans la pr√©sentation de l'appli
+- faire le lien avec la formation √† l'IUT
+- accorder la conclusion avec la premi√®re partie, notamment sur la facilit√© d'acc√®s √† Prototypo pour un stagiaire
