@@ -1,0 +1,11 @@
+﻿- Vérfier la police du word
+- ne p-e pas justifier les titres
+- Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
+- ajouter les notions de collection, familles, variantes dans la présentation de l'appli
+
+- faire le lien avec la formation à l'IUT
+- accorder la conclusion avec la première partie,
+ 	notamment sur la facilité d'accès à Prototypo pour un stagiaire
+- parler de l'utilisation de la console pour les débugs, le profilage, le pas à pas
+- compléter annexes
+- relier
