@@ -8,4 +8,6 @@
 	y décrire le fait que tout se fait en anglais
 - ajouter les notions de collection, familles, variantes dans la présentation de l'appli
 - faire le lien avec la formation à l'IUT
-- accorder la conclusion avec la première partie, notamment sur la facilité d'accès à Prototypo pour un stagiaire
+- accorder la conclusion avec la première partie,
+ 	notamment sur la facilité d'accès à Prototypo pour un stagiaire
+- parler de l'utilisation de la console pour les débugs, le profilage, le pas à pas
