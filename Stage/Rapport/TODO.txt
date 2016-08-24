@@ -1,10 +1,10 @@
-- Vérifier la police du word
+﻿- Vérifier la police du word
 - Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
 - ajouter glossaire
 - ajouter sources par // au glossaire
 - tester de mettre un exemple de fonte générée par Prototypo
-
-- accorder la conclusion avec la première partie,
-	notamment sur la facilité d'accès à Prototypo pour un stagiaire
-- parler de l'utilisation de la console pour les débugs, le profilage, le pas à pas (rapport avec netbeans)
+- relecture
 - imprimer et relier en deux exemplaires minimum
+
+- parler de l'utilisation de la console pour les débugs, le profilage, le pas à pas (rapport avec netbeans)
+
