@@ -1,7 +1,5 @@
-﻿- Vérfier la police du word
-- ne p-e pas justifier les titres
+- Vérifier la police du word
 - Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
-- ajouter les notions de collection, familles, variantes dans la présentation de l'appli
 
 - faire le lien avec la formation à l'IUT
 - accorder la conclusion avec la première partie,
