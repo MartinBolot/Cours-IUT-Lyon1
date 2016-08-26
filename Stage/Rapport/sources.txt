@@ -1,0 +1,12 @@
+Page wikipédia pour "application web" : https://fr.wikipedia.org/wiki/Application_web
+Site officiel ECMAScript : http://www.ecma-international.org/memento/TC39.htm
+Site officiel React : https://facebook.github.io/react/
+Termes licence BSD : http://www.freebsd.org/copyright/license.html
+Site officiel PaperJS : http://paperjs.org/
+Site officiel CoffeeScript : http://coffeescript.org/
+Documentation de l'API Google Chrome : https://developer.chrome.com/extensions/api_index
+Documentation de Kickstarter : https://www.kickstarter.com/learn
+Documentation Git : https://git-scm.com/doc
+Référence JavaScript sur la plateforme Mozilla Developer Network:
+Manifeste Agile : http://www.agilemanifesto.org/
+Site de l'incubateur Jean Moulin : http://entreprendre.univ-lyon3.fr/incubateur-jean-moulin/
