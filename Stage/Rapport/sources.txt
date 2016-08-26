@@ -9,6 +9,6 @@ Site officiel CoffeeScript : http://coffeescript.org/
 Documentation de l'API Google Chrome : https://developer.chrome.com/extensions/api_index
 Documentation de Kickstarter : https://www.kickstarter.com/learn
 Documentation Git : https://git-scm.com/doc
-Référence JavaScript sur la plateforme Mozilla Developer Network:
+Référence JavaScript sur la plateforme Mozilla Developer Network: https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference
 Manifeste Agile : http://www.agilemanifesto.org/
 Site de l'incubateur Jean Moulin : http://entreprendre.univ-lyon3.fr/incubateur-jean-moulin/
