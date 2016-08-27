@@ -1,8 +1,7 @@
-- Vérifier la police du word
-- Vérifier la cohérence des parties / sous-parties, et leur équilibre en taille
-- ajouter glossaire
-- ajouter sources et les trier par ordre alphabétique
-- tester de mettre un exemple de fonte générée par Prototypo
+﻿- Vérifier la police du word
 - relecture
 - imprimer et relier en deux exemplaires minimum
+
+- vérfier le terme aplat. Fusion des formes ?
+- centrer le nom p-e le changer de place
 
