@@ -4,4 +4,5 @@
 
 - vérfier le terme aplat. Fusion des formes ?
 - centrer le nom p-e le changer de place
+- mettre pied de page
 
