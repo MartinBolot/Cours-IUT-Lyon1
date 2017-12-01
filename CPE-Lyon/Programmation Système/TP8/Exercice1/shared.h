@@ -1,0 +1,6 @@
+#define SIZE_BUFFER 5
+#define CLE_VALEURS 123
+#define CLE_CONSO 125
+#define CLE_PROD 126
+#define CLE_MUTEX_CONSO 127
+#define CLE_MUTEX_PROD 128
