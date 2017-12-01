@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="bolot.martin.ledsbattle.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LEDsBattle"
+        android:textAlignment="center"
+        android:textSize="20dp"
+    />
+    <EditText
+        android:id="@+id/address_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="192.168.1.30"
+        android:layout_marginTop="25dp"
+    />
+    <EditText
+        android:id="@+id/port_input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="10000"
+        android:layout_marginTop="50dp"
+        />
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp"
+    >
+        <RadioButton android:id="@+id/radio_joueur1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Joueur 1"
+            android:checked = "true"
+        />
+        <RadioButton android:id="@+id/radio_joueur2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Joueur 2"
+        />
+    </RadioGroup>
+    <Button
+        android:id="@+id/pressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="Appuyer ici"
+    />
+</RelativeLayout>
