@@ -14,8 +14,8 @@ struct ProdCons{
 	int buffer[BUFFER_SIZE];
 	int posLect;
 	int posEcr;
-	sem_t semLecture;
-	sem_t semEcriture;
+	int semLecture;
+	int semEcriture;
 };
 
 // variable globale
@@ -24,22 +24,22 @@ int compteur = 0;
 struct ProdCons prodCons;
 
 void *consommer(void *arg) {
-	sem_wait(&(prodCons.semLecture));
+	P(prodCons.semLecture);
 	int i = 0;
 	for(i = 0; i < BUFFER_SIZE; i++) {
 		printf("%d\n", prodCons.buffer[i]);
 	}
-	sem_post(&(prodCons.semLecture));
+	V(prodCons.semLecture);
 }
 
 void *produire(void *arg) {
-	sem_wait(&(prodCons.semEcriture));
+	P(prodCons.semEcriture);
 	int i = 0;
 	for(i = 0; i < BUFFER_SIZE; i++) {
 		compteur++;
 		prodCons.buffer[i] = compteur;
 	}
-	sem_post(&(prodCons.semLecture));
+	V(prodCons.semLecture);
 }
 
 int main() {
@@ -51,8 +51,8 @@ int main() {
 		prodCons.buffer[i] = 0;
 	}
 	
-	prodCons.semLecture = (sem_t) sem_create(CLE_CONSO, 0);
-	prodCons.semEcriture = (sem_t) sem_create(CLE_CONSO, 0);
+	prodCons.semLecture = sem_create(CLE_CONSO, 0);
+	prodCons.semEcriture = sem_create(CLE_CONSO, 0);
 	
 	if(pthread_create(&producteur, NULL, produire, NULL) != 0){
 		perror("erreur create producteur");
