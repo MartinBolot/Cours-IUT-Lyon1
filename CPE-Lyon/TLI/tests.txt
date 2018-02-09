@@ -1,0 +1,13 @@
+Chahier de tests (à trier)
+
+- Respect des normes accessibilité AAA
+- Tester les différentes combinaisons enter les différents filtres
+	- Exemple : "sélectionner les pathologies de méridien, interne, pour poumon et foie"
+- Site valide HTML 5
+- Toute page du site est accessible de la page d’accueil en 3 interactions au maximum (clic, raccourci, etc.)
+- Le site est affichable et utilisable à partir d’une version de Firefox de moins de deux ans (entre 38 et 56)
+- Aucune des tables de la base fournie n'a été modifiée
+- Les pages sont consultables en basse résolution
+- Des styles spéciaux garantissent la lisibilité de l'impression
+- La page d’accueil dispose d’un menu et d’un formulaire d’identification utilisateur et d'une zone permettant d’afficher des informations conjoncturelles
+- Page d’information présentant les développements réalisés, les sources, les auteurs, ainsi que les ressources bibliographiques et la webographie utilisée
