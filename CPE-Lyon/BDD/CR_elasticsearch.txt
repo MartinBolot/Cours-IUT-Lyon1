@@ -1,0 +1,132 @@
+Requêtes
+
+GET shows/_search?q=Doctor who
+
+II)
+a)
+- Les séries qui ont dans le titre le mot « detective »
+-> 37 résultats
+shows/_search?q=title:detective
+
+- Les séries qui ont dans le titre le mot « detective » et qui ont plus de 3 saisons
+-> 4 résultats
+shows/_search?q=title:detective AND seasons:>3
+
+- Les séries qui ont dans le titre le mot « batman » mais sans le mot pingouin dans la description
+-> 9 résultats
+shows/_search?q=title:batman AND NOT description:pingouin
+
+- Les Séries qui ont dans la description les mots « alien » ou « robot » du genre « Comedy » et qui ont été créés dans les années 90
+-> 5 résultats
+shows/_search?q=(description:alien OR description:robot) AND genres:Comedy AND creation_year:[1990 TO 1999]
+
+b)
+- Les séries qui ont dans le titre le mot « detective »
+-> 37 résultats
+/* marche mais ne fait que faire une requête Lucen*/
+POST shows/_search
+{
+	"query": {
+		"query_string" : {
+			"default_field" : "title",
+			"query" : "detective"
+		}
+	}
+}
+POST shows/_search
+{
+	"query": {
+		"match" : {
+			"title" : "detective"
+		}
+	}
+}
+
+- Les séries qui ont dans le titre le mot « detective » et qui ont plus de 3 saisons
+-> 4 résultats
+POST shows/_search
+{
+	"query": {
+		"bool": {
+			"must" : [
+				{
+					"match" : {
+						"title" : "detective"
+					}
+				},
+				{
+					"range" : {
+						"seasons" : {
+							"gt" : 3
+						}
+					}
+				}
+			]
+		}
+	}
+}
+
+- Les séries qui ont dans le titre le mot « batman » mais sans le mot pingouin dans la description
+-> 9 résultats
+POST shows/_search
+{
+	"query": {
+		"bool": {
+			"must" : [
+				{
+					"match" : {
+						"title" : "batman"
+					}
+				}
+			],
+			"must_not" : [
+				{
+					"match" : {
+						"description" : "pingouin"
+					}
+				}
+			]
+		}
+	}
+}
+
+- Les Séries qui ont dans la description les mots « alien » ou « robot » du genre « Comedy » et qui ont été créés dans les années 90
+-> 5 résultats
+POST shows/_search
+{
+	"query": {
+		"bool": {
+			"must" : [
+				{
+					"bool" : {
+						"should" : [
+							{
+								"match" : {
+									"description" : "alien"
+								}
+							},
+							{
+								"match" : {
+									"description" : "robot"
+								}
+							}
+						]
+					}
+				},
+				{
+					"match" : {
+						"genres" : "Comedy"
+					}
+				},
+				{
+					"range" : {
+						"creation_year" : {
+							"gte" : 1990,
+							"lte" : 1999
+						}
+					}
+				}
+			]
+		}
+	}
+}
