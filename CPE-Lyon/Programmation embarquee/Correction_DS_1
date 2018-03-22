@@ -1,0 +1,110 @@
+7
+2e partiel : pas de questions sur le langage C
+1)
+ - GPL :
+	on ne donne les sources que si on diffuse le binaire
+	les clients ayant acheté le logiciel ne peuvent pas changer la licence
+	les personnes ayant reçu gratuitement le logiciel doivent avoir accès aux sources
+	ils peuvent le revendre
+	il faut diffuser les modifications si on veut modifier les sources
+	on peut diffuser les sources modifiées
+	
+- CC
+	by = paternité, sa = share-alike, nc = non-commercial, nd = no derivative non-dérivé
+ documentation CC by sa
+	on peut vendre au particuliers
+	l'entreprise n'est pas obligé de mettre le produit sous la même licence
+	les clients ne peuvent pas changer la licence de la doc
+	on a le droit de modifier pour faire la doc d'un autre produit
+	une personne peut diffuser une version modifiée de la doc
+	
+2)
+on ne peut pas se passer de cross-compilation
+
+3)
+arm-none-eabi VS arm-linux-gnueabihf
+l'un est sous noyeau linux, l'autre non
+l'un gère les nombres flotants (hf = hard float) l'autre non
+
+4)
+Mécanisme habituellement géré par la librairie C
+	fonction main
+	initialisation de la mémoire
+	
+5)
+Pour paramétrer l'éditeur de lien
+	script
+ 
+6)
+Outil utilisé pour le binaire
+	objcopy
+	
+7)
+	struct {
+		u32	4
+		u8	1
+		u8	1
+		u32	4
+	}
+		Taille min : 10
+		Taille max : 16
+		
+8)
+Static => 
+volatile => pas d'optimisation
+
+9)
+section(.toto) => met dans la section "toto"
+
+10)
+#define nop ...
+Ajoute l'instruction nop
+
+11)
+ENTRY(Reset_Handler)
+ => sert à définir le point d'entrée du programme (permet de supprimer le code mort)
+ 
+12)
+0x20 - 4 => 28 ou 0x1C
+0x0FF0 << 2 => 0x3FC0
+int a = sizeof'3'; => 4
+
+13)
+Archi du micro GPIO-Démo : ARM Cortex-M0
+Modèle : LPC1224, Fabricant : NXP
+
+14)
+Watchdog => Décompteur qui reset le microcontrôleur si il arrive au bout
+
+15)
+GPIO = General Purpose Input Output
+
+16)
+Type de mémoire : Registres, SRAM, ROM, mémoire externe
+
+17)
+Variables globales : SRAM
+
+18)
+Etats d'une GPIO : Registres
+
+19)
+Vecteur d'interruption : adresse de la fonction ou fonction qui est lancée lors d'une interuption
+
+20)
+libC pas utilisable dans un microcontrôleur
+
+21)
+Pull-down : Fixer l'état par défaut de l'entrée correspondante
+
+22)
+Filtrage de l'alimentation et réserve de l'énergie
+
+24)
+Aucune led ne s'allume
+
+25)
+Solution : retourner la led rouge, connecter la led rouge à la masse, 
+
+26)
+Oui le signal suffit à allumer la led à une fraction de son intensité max
