@@ -1,0 +1,240 @@
+1)
+EXPLAIN SELECT * FROM realisateur where ID=2800;
+
+- Pas d'index, on parcourt toute la table séquentiellement
+
+CREATE UNIQUE INDEX IDX_REALISATEUR_ID ON realisateur(id);
+
+- On a un index sur l'id, il est utilisé pour accéder à l'enregistrement (index scan)
+
+2)
+EXPLAIN SELECT * FROM realisateur where ID=2800 AND NOM ='spielberg';
+
+- Seq scan car on n'a pas d'index (parcours de toute la table)
+
+CREATE UNIQUE INDEX IDX_REALISATEUR_ID ON realisateur(id);
+
+- Index scan sur l'id puis filtre
+
+CREATE INDEX IDX_REALISATEUR_NOM ON realisateur(nom);
+
+- Index scan sur l'id puis filtre, pas de modification dans le coût
+
+On supprime les indexes puis les recréée, l'index le plus lourd (216ko) est IDX_REALISATEUR_NOM
+Postgre prend toujours le dernier index créé (ici NOM)
+
+/*
+SELECT N.nspname || '.' || C.relname AS "relation",
+CASE WHEN reltype = 0
+THEN pg_size_pretty(pg_total_relation_size(C.oid)) || ' (index)'
+ELSE pg_size_pretty(pg_total_relation_size(C.oid)) || ' (' ||
+pg_size_pretty(pg_relation_size(C.oid)) || ' data)'
+END AS "size (data)",
+COALESCE(T.tablespace, I.tablespace, '') AS "tablespace"
+FROM pg_class C
+LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace)
+LEFT JOIN pg_tables T ON (T.tablename = C.relname)
+LEFT JOIN pg_indexes I ON (I.indexname = C.relname)
+LEFT JOIN pg_tablespace TS ON TS.spcname = T.tablespace
+LEFT JOIN pg_tablespace XS ON XS.spcname = I.tablespace
+WHERE nspname NOT IN ('pg_catalog','pg_toast','information_schema')
+ORDER BY pg_total_relation_size(C.oid) DESC;
+*/
+
+3)
+EXPLAIN SELECT * FROM realisateur where ID=2800 OR NOM ='spielberg';
+
+- Seq scan pas d'id
+
+CREATE UNIQUE INDEX IDX_REALISATEUR_ID ON realisateur(id);
+
+- Seq scan toujours car on a un OR sur un champ non indexé ce qui revient à ne pas utiliser l'index (parcours de la table deux fois)
+
+CREATE INDEX IDX_REALISATEUR_NOM ON realisateur(nom);
+
+- On a un bitmap scan. C'est beaucoup moins coûteux la requête est presque dix fois plus rapide
+
+4)
+EXPLAIN SELECT * FROM realisateur where ID>1000;
+
+- Seq scan, pas d'index
+
+CREATE UNIQUE INDEX IDX_REALISATEUR_ID ON realisateur(id);
+
+- Seq scan aussi, coût inchangé. On cherche un ensemble d'id donc l'index n'influe pas sur le coût de la requête
+
+5)
+EXPLAIN SELECT * FROM realisateur where ID>4000;
+
+CREATE UNIQUE INDEX IDX_REALISATEUR_ID ON realisateur(id);
+
+- La table contient 5976 enregistrements. Si on cherche dans moins de la moitié de la table (>4000), l'index est utilisé (marche à partir de > 3150 environ)
+
+6)
+EXPLAIN SELECT * FROM TITRES WHERE titre = 'Char';
+
+- Seq scan
+
+CREATE UNIQUE INDEX IDX_TITRES_IDFILM_TITRE_LANGUE ON titres(id_film,titre,langue)
+
+- Pas de différence
+
+CREATE UNIQUE INDEX IDX_TITRES_TITRE_IDFILM_LANGUE ON titres(titre,id_film,langue)
+
+- On passe bien par l'index
+
+CREATE INDEX IDX_TITRES_TITRE ON titres(titre)
+
+- L'index est bien utilisé
+
+- Synthèse à faire (postgre ne sait chercher que le 1er champ si multichamp)
+
+7)
+CREATE UNIQUE INDEX IDX_TITRES_IDFILM_TITRE_LANGUE ON titres(id_film,titre,langue)
+
+EXPLAIN SELECT * FROM TITRES WHERE titre = 'Char' AND ID_FILM=1000;
+
+- L'index est utilisé
+
+EXPLAIN SELECT * FROM TITRES WHERE titre = 'Char' OR ID_FILM=1000;
+
+- L'index n'est plus utilisé donc on utilise bien que le premier champ de l'index multi-champ
+
+8)
+CREATE INDEX IDX_REALISATEUR_NOM ON realisateur(nom);
+
+EXPLAIN SELECT * FROM realisateur WHERE substr(nom,1,2) = 'Sp';
+
+- L'index n'est pas utilisé car on recherche la valeur de retour d'une fonction
+
+CREATE INDEX IDX_REALISATEUR_SUBSTR_NOM ON realisateur(substr(nom,1,2));
+
+- L'index sur fonction est utilisé pour un bitmap, car on a indexé la valeur de retour de la fonction
+
+9)
+EXPLAIN SELECT t.* FROM Film f JOIN Titres t ON f.id = t.id_film;
+
+- On a un hash pour le join puis un Seq scan
+
+CREATE UNIQUE INDEX IDX_FILM_ID ON film(id);
+
+- Ca ne change rien car on n'a mis un index que sur une seule des deux tables concernées
+
+CREATE INDEX IDX_TITRES_IDFILM ON titres(id_film);
+
+-- On fait un select * donc on reste sur des Seq scan car on parcourt l'intégralité des deux tables
+
+10)
+EXPLAIN SELECT t.* FROM Film f JOIN Titres t ON f.id = t.id_film WHERE f.id=2800;
+
+- On a une nested loop avec deux parcours séquentiels sur chaque table
+
+CREATE UNIQUE INDEX IDX_FILM_ID ON film(id);
+
+- On a une nested loop avec un parcours séquentiel sur la table titres et un accès direct sur la table film grâce à l'index créé
+
+CREATE INDEX IDX_TITRES_IDFILM ON titres(id_film);
+
+- On a toujours une nested loop mais pour chaque table on accède aux données grâce à l'index mis en place
+- On a mis un index unique sur la clé primaire, un index non unique sur la clé secondaire. Il faut appliquer ce principe pour optimiser les jointures de tables fréquentes
+
+11)
+EXPLAIN SELECT * FROM films1995;
+
+- On a des hash join successifs
+- Le plan d'exécution est le même qu'on intéroge une vue issue d'une requête ou qu'on exécute la requête directement
+
+12)
+- Le coût est beaucoup plus élevé quand on indexe un type "text" par rapport à un type "varchar"
+
+13)
+EXPLAIN SELECT id from film Where id >= all(select id from film);
+
+- Coût : plus d'un million
+
+EXPLAIN SELECT id from film f1 Where not exists (select * from film f2 where f1.id<f2.id);
+
+- Coût : un peu moins d'un million
+
+EXPLAIN SELECT MAX(id) from film;
+
+- Coût : 180
+
+Du plus au moins efficace :
+	1) prendre le maximum grâce à la fonction MAX
+	2) prendre la seule valeur qui n'a de valeur supérieur à elle-même grâce à une sous-requête
+	3) prendre la valeur qui est supérieure à l'ensemble des valeurs de la même table grâce à une sous-requête
+	
+14)
+
+EXPLAIN SELECT R.id FROM Realisateur R WHERE R.id NOT IN (SELECT id_real FROM Realise);
+
+- Coût : 286
+
+EXPLAIN SELECT R.id FROM Realisateur R WHERE NOT EXISTS (SELECT 'X' FROM Realise Re WHERE Re.id_real=R.id);
+
+- Coût : 777
+
+EXPLAIN SELECT R.id FROM Realisateur R LEFT JOIN Realise Re ON R.id=Re.id_real WHERE Re.id_real IS NULL;
+
+- Coût : 777
+
+EXPLAIN SELECT R.id FROM Realisateur R LEFT JOIN Realise Re ON R.id=Re.id_real GROUP BY R.id HAVING COUNT(Re.id_real)=0;
+
+- Coût : 572
+
+a) Le plus rapide est de sélectionner les id qui ne sont pas dans la table "realise"
+b)
+	Il semblerait que globalement l'optimisation d'une requête soit dépendante, au moins en partie, du SGBD.
+	Si on migre de version sur un SGBD ou que l'on change de SGBD, on a donc intérêt à contrôler le plan d'exécution de ses requêtes pour vérifier que leurs performances n'ont pas changées.
+	
+c) On peut opitimiser les deux requêtes de type JOIN en ajoutant un index unique sur la clé primaire "id" de la table "realisateur" et une clé non-unique sur la clé étrangère "id_real" de la table "realise"
+
+15)
+EXPLAIN SELECT * FROM film where id between 20000 and 20001;
+
+- Coût : 207
+
+EXPLAIN SELECT * FROM film where id = 20000 or id = 20001;
+
+- Coût : 207
+
+EXPLAIN SELECT * FROM film where id in (20000,20001);
+
+- Coût : 183
+
+EXPLAIN SELECT * FROM film where id = 20000 UNION SELECT * FROM film where id = 20001;
+
+- Coût : 366
+
+- On en déduit que, sous Postgre, l'operateur IN pour deux valeurs est mieux optimisé qu'un OR ou qu'un BETWEEN.
+
+16)
+EXPLAIN SELECT r.id, r.nom FROM realisateur r WHERE NOT EXISTS (SELECT 'X' FROM film f WHERE NOT EXISTS (SELECT 'X' FROM realise rea WHERE rea.id_film=f.id AND rea.id_real=r.id));
+
+- Coût : 5 milliards
+
+EXPLAIN SELECT r.id, r.nom FROM realisateur r JOIN realise rea ON r.id=rea.id_real GROUP BY r.id, r.nom HAVING COUNT(DISTINCT rea.id_film) = (SELECT COUNT(*) FROM film);
+
+- Coût : 1489
+
+/****/
+REALISER ENSUITE UNE SYNTHESE GLOBALE DES PRINCIPES QUE VOUS POUVEZ TIRER DE CES
+QUELQUES ESSAIS IMPOSES ET EVENTUELLEMENT DE VOS PROPRES TESTS.
+
+--
+
+Dans le cas d'un filtre sur un champ unique, créer un index unique permet un gain visible de performances.
+De manière plus générale, pour optimiser les performances d'un base de données,il faut connaitre le type de requête qui sera effectué le plus couramment et créer les indexes en conséquence.
+La construction des requêtes doit également favoriser l'utilisation des indexes par le SGBD.
+Globalement, il est important de connaitre la manière dont le SGBD gère les différents éléments composant les requêtes, on a vu par exemple que Postgre ne gère pas l'index sur plusieurs champ alors qu'Oracle le gère.
+Ne pas connaitre ce détail fait perdre à un développeur des performances qui pourraient être facilement améliorées.
+Concernant les jointures, il faut ajouter des indexes uniques sur les champ de clé primaire et non-uniques sur les champs de clé étrangère, surtout sur des tables qui seront amenées à être jointes régulièrement.
+On note également qu'autant que possible, il est mieux d'utiliser les fonctions fournies par le SGBD.
+- 
+
+Tables partitionnées
+
+EXPLAIN SELECT * FROM Ville WHERE nom = 'Lyon';
+EXPLAIN SELECT * FROM Ville WHERE nbhabitants=120000;
+

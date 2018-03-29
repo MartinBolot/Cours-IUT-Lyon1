@@ -1,0 +1,223 @@
+A
+1)
+Afficher le nom des étudiants habitant à Villeurbanne
+db.etudiants.find({'adresse.ville':'Villeurbanne'});
+
+2)
+Afficher les étudiants habitant à Villeurbanne (sans l’ID)
+db.etudiants.find({'adresse.ville':'Villeurbanne'}, {'_id':0});
+
+3)
+Afficher le nom des étudiants habitant à Villeurbanne ou à Caluire
+db.etudiants.find({
+	$or: [
+		{'adresse.ville' : 'Villeurbanne'},
+		{'adresse.ville':'Caluire'}
+	]
+}, {'_id': 0, 'nom' : 1});
+
+4)
+Afficher le nom des étudiants habitant à Villeurbanne ou à Caluire ordonné par nom décroissant
+db.etudiants.find({
+	$or: [
+		{'adresse.ville' : 'Villeurbanne'},
+		{'adresse.ville':'Caluire'}
+	]
+}, {'_id': 0, 'nom' : 1})
+.sort({
+	'nom':-1
+});
+
+5)
+Afficher les étudiants dont le cp est parmi 74000, 21000 (utiliser $in)
+db.etudiants.find({
+	'adresse.cp' : {
+		$in: ['74000', '21000']
+	}
+});
+
+6)
+Afficher les étudiants dont le nom est BOLOT et le cp est 69300
+db.etudiants.find({
+	$and : [
+		{'nom' : 'BOLOT'},
+		{'adresse.cp' : '69800'}
+	]
+});
+
+
+7)
+Afficher tous les étudiants n’habitant pas à Villeurbanne
+db.etudiants.find({
+	'adresse.ville' : {
+		$not : { $eq : 'Villeurbanne'}
+	}
+});
+
+
+8) // nor
+Afficher les étudiants n’habitant ni à Villeurbanne, ni à Caluire
+db.etudiants.find({
+	'adresse.ville' : {
+		$not : { $in : ['Villeurbanne', 'Caluire']}
+	}
+});
+
+
+9) // on peut utiliser un $nin => a revoir
+Afficher les étudiants dont l'un des prénoms n'est ni Anthony ni Martin
+db.etudiants.find({
+	'prenoms' : {
+		$not : { $in : ['Anthony', 'Alain']}
+	}
+});
+
+
+10)
+Afficher les étudiants qui habitent à Annecy mais pas dans la rue Arc en Ciel
+db.etudiants.find({
+	$and : [
+		{ 'adresse.ville' : 'Annecy' },
+		{
+			'adresse.rue' : {
+				$not : { $eq : 'Rue Arc en Ciel'}
+			}
+		}
+	]
+});
+
+11)
+Afficher les étudiants ayant plus de 2 ans d’expérience
+db.etudiants.find({
+	'annee experience': { $gt : 2 }
+});
+
+12)
+Afficher les étudiants dont l'adresse est renseignée
+db.etudiants.find({
+	'adresse': { $ne : null }
+});
+
+13)
+Afficher les étudiants dont l’un des prénoms commence par 'A'
+db.etudiants.find({
+	'prenoms': { $regex : '^A' }
+});
+
+B)
+14)
+Afficher les étudiants à partir du numéro 2 (utiliser $skip)
+db.etudiants.aggregate(
+	{ $skip : 1 }
+);
+
+15)
+Trier les étudiants par nom décroissant
+db.etudiants.find().sort({
+	'nom':-1
+});
+
+16)
+Afficher le nombre moyen d’années d’expérience des étudiants
+db.etudiants.aggregate(
+	[
+		{
+			$group: {
+				_id: null,
+				avgAnnees: { $avg: '$annee experience' }
+			}
+		}
+	]
+);
+
+17)
+Afficher le nombre moyen d’années d’expérience par ville
+db.etudiants.aggregate(
+	[
+		{
+			$group: {
+				_id: '$adresse.ville',
+				avgAnnees: { $avg: '$annee experience' }
+			}
+		}
+	]
+);
+
+18)
+Afficher le nombre d’étudiants habitant à Annecy
+db.etudiants.count({
+	'adresse.ville' : {
+		$eq : 'Annecy'
+	}
+});
+
+19)
+Afficher le nombre d’étudiants dont le champ "annees d'experience" est renseigné
+db.etudiants.count({
+	'annee experience' : {
+		$ne : null
+	}
+});
+
+20)
+Afficher le nombre d’étudiants ayant un nom différent
+db.etudiants.distinct('nom').length;
+
+21)
+Afficher par ordre décroissant, pour chaque prénom existant, le nombre d'étudiants qui portent ce prénom
+db.etudiants.aggregate(
+	[
+		{ $unwind: '$prenoms' },
+		{ $sortByCount: '$prenoms' }
+	]
+);
+
+
+/***/
+
+db.formations.save({
+	'_id' : 1,
+	'identifiant' : 'dutinfo',
+	'Intitule' : 'DUT Informatique',
+	'Annee_creation' : '2005',
+	'Composante' : 'IUT Annecy'
+});
+db.formations.save(
+	[
+		{
+			'_id' : 2,
+			'identifiant' : 'lpbdd',
+			'Intitule' : 'Licence professionnelle Bases de données',
+			'Annee_creation' : '2011'
+		},
+		{
+			'_id' : 3,
+			'identifiant' : 'masterstic',
+			'Intitule' : 'Master Informatique et Systèmes coopératifs',
+			'Annee_creation' : '2005',
+			'Composante' : 'SCEM'
+		},
+		{
+			'_id' : 4,
+			'identifiant' : 'irc',
+			'Intitule' : 'Informatique et réseaux de communication',
+			'Annee_creation' : '2007'
+		}
+	]
+);
+
+db.etudiants.update(
+	{'_id':3},
+	{
+		$set : {
+			'formation' : {
+				'_id' : 2,
+				'identifiant' : 'lpbdd',
+				'Intitule' : 'Licence professionnelle Bases de données',
+				'Annee_creation' : '2011'
+			}
+		}
+	}
+);
+
+
