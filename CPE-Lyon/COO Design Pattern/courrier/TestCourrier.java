@@ -30,33 +30,29 @@ class ContenuHtml implements Contenu
 
 class Courrier
 {
-	public Courrier(String contentType) {
-		if(contentType.equalsIgnoreCase("texte")) {
-			try{
-				contenu = (Contenu) Class.forName("ContenuTexte").newInstance();
-			} catch(Exception e) {
-				System.out.println(e.getClass() + "-" + e.getMessage());
-			}
-		}
-		else if(contentType.equalsIgnoreCase("html")) {
-			try{
-			contenu = (Contenu) Class.forName("ContenuHtml").newInstance();
-			} catch(Exception e) {
-				System.out.println(e.getClass() + "-" + e.getMessage());
-			}
-		}
+	public Courrier(Class contentType) {
+		this.contentType = contentType;
 	}
 	
 	protected Contenu contenu;
+	protected Class contentType;
 	protected String destinataire;
 
-	//protected Contenu nouveauContenu();	// Factory Method
+	protected Contenu nouveauContenu() { //Factory method
+		Contenu contenu = null;
+		try{
+			contenu = (Contenu) this.contentType.newInstance();
+		} catch(Exception e) {
+			System.out.println(e.getClass() + "-" + e.getMessage());
+		}
+		return contenu;
+	}	
 
 	public void prepare(String destinataire, String texte)
 	{
 		this.destinataire = destinataire;
 		try {
-			//contenu = nouveauContenu();
+			contenu = nouveauContenu();
 			contenu.encode(texte);
 		} catch(Exception e) {
 			System.out.println(e.getClass());
@@ -68,11 +64,6 @@ class Courrier
 		String st = "destinataire : " + destinataire + "\n";
 		st += "contenu : " + contenu.toString();
 		return st;
-	}
-	
-	public enum contentType {
-		texte,
-		html
 	}
 }
 
@@ -98,10 +89,10 @@ public class TestCourrier
 
 	public static void main(String[] args)
 	{
-		Courrier courrierHtml = new Courrier("html");
+		Courrier courrierHtml = new Courrier(ContenuHtml.class);
 		courrierHtml.prepare("adresse1@domaine", "texte1");
 		System.out.println(courrierHtml);
-		Courrier courrierTexte = new Courrier("texte");
+		Courrier courrierTexte = new Courrier(ContenuTexte.class);
 		courrierTexte.prepare("adresse2@domaine", "texte2");
 		System.out.println(courrierTexte);
 	}
