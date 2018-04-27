@@ -1,0 +1,1 @@
+prendre rootfs path 2017 sur nathel.org/Data/CPE/BeagleBone

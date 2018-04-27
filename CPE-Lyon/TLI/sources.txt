@@ -1,0 +1,22 @@
+/
+----> /.git
+----> /public
+---->----> /css
+---->----> /img
+---->----> /js
+----> /src
+---->----> /controller
+---->----> /model
+---->----> /view
+----> /vendor
+---->----> /bootstrap
+---->----> /smarty
+			.
+			.
+			.
+----> .gitignore
+----> favicon.ico
+----> index.php
+----> LICENSE
+----> README.md
+----> robots.txt
