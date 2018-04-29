@@ -1,4 +1,4 @@
-Lien avec le matériel
+﻿Lien avec le matériel
 ------
 
 GPIO (E/S TOR - Tout Ou Rien)
@@ -257,12 +257,19 @@ Génération du noyau Linux
     Chargement par le bootloader
 
 Génération du système de fichiers racine
+	+ obligatoires à minima : /prog et /sys
 
     Type ?
 
     Initrd : noyau 2.4 - emulation block - filesystem - taille fixe
+	+ « initial Ram Disk »
+	+ emulation d'un disque dur on crée le fichier à la taille du DD (fixe)
+	+ on se retrouve avec des doublons dans le cache, mauvaise chose
     initramfs : tmpfs - config initramfs du noyau : création et inclusion
+	+ créé pour pallie le problème des doublons dans le cache
     Systèmes de fichier journalisés
+	+ moments ou la table de correspondance des fichiers et fichies ne sont 	pas cohérente : systèmes pas journalisés
+	+ Dans les sdf journalisés un historique est tenu donc si le périphérique 	est débranche on peut reprendre une opération en cours par ex
     UNIONFS : pour un mix de solutions diverses (squashfs, ubifs, tmpfs, . . . )
     Systèmes de fichiers spécifiques mémoire flash : jffs2, ubifs, cramfs, yaffs2, ...
 
@@ -317,6 +324,7 @@ Mise en flash et démarrage
     Limiter les accès en écriture (option noatime)
 
     Boot sur NFS
+	+ boote sur un fichier racine distant (poste de dev sur lequl on peut 	faire des modifs)
 
     Activer NFS dans le noyau
     Activer la configuration IP automatique
