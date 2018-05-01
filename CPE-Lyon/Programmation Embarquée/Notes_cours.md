@@ -100,11 +100,9 @@ Matériel
     Utilisation de SOC (System on Chip)
 >	=> très peu de mémoire interne, plus de mémoire externe
 
-Xport-pro.png Processeur freescale.png Module eukrea.png
 Architecture des systèmes Linux
 Empilement de couches
 
-Layers.png Architecture.png
 Le noyau Linux
 
     Fonction ?
