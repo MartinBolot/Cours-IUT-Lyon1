@@ -43,7 +43,8 @@ Limitations
 
     Consommation de l'ordre de quelques Watts (0.5W - 10W)
 
-    Gestion temps réel + temps réel = on sait quand on a la réponse de manière sûre (ça pourrait être une semaine c'est pareil)
+    Gestion temps réel
+> temps réel = on sait quand on a la réponse de manière sûre (ça pourrait être une semaine c'est pareil)
 
     Asservissements
     Capteurs
@@ -75,47 +76,55 @@ Licences
     Copyleft
     FSF : 4 libertés : Exécution (sur toutes les machines), Étude (accès au code source), Modification, Redistribution
     La licence GPLv2 : Commercialisation - Mise à disposition des sources - Recompilation - Transmission des droits
-    La licence GPLv3, évolution de la GPLv2 - Tivoı̈sation  + plus de droit de mettre un verrou matériel
+    La licence GPLv3, évolution de la GPLv2 - Tivoı̈sation  
+> plus de droit de mettre un verrou matériel
+
     LGPL (Lesser General Publc Licence)
 
     Parmi d’autres :
 
     Licences Creative Commons
-    Licences BSD + ~= CC-by (licence de logiciel libre, utilisateur a des droits s'il remplit les conditions)
+    Licences BSD
+> ~= CC-by (licence de logiciel libre, utilisateur a des droits s'il remplit les conditions)
+
     Licences de projets (Mozilla, Apache, ...)
 
- + Lien statique = tout est inclus, lien dynamique à l'exécution : seulement ce dont on a besoin
- + .so sous linux (shared object) ~= dll sous windows
+ > Lien statique = tout est inclus, lien dynamique à l'exécution : seulement ce dont on a besoin
+
+ > .so sous linux (shared object) ~= dll sous windows
+
 Matériel
 
     Linux supporte 31 architectures
     Et de très nombreuses sous-architectures !
     Utilisation de SOC (System on Chip)
-	+	=> très peu de mémoire interne, plus de mémoire externe
+>	=> très peu de mémoire interne, plus de mémoire externe
 
 Xport-pro.png Processeur freescale.png Module eukrea.png
-Architecture des systèmes */Linux
+Architecture des systèmes Linux
 Empilement de couches
 
 Layers.png Architecture.png
 Le noyau Linux
 
     Fonction ?
-	+	=> faire l'Abstraction du matériel pour le système qui est au-dessus (on ne se soucie pas d'où est stocké un fichier ram, usb, ...)
+>	=> faire l'Abstraction du matériel pour le système qui est au-dessus (on ne se soucie pas d'où est stocké un fichier ram, usb, ...)
 
     Abstraction du matériel
     Uniformisation des couches matérielles en interfaces simples (VFS, ALSA, ...)
     Fourni des services utilisables par les processus, et dédiés a des fonctionnalités "atomiques"
 
-    + Root ou autre => tout programme se lance dans l'espace utilisateur (!= noyau)
-    + Entre espace utilisateur et noyeau => appels systèmes
-    + 3 types de fonctions en C : appels systèmes, fonction utilitaire pour les données (strlen,...), allocations mémoires (malloc,...)
+> Root ou autre => tout programme se lance dans l'espace utilisateur (!= noyau)
+
+> Entre espace utilisateur et noyeau => appels systèmes
+
+> 3 types de fonctions en C : appels systèmes, fonction utilitaire pour les données (strlen,...), allocations mémoires (malloc,...)
 
     Norme POSIX
 
     Portable Operating System Interface for UNIX
     Mais pas que ...
-    + le noyau linux ne respecte pas que la norme posix
+> le noyau linux ne respecte pas que la norme posix
 
     Noyau monolithique modulaire
     Un package de services fondamentaux
@@ -159,20 +168,30 @@ Fichiers et Systèmes de fichiers
     Systèmes de fichiers
 
     Grande variété : FAT, EXT*, REISERFS, UBIFS, NFS, XFS, ..., ZFS
-    Journalisés + trace des modifs récentes pour éviter la corruption si plantage
+    Journalisés
+
+> trace des modifs récentes pour éviter la corruption si plantage
+
     Spécifiques : JFFS2, UBIFS, CRAMFS, ...
     Non persistants : tmpfs, procfs, sysfs
     Accès par les points de montage
-		+ point de montage = dossier (point de l'architecture) à laquelle on donne accès à un morceau du système de fichier
-		+ ~= lecteur C: sur windows par exemple ou une partition (on peut monter une partition a plusieurs endroits)
+
+> point de montage = dossier (point de l'architecture) à laquelle on donne accès à un morceau du système de fichier
+
+> ~= lecteur C: sur windows par exemple ou une partition (on peut monter une partition a plusieurs endroits)
+
     Uniformisation des accès : le VFS
-		+ (virtual file system)
+
+> (virtual file system)
+
     Organisation : FHS (Filesystem Hierarchy Standard)
     Système de fichiers racine (rootfs) et démarrage
-		+ rootfs car relatif à la racine "/"
-    
-    + user => libc => syscall => VFS => FS => USB Mass Storage => USB
-    + (c'est long mais il peut y avoir une mise en cache du fichier un fois le syscall appelé un 1ere fois)
+
+> rootfs car relatif à la racine "/"
+
+> user => libc => syscall => VFS => FS => USB Mass Storage => USB
+
+> (c'est long mais il peut y avoir une mise en cache du fichier un fois le syscall appelé un 1ere fois)
 
 Systèmes d'init
 
@@ -257,19 +276,28 @@ Génération du noyau Linux
     Chargement par le bootloader
 
 Génération du système de fichiers racine
-	+ obligatoires à minima : /prog et /sys
+> obligatoires à minima : /prog et /sys
 
     Type ?
 
     Initrd : noyau 2.4 - emulation block - filesystem - taille fixe
-	+ « initial Ram Disk »
-	+ emulation d'un disque dur on crée le fichier à la taille du DD (fixe)
-	+ on se retrouve avec des doublons dans le cache, mauvaise chose
+
+> « initial Ram Disk »
+
+> emulation d'un disque dur on crée le fichier à la taille du DD (fixe)
+
+> on se retrouve avec des doublons dans le cache, mauvaise chose
+
     initramfs : tmpfs - config initramfs du noyau : création et inclusion
-	+ créé pour pallie le problème des doublons dans le cache
+
+> créé pour pallier le problème des doublons dans le cache
+
     Systèmes de fichier journalisés
-	+ moments ou la table de correspondance des fichiers et fichies ne sont 	pas cohérente : systèmes pas journalisés
-	+ Dans les sdf journalisés un historique est tenu donc si le périphérique 	est débranche on peut reprendre une opération en cours par ex
+
+> moments ou la table de correspondance des fichiers et fichies ne sont 	pas cohérente : systèmes pas journalisés
+
+> Dans les sdf journalisés un historique est tenu donc si le périphérique 	est débranche on peut reprendre une opération en cours par ex
+
     UNIONFS : pour un mix de solutions diverses (squashfs, ubifs, tmpfs, . . . )
     Systèmes de fichiers spécifiques mémoire flash : jffs2, ubifs, cramfs, yaffs2, ...
 
@@ -295,7 +323,7 @@ La plupart des commandes UNIX regroupées en un unique exécutable
     Quelques limites cependant ...
     Copie de busybox (exécutable et liens)
 
-    rsync -a _install/ dev_busybox/
+    rsync -a install/ dev_busybox/
     Création des fichiers spéciaux et de la configuration
     Copie des bibliothèques (lesquelles, ldd ? qemu ?)
 
@@ -324,7 +352,8 @@ Mise en flash et démarrage
     Limiter les accès en écriture (option noatime)
 
     Boot sur NFS
-	+ boote sur un fichier racine distant (poste de dev sur lequl on peut 	faire des modifs)
+
+> boote sur un fichier racine distant (poste de dev sur lequl on peut faire des modifs)
 
     Activer NFS dans le noyau
     Activer la configuration IP automatique
