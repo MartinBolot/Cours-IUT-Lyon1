@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 import tools.ChessPiecesFactory;
@@ -13,8 +14,8 @@ public class Jeu implements Game {
 
 	private static final long serialVersionUID = 1L;
 	
-	//protected List<Pieces> pieces;
-	protected List<PieceIHMs> pieces;
+	protected List<Pieces> pieces;
+	protected List<PieceIHMs> piecesIHMs;
 	protected Couleur couleur;
 
 	// Toutes les variables suivantes sont partagées
@@ -33,7 +34,19 @@ public class Jeu implements Game {
 	private static int xFinalUndo;
 	private static int yFinalUndo;
 
-
+	public List<PieceIHMs> getPiecesIHM(){
+		PieceIHMs newPieceIHM;
+		List<PieceIHMs> list = new LinkedList<>();
+		
+		for(Pieces piece : this.pieces){
+			// si la piece est toujours en jeu
+			if(piece != null){
+				newPieceIHM = new PieceIHM(piece);
+				list.add(newPieceIHM);
+			}
+		}
+		return list;
+}
 	
 	/**
 	 * Le constructeur de jeu fait appel � la fabrique de pi�ces
@@ -238,10 +251,11 @@ public class Jeu implements Game {
 	}
 	
 
-		public static void main(String[] args) {
-			Jeu jeu = new Jeu(Couleur.BLANC);
-			System.out.println(jeu);
-		}
+	public static void main(String[] args) {
+		Jeu jeu = new Jeu(Couleur.BLANC);
+		System.out.println(jeu);
+		System.out.println(jeu.getPiecesIHM());
+	}
 
 }
 

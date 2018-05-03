@@ -46,6 +46,18 @@ public class Echiquier implements BoardGames {
 		this.isCastlingPossible = false;
 	}
 
+	public List<PieceIHMs> getPieceIHMs() {
+		List<PieceIHMs> liste = new LinkedList<PieceIHMs>();
+		
+		if(this.jeuBlanc != null) {
+			liste.addAll(this.jeuBlanc.getPiecesIHM());
+		}
+		if(this.jeuNoir != null) {
+			liste.addAll(this.jeuNoir.getPiecesIHM());
+		}
+		
+		return liste;
+	}
 
 	/**
 	 * Permet de changer le joueur courant.
@@ -381,10 +393,8 @@ public class Echiquier implements BoardGames {
 			e.switchJoueur();
 		
 		// ...
+		
+		System.out.println(e.getPieceIHMs());
 	
-		
-	
-		
-		
 	}
 }

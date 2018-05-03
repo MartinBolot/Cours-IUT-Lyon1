@@ -1,8 +1,8 @@
 package model;
 
 public class PionNoir extends AbstractPion{
-	public PionNoir(Coord coord) {
-		super(Couleur.NOIR, coord);
+	public PionNoir(Couleur couleur, Coord coord) {
+		super(couleur, coord);
 	}
 	
 	public boolean checkOutOfBounds(int yFinal) {
