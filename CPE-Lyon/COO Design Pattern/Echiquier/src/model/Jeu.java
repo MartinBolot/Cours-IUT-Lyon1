@@ -11,12 +11,10 @@ import tools.ChessPiecesFactory;
  */
 public class Jeu implements Game {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected List<Pieces> pieces;
+	//protected List<Pieces> pieces;
+	protected List<PieceIHMs> pieces;
 	protected Couleur couleur;
 
 	// Toutes les variables suivantes sont partagées
@@ -240,10 +238,10 @@ public class Jeu implements Game {
 	}
 	
 
-//		public static void main(String[] args) {
-//			Jeu jeu = new Jeu(Couleur.BLANC);
-//			System.out.println(jeu);
-//		}
+		public static void main(String[] args) {
+			Jeu jeu = new Jeu(Couleur.BLANC);
+			System.out.println(jeu);
+		}
 
 }
 
