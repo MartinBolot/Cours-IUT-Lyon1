@@ -1,8 +1,9 @@
 package tools;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
+import org.apache.commons.lang3.reflect.ConstructorUtils;
 
 /**
  * @author francoise.perrin - 
@@ -17,7 +18,7 @@ public class Introspection {
 	private Introspection() {
 
 	}
-		
+
 	/**
 	 * Invocation d'une m�thode connaissant son nom sur un objet o
 	 * en lui passant les bons param�tres
@@ -39,8 +40,8 @@ public class Introspection {
 		Method m = o.getClass().getMethod(nomMethode,paramTypes);
 		return m.invoke(o,args);
 	}
-	
-	
+
+
 	/**
 	 * @param className
 	 * @param args
@@ -88,6 +89,7 @@ public class Introspection {
 	}
 
 
+
 	/**
 	 * construction � partir du nom de la classe et des param�tres du constructeur
 	 * 
@@ -95,52 +97,24 @@ public class Introspection {
 	 * @param args - la liste des arguments du constructeur
 	 * @return le nouvel objet cr�e
 	 */
-	public static Object newInstance(String className, Object[] args)	 {
+	public static Object newInstance(String className, final Object... args) {
 		Object o = null;
-
 		try {
-			//On cr�e un objet Class
-			Class<?> classe = Class.forName(className);
-			// on r�cup�re le constructeur qui a les param�tres args
-			Class<?>[] paramTypes = null;
-			if(args != null){
-				paramTypes = new Class[args.length];
-				for(int i=0;i<args.length;++i)	{
-					paramTypes[i] = args[i].getClass();
-				}
+			Class<?> c = Class.forName(className);
+			o = ConstructorUtils.invokeConstructor(c, args);
+		} catch (Exception ex) {
+			try {
+				throw new InstantiationException(
+						"Type '" + className +
+						"' with arguments " + Arrays.asList(args) +
+						" could not be instantiated: " + ex.getMessage());
+			} catch (InstantiationException e) {
+				// La classe est abstract ou est une interface 
+				// ou n'a pas de constructeur accessible avec ces paramètres
+				e.printStackTrace();
 			}
-			Constructor<?> ct = classe.getConstructor(paramTypes);
-			// on instantie un nouvel objet avec ce constructeur et le bon param�tre
-			o =  ct.newInstance (args);		
-		}
-		catch (ClassNotFoundException e)		{
-			// La classe n'existe pas
-			e.printStackTrace();
-		}
-		catch (NoSuchMethodException e)		{
-			// La classe n'a pas le constructeur recherch�
-			e.printStackTrace();
-		}
-		catch (InstantiationException e)		{
-			// La classe est abstract ou est une interface
-			e.printStackTrace();
-		}
-		catch (IllegalAccessException e)		{
-			// La classe n'est pas accessible
-			e.printStackTrace();
-		}
-		catch (java.lang.reflect.InvocationTargetException e)		{
-			// Exception d�clench�e si le constructeur invoqu�
-			// a lui-m�me d�clench� une exception
-			e.printStackTrace();
-		}
-		catch (IllegalArgumentException e)		{
-			// Mauvais type de param�tre			
-			e.printStackTrace();
 		}
 		return o;
 	}
-
-
 
 }
