@@ -3,6 +3,7 @@ package controler.controlerLocal;
 import model.Coord;
 import model.ChessGame;
 import controler.ChessGameControlers;
+import tools.Observers;
 
 public class ChessGameControler implements ChessGameControlers {
 	

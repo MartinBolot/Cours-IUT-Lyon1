@@ -16,7 +16,7 @@ import model.ChessGame;
 public class LauncherCmdLine {
 	
 	public static void main(String[] args) {		
-		
+		 
 		ChessGame model;
 		ChessGameControlers controler;	
 		ChessGameCmdLine vue;
@@ -27,6 +27,8 @@ public class LauncherCmdLine {
 		new ChessGameCmdLine(controler);
 		
 		vue = new ChessGameCmdLine(controler);
+		
+		model.attach(vue);
 	
 		vue.go();
 	}

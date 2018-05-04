@@ -1,6 +1,7 @@
 package controler;
 
 import model.Coord;
+import tools.Observers;
 
 public interface ChessGameControlers {
 

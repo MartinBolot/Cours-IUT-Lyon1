@@ -1,11 +1,14 @@
 package model;
 
+
+import tools.AbstractSubject;
+
 /*
  * patterns mis en oeuvre :
  *  - Proxy
  *  - 
  */
-public class ChessGame implements BoardGames {
+public class ChessGame extends AbstractSubject implements BoardGames {
 	public ChessGame() {
 		this.echiquier = new Echiquier();
 	}
@@ -19,6 +22,7 @@ public class ChessGame implements BoardGames {
 		if(echiquier.isMoveOk(xInit, yInit, xFinal, yFinal)) {
 			moveDone = echiquier.move(xInit, yInit, xFinal, yFinal);
 			if(moveDone) {
+				this.notifyObservers(echiquier.getPieceIHMs());
 				echiquier.switchJoueur();
 			}
 		}

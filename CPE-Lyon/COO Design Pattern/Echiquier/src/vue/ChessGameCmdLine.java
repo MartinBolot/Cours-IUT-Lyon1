@@ -1,7 +1,11 @@
 package vue;
 
+import java.util.List;
+
 import model.Coord;
+import model.PieceIHMs;
 import controler.ChessGameControlers;
+import tools.Observers;
 
 /**
  * @author francoise.perrin
@@ -10,7 +14,7 @@ import controler.ChessGameControlers;
  * Vue console d'un jeu d'échec
  * Cette classe est un observateur et le damier est mis à jour à chaque changement dans la classe métier
  */
-public class ChessGameCmdLine  {
+public class ChessGameCmdLine implements Observers {
 
 	ChessGameControlers chessGameControler;
 
@@ -45,6 +49,11 @@ public class ChessGameCmdLine  {
 		chessGameControler.move(new Coord(3, 4), new Coord(4, 3));	// true		
 		System.out.println(chessGameControler.getMessage() + "\n");	
 		System.out.println(chessGameControler);
+	}
+	
+	public void update(Object o) {
+		List<PieceIHMs> listPieceIhms = (List<PieceIHMs>) o;
+		System.out.println(listPieceIhms);
 	}
 
 }
