@@ -1,9 +1,7 @@
 package vue;
 
 import model.Coord;
-import controler.controlerLocal.ChessGameControler;
-
-
+import controler.ChessGameControlers;
 
 /**
  * @author francoise.perrin
@@ -14,9 +12,9 @@ import controler.controlerLocal.ChessGameControler;
  */
 public class ChessGameCmdLine  {
 
-	ChessGameControler chessGameControler;
+	ChessGameControlers chessGameControler;
 
-	public   ChessGameCmdLine(ChessGameControler chessGameControler) {
+	public ChessGameCmdLine(ChessGameControlers chessGameControler) {
 		this.chessGameControler = chessGameControler;
 	}
 
