@@ -33,7 +33,7 @@ public class LauncherGUI {
 	
 		dim = new Dimension(700, 700);
 		
-		chessGame = new ChessGame();	
+		chessGame = new ChessGame();
 		chessGameControler = new ChessGameControler(chessGame);
 		
 		frame = new ChessGameGUI("Jeu d'échec", chessGameControler,  dim);

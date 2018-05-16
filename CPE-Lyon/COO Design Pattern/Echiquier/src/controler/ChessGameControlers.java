@@ -1,11 +1,8 @@
 package controler;
 
 import model.Coord;
-import tools.Observers;
 
 public interface ChessGameControlers {
-
-	
 	/**
 	 * @param initCoord
 	 * @param finalCoord
@@ -29,5 +26,7 @@ public interface ChessGameControlers {
 	 * pour empêcher tout déplacement sur le damier
 	 */
 	public boolean isPlayerOK(Coord initCoord);
+	
 
+	public boolean isMoveOk(Coord initCoord, Coord finalCoord);
 }

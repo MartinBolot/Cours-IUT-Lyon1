@@ -22,10 +22,11 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 		if(echiquier.isMoveOk(xInit, yInit, xFinal, yFinal)) {
 			moveDone = echiquier.move(xInit, yInit, xFinal, yFinal);
 			if(moveDone) {
-				this.notifyObservers(echiquier.getPieceIHMs());
+				//this.notifyObservers(echiquier.getPieceIHMs());
 				echiquier.switchJoueur();
 			}
 		}
+		this.notifyObservers(echiquier.getPieceIHMs());
 		return moveDone;
 	}
 	public boolean isEnd() {
@@ -40,6 +41,10 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 
 	public Couleur getPieceColor(int x, int y) {
 		return echiquier.getPieceColor(x, y);
+	}
+	
+	public boolean isMoveOk(Coord initCoord, Coord finalCoord) {
+		return this.echiquier.isMoveOk(initCoord.x, initCoord.y, finalCoord.x, finalCoord.y);
 	}
 	
 	private Echiquier echiquier;

@@ -2,8 +2,8 @@ package controler.controlerLocal;
 
 import model.Coord;
 import model.ChessGame;
+import model.Couleur;
 import controler.ChessGameControlers;
-import tools.Observers;
 
 public class ChessGameControler implements ChessGameControlers {
 	
@@ -39,7 +39,19 @@ public class ChessGameControler implements ChessGameControlers {
 	 * pour empêcher tout déplacement sur le damier
 	 */
 	public boolean isPlayerOK(Coord initCoord) {
-		return true;
+		if(initCoord != null) {
+			Couleur colorCurrentPlayer = this.chessGame.getColorCurrentPlayer();
+			Couleur colorTargetPlayer = this.chessGame.getPieceColor(initCoord.x, initCoord.y);
+			
+			if(colorCurrentPlayer.equals(colorTargetPlayer)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isMoveOk(Coord initCoord, Coord finalCoord) {
+		return this.chessGame.isMoveOk(initCoord, finalCoord);
 	}
 	
 	private ChessGame chessGame;

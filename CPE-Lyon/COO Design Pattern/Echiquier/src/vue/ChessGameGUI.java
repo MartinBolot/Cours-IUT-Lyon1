@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import model.Coord;
+import model.PieceIHMs;
 import tools.ChessImageProvider;
 import tools.ChessPiecePos;
 import tools.Observers;
@@ -196,6 +198,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			// calcul des coordonnées initiales
 			this.initCoord = translateCoord(e.getX(), e.getY());
 
+			this.toggleColorIndicator(true);
 
 			// Si c'est bien le tour de jeu du joueur
 			if (this.chessGameControler.isPlayerOK(initCoord))	{
@@ -263,6 +266,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
 
 		}
+		this.toggleColorIndicator(false);
 	}
 
 	/**
@@ -276,6 +280,36 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 		Double y = new Double(Math.floor(((double) ypixel / (this.boardSize.height-30)) * 8));
 		coord = new Coord(x.intValue(), y.intValue());
 		return coord;
+	}
+	
+	private void toggleColorIndicator(boolean activate) {
+		// colorisation des cases
+		Component[] squares = this.chessBoardGuiContainer.getComponents();
+		Coord squareCoord;
+		int row;
+		for(int i = 0; i < squares.length; i++) {
+			squareCoord = translateCoord(squares[i].getX(), squares[i].getY());
+			if(squares[i] != null) {
+				if(activate) {
+					if(this.chessGameControler.isMoveOk(this.initCoord, squareCoord)) {
+						squares[i].setBackground(Color.GREEN);
+					}
+				}
+				else {
+					row = i % 2;
+					if (row == 0) {
+						squares[i].setBackground(
+								squareCoord.y % 2 != 0 ? new Color(139,69,0) : new Color(255,250,240)
+						);
+					}
+					else {
+						squares[i].setBackground(
+								squareCoord.y % 2 != 0 ? new Color(255,250,240): new Color(139,69,0)
+						);
+					}
+				}
+			}
+		}
 	}
 
 	@Override	
@@ -299,9 +333,26 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Object o) {
+		//System.out.println(o);
+		List<PieceIHMs> listPieces = null;
+		try {
+			listPieces = (List<PieceIHMs>) o;
+		}
+		catch(Exception e) {
+			return;
+		}
 		
+		JLabel piece;
+		JPanel panel;
+		for (PieceIHMs pieceIHM : listPieces) {
+			piece = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(pieceIHM.getNamePiece(), pieceIHM.getCouleur())));
+			panel = (JPanel) chessBoardGuiContainer.getComponent((pieceIHM.getX()) + (pieceIHM.getY() * 8));
+			panel.removeAll();
+			panel.add(piece);
+		}
 	}
 
 }

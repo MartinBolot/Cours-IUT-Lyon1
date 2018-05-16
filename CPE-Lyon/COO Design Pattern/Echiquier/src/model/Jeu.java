@@ -40,7 +40,7 @@ public class Jeu implements Game {
 		
 		for(Pieces piece : this.pieces){
 			// si la piece est toujours en jeu
-			if(piece != null){
+			if(piece != null && piece.getX() >= 0 && piece.getY() >= 0){
 				newPieceIHM = new PieceIHM(piece);
 				list.add(newPieceIHM);
 			}
