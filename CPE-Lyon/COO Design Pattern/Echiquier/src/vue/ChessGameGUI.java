@@ -12,7 +12,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -288,28 +290,31 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 		Coord squareCoord;
 		int row;
 		for(int i = 0; i < squares.length; i++) {
-			squareCoord = translateCoord(squares[i].getX(), squares[i].getY());
+			squareCoord = translateCoord(squares[i].getX(), squares[i].getY()+1);
+			System.out.println(squareCoord);
 			if(squares[i] != null) {
 				if(activate) {
 					if(this.chessGameControler.isMoveOk(this.initCoord, squareCoord)) {
-						squares[i].setBackground(Color.GREEN);
+						((JComponent) squares[i]).setBorder(BorderFactory.createLineBorder(Color.GREEN));//squares[i].setBackground(Color.GREEN);
 					}
 				}
-				else {
-					row = i % 2;
-					if (row == 0) {
-						squares[i].setBackground(
-								squareCoord.y % 2 != 0 ? new Color(139,69,0) : new Color(255,250,240)
-						);
-					}
-					else {
-						squares[i].setBackground(
-								squareCoord.y % 2 != 0 ? new Color(255,250,240): new Color(139,69,0)
-						);
-					}
-				}
+//				else {
+//					row = i % 2;
+//					if (row == 0) {
+//						squares[i].setBackground(
+//								squareCoord.y % 2 != 0 ? new Color(139,69,0) : new Color(255,250,240)
+//						);
+//					}
+//					else {
+//						squares[i].setBackground(
+//								squareCoord.y % 2 != 0 ? new Color(255,250,240): new Color(139,69,0)
+//						);
+//					}
+//				}
 			}
 		}
+		this.repaint();
+		this.revalidate();
 	}
 
 	@Override	
