@@ -200,8 +200,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			// calcul des coordonnées initiales
 			this.initCoord = translateCoord(e.getX(), e.getY());
 
-			this.toggleColorIndicator(true);
-
 			// Si c'est bien le tour de jeu du joueur
 			if (this.chessGameControler.isPlayerOK(initCoord))	{
 
@@ -216,7 +214,19 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			
 				this.layeredPane.add(pieceToMove, JLayeredPane.DRAG_LAYER);
 
+				int xDest, yDest;
+				boolean isOkDest;
 
+				/*
+				for(Component component : this.chessBoardGuiContainer.getComponents()){
+					xDest = component.getX()/(layeredPane.getHeight()/7);
+					yDest = component.getY()/(layeredPane.getHeight()/7);
+					isOkDest = this.chessGameControler.isMoveOk(this.initCoord,new Coord(xDest,yDest)); //moche ne doit pas êter public
+					if(isOkDest){
+						component.setBackground(Color.GREEN);
+					}
+				}
+				*/
 				// Mise en évidence des cases vers lesquelles 
 				// la pièce peut être déplacée 	
 				
@@ -268,7 +278,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
 
 		}
-		this.toggleColorIndicator(false);
 	}
 
 	/**
@@ -283,7 +292,8 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 		coord = new Coord(x.intValue(), y.intValue());
 		return coord;
 	}
-	
+
+	/*
 	private void toggleColorIndicator(boolean activate) {
 		// colorisation des cases
 		Component[] squares = this.chessBoardGuiContainer.getComponents();
@@ -316,6 +326,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 		this.repaint();
 		this.revalidate();
 	}
+	*/
 
 	@Override	
 	public void mouseClicked(MouseEvent e) {
@@ -358,6 +369,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			panel.removeAll();
 			panel.add(piece);
 		}
+
+		this.repaint();
+		this.revalidate();
 	}
 
 }
