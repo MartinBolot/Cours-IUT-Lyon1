@@ -28,9 +28,7 @@ public abstract class AbstractPiece implements Pieces {
 		this.x = coord.x;
 		this.y = coord.y;
 		this.couleur=couleur;
-		this.comportement = tempStrategyFabric.getComportement(
-			this.getX(),
-			this.getY(),
+		this.comportement = tempStrategyFabric.getInitialComportement(
 			this.getName()
 		);
 	}

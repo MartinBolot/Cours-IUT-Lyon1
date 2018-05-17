@@ -16,13 +16,19 @@ public class tempStrategyFabric {
 			comportement = new ComportementFou();
 		}
 		else {
-			try {
-				comportement = (ComportementPieces) Class.forName("strategies.Comportement" + ownClass).newInstance();
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-				comportement = null;
-			}
+			comportement = tempStrategyFabric.getInitialComportement(ownClass);
+		}
+		return comportement;
+	}
+	
+	public static ComportementPieces getInitialComportement(String ownClass) {
+		ComportementPieces comportement = null;
+		try {
+			comportement = (ComportementPieces) Class.forName("strategies.Comportement" + ownClass).newInstance();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			comportement = null;
 		}
 		return comportement;
 	}
