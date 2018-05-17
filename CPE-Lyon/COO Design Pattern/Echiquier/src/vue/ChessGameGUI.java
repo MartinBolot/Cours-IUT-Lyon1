@@ -200,10 +200,10 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			// calcul des coordonnées initiales
 			this.initCoord = translateCoord(e.getX(), e.getY());
 
-			this.toggleColorIndicator(true);
-
 			// Si c'est bien le tour de jeu du joueur
 			if (this.chessGameControler.isPlayerOK(initCoord))	{
+
+				this.toggleColorIndicator(true);
 
 				this.pieceToMove = (JLabel)c;
 
@@ -287,30 +287,32 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 	private void toggleColorIndicator(boolean activate) {
 		// colorisation des cases
 		Component[] squares = this.chessBoardGuiContainer.getComponents();
-		Coord squareCoord;
 		int row;
+		int xDest, yDest;
 		for(int i = 0; i < squares.length; i++) {
-			squareCoord = translateCoord(squares[i].getX(), squares[i].getY()+1);
-			System.out.println(squareCoord);
+			//squareCoord = translateCoord(squares[i].getX(), squares[i].getY()+1);
+			//System.out.println(squareCoord);
+			xDest = squares[i].getX()/(layeredPane.getHeight()/8);
+			yDest = squares[i].getY()/(layeredPane.getHeight()/8);
 			if(squares[i] != null) {
 				if(activate) {
-					if(this.chessGameControler.isMoveOk(this.initCoord, squareCoord)) {
-						((JComponent) squares[i]).setBorder(BorderFactory.createLineBorder(Color.GREEN));//squares[i].setBackground(Color.GREEN);
+					if(this.chessGameControler.isMoveOk(this.initCoord, new Coord(xDest, yDest))) {
+						squares[i].setBackground(Color.GREEN);
 					}
 				}
-//				else {
-//					row = i % 2;
-//					if (row == 0) {
-//						squares[i].setBackground(
-//								squareCoord.y % 2 != 0 ? new Color(139,69,0) : new Color(255,250,240)
-//						);
-//					}
-//					else {
-//						squares[i].setBackground(
-//								squareCoord.y % 2 != 0 ? new Color(255,250,240): new Color(139,69,0)
-//						);
-//					}
-//				}
+				else {
+					row = i % 2;
+					if (row == 0) {
+						squares[i].setBackground(
+								yDest % 2 != 0 ? new Color(139,69,0) : new Color(255,250,240)
+						);
+					}
+					else {
+						squares[i].setBackground(
+								yDest % 2 != 0 ? new Color(255,250,240): new Color(139,69,0)
+						);
+					}
+				}
 			}
 		}
 		this.repaint();
