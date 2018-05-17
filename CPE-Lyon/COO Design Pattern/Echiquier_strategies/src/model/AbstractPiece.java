@@ -1,5 +1,8 @@
 package model;
 
+import strategies.ComportementPieces;
+import tools.tempStrategyFabric;
+
 
 
 /**
@@ -13,6 +16,7 @@ public abstract class AbstractPiece implements Pieces {
 
 	private int x, y;
 	private Couleur couleur;
+	protected ComportementPieces comportement;
 	
 
 	/**
@@ -24,6 +28,11 @@ public abstract class AbstractPiece implements Pieces {
 		this.x = coord.x;
 		this.y = coord.y;
 		this.couleur=couleur;
+		this.comportement = tempStrategyFabric.getComportement(
+			this.getX(),
+			this.getY(),
+			this.getName()
+		);
 	}
 
 	/* (non-Javadoc)
@@ -65,6 +74,12 @@ public abstract class AbstractPiece implements Pieces {
 			this.x=x;
 			this.y=y;
 			ret = true;
+
+			this.comportement = tempStrategyFabric.getComportement(
+				this.getX(),
+				this.getY(),
+				this.getName()
+			);
 		}
 		return ret;
 
@@ -101,7 +116,7 @@ public abstract class AbstractPiece implements Pieces {
 	 * est capable de dire si le déplacement est OK
 	 */
 	public abstract boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
-			boolean isCastlingPossible) ;
+			boolean isCastlingPossible);
 
 }
 

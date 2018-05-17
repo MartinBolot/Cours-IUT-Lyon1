@@ -20,6 +20,10 @@ public abstract class AbstractPion extends AbstractPiece  {
 		super(couleur_de_piece, coord);
 		this.premierCoup = true;
 	}
+	
+	public boolean getPremierCoup() {
+		return premierCoup;
+	}
 
 	/* (non-Javadoc)
 	 * @see model.AbstractPiece#isMoveOk(int, int)
@@ -28,50 +32,17 @@ public abstract class AbstractPion extends AbstractPiece  {
 	public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
 			boolean isCastlingPossible) {
 
-		boolean ret = false;
-
-		// Déplacement vertical
-		if (!isCatchOk && !isCastlingPossible){
-
-			if ((xFinal == this.getX())
-					&& (Math.abs(yFinal - this.getY()) <= 1 || 
-					(Math.abs(yFinal - this.getY()) <= 2 && this.premierCoup==true))) {
-				
-				ret = this.checkOutOfBounds(yFinal);
-				/* TODO
-				if ((Couleur.NOIR.equals(this.getCouleur()) && (yFinal - this.getY() > 0))
-						|| (Couleur.BLANC.equals(this.getCouleur()) 
-								&& (yFinal - this.getY() < 0))) {
-					ret = true;
-				}
-				*/
-			}
-		}
-		// Déplacement diagonal
-		else {
-			/* TODO
-			if (Couleur.NOIR.equals(this.getCouleur())) {
-				if ((yFinal == this.getY()+1 && xFinal == this.getX()+1) 
-						|| (yFinal == this.getY()+1 && xFinal == this.getX()-1)) {
-					ret = true;
-				}
-			}
-
-			if (Couleur.BLANC.equals(this.getCouleur())) {
-				if ((yFinal == this.getY()-1 && xFinal == this.getX()+1) 
-						|| (yFinal == this.getY()-1 && xFinal == this.getX()-1)) {
-					ret = true;
-				}
-			}
-			*/
-			ret = this.checkDiago(xFinal, yFinal);
-		}
-
-		return ret;
+		return this.comportement.isMoveOk(
+			this.getX(),
+			this.getY(),
+			xFinal,
+			yFinal,
+			isCatchOk,
+			isCastlingPossible,
+			this.getCouleur(),
+			this.getPremierCoup()
+		);
 	}
-
-	public abstract boolean checkOutOfBounds(int yFinal);
-	public abstract boolean checkDiago(int xFinal, int yFinal);
 
 
 	/* (non-Javadoc)

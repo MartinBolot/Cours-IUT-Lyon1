@@ -20,15 +20,16 @@ public class Roi extends AbstractPiece {
 	@Override
 	public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
 			boolean isCastlingPossible) {
-		boolean ret = false;
-		
-		if ((Math.abs(yFinal - this.getY()) <= 1)
-				&& (Math.abs(xFinal - this.getX()) <= 1)) {
-			ret = true;
-		}
-		
-		
-		return ret;
+		return this.comportement.isMoveOk(
+			this.getX(),
+			this.getY(),
+			xFinal,
+			yFinal,
+			isCatchOk,
+			isCastlingPossible,
+			this.getCouleur(),
+			false
+		);
 	}
 
 	

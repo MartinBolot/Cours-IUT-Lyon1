@@ -24,14 +24,17 @@ public class Fou extends AbstractPiece {
 	@Override
 	public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
 			boolean isCastlingPossible) {
-		
-		boolean ret = false;
-		
-		if (Math.abs(yFinal - this.getY()) == Math.abs(xFinal - this.getX())) {
-			ret  = true;
-		}		
-		
-		return ret;
+
+		return this.comportement.isMoveOk(
+			this.getX(),
+			this.getY(),
+			xFinal,
+			yFinal,
+			isCatchOk,
+			isCastlingPossible,
+			this.getCouleur(),
+			false
+		);
 	}
 
 	

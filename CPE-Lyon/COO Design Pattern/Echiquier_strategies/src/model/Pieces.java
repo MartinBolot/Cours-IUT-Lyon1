@@ -35,7 +35,7 @@ public interface Pieces {
 	 * @return true si déplacement légal en fonction des algo
 	 * de déplacement spécifique de chaque pièce
 	 */
-	public  boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) ;
+	public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible);
 	
 	/**
 	 * @param xFinal

@@ -24,17 +24,16 @@ public class Cavalier extends AbstractPiece  {
 	@Override
 	public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
 			boolean isCastlingPossible) {
-		
-		boolean ret = false;
-		
-		if ((Math.abs(xFinal - this.getX()) + Math.abs(yFinal - this.getY())) == 3) {
-			
-			if ((Math.abs(xFinal - this.getX())<3) && (Math.abs(yFinal - this.getY())<3)) {
-				ret  = true;
-			}		
-		}	
-		
-		return ret;
+		return this.comportement.isMoveOk(
+			this.getX(),
+			this.getY(),
+			xFinal,
+			yFinal,
+			isCatchOk,
+			isCastlingPossible,
+			this.getCouleur(),
+			false
+		);
 	}
 
 	
