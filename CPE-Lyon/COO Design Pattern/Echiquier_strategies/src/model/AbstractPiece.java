@@ -1,7 +1,7 @@
 package model;
 
 import strategies.ComportementPieces;
-import tools.tempStrategyFabric;
+import tools.ModeFactory;
 
 
 
@@ -17,6 +17,7 @@ public abstract class AbstractPiece implements Pieces {
 	private int x, y;
 	private Couleur couleur;
 	protected ComportementPieces comportement;
+	private ModeFactory modefactory;
 	
 
 	/**
@@ -24,11 +25,12 @@ public abstract class AbstractPiece implements Pieces {
 	 * @param couleur
 	 * @param coord
 	 */
-	public AbstractPiece(Couleur couleur, Coord coord){
+	public AbstractPiece(Couleur couleur, Coord coord, ModeFactory modefactory){
 		this.x = coord.x;
 		this.y = coord.y;
 		this.couleur=couleur;
-		this.comportement = tempStrategyFabric.getInitialComportement(
+		this.modefactory = modefactory;
+		this.comportement = this.modefactory.getInitialComportement(
 			this.getName()
 		);
 	}
@@ -66,14 +68,14 @@ public abstract class AbstractPiece implements Pieces {
 	 * 
 	 * Déplace une pièce
 	 */
-	public boolean move(int x, int y){
+	public boolean move(int x, int y) {
 		boolean ret = false;
-		if(Coord.coordonnees_valides(x,y)){
+		if(Coord.coordonnees_valides(x,y)) {
 			this.x=x;
 			this.y=y;
 			ret = true;
 
-			this.comportement = tempStrategyFabric.getComportement(
+			this.comportement = this.modefactory.getComportement(
 				this.getX(),
 				this.getY(),
 				this.getName()

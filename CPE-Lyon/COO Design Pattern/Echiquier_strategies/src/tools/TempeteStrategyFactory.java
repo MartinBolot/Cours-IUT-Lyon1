@@ -1,9 +1,14 @@
 package tools;
 
-import strategies.*;
+import strategies.ComportementCavalier;
+import strategies.ComportementFou;
+import strategies.ComportementPieces;
+import strategies.ComportementTour;
 
-public class tempStrategyFabric {
-	public static ComportementPieces getComportement(int x, int y, String ownClass) {
+public class TempeteStrategyFactory implements ModeFactory {
+
+	@Override
+	public ComportementPieces getComportement(int x, int y, String ownClass) {
 		ComportementPieces comportement = null;
 		if(x == 0 || x == 7) {
 			comportement = new ComportementTour();
@@ -19,8 +24,9 @@ public class tempStrategyFabric {
 		}
 		return comportement;
 	}
-	
-	public static ComportementPieces getInitialComportement(String ownClass) {
+
+	@Override
+	public ComportementPieces getInitialComportement(String ownClass) {
 		ComportementPieces comportement = null;
 		try {
 			comportement = (ComportementPieces) Class.forName("strategies.Comportement" + ownClass).newInstance();
@@ -31,4 +37,5 @@ public class tempStrategyFabric {
 		}
 		return comportement;
 	}
+
 }

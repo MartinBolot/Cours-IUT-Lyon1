@@ -3,8 +3,12 @@ package launcher.localLauncher;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
+import tools.ModeFactory;
+import tools.NormalStrategieFactory;
 import tools.Observers;
+import tools.TempeteStrategyFactory;
 import model.ChessGame;
 import vue.ChessGameGUI;
 import controler.ChessGameControlers;
@@ -33,7 +37,27 @@ public class LauncherGUI {
 	
 		dim = new Dimension(700, 700);
 		
-		chessGame = new ChessGame();
+		String[] modes = {"Normal", "Tempete"};
+		//JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+		String modeChoisi = (String) JOptionPane.showInputDialog(
+			null, 
+			"Veuillez choisir un mode de jeu",
+			"Choix du mode",
+			JOptionPane.QUESTION_MESSAGE,
+			null,
+			modes,
+			modes[0]);
+		
+		ModeFactory modeFactory = null;
+		
+		if(modeChoisi.equalsIgnoreCase("Tempete")) {
+			modeFactory = new TempeteStrategyFactory();
+		}
+		else {
+			modeFactory = new NormalStrategieFactory();
+		}
+		
+		chessGame = new ChessGame(modeFactory);
 		chessGameControler = new ChessGameControler(chessGame);
 		
 		frame = new ChessGameGUI("Jeu d'échec", chessGameControler,  dim);

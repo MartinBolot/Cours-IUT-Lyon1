@@ -28,7 +28,7 @@ public class ChessPiecesFactory {
 	 * @param pieceCouleur
 	 * @return liste de pi�ces de jeu d'�chec
 	 */
-	public static List<Pieces> newPieces(Couleur pieceCouleur){
+	public static List<Pieces> newPieces(Couleur pieceCouleur, ModeFactory modefactory){
 
 		List<Pieces> pieces = null;
 		pieces = new LinkedList<Pieces>();
@@ -41,7 +41,7 @@ public class ChessPiecesFactory {
 						String className = "model." + ChessPiecePos.values()[i].nom;	// attention au chemin
 						Coord pieceCoord = ChessPiecePos.values()[i].coords[j];
 						pieces.add((Pieces) Introspection.newInstance (className,
-								new Object[] {pieceCouleur, pieceCoord}));
+								new Object[] {pieceCouleur, pieceCoord, modefactory}));
 					}
 				}
 			}
@@ -54,7 +54,7 @@ public class ChessPiecesFactory {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(ChessPiecesFactory.newPieces(Couleur.BLANC));
-		System.out.println(ChessPiecesFactory.newPieces(Couleur.NOIR));
+		System.out.println(ChessPiecesFactory.newPieces(Couleur.BLANC, new NormalStrategieFactory()));
+		System.out.println(ChessPiecesFactory.newPieces(Couleur.NOIR, new NormalStrategieFactory()));
 	}
 }

@@ -3,6 +3,9 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 
+import tools.ModeFactory;
+import tools.NormalStrategieFactory;
+
 
 /**
  * @author francoise.perrin - 
@@ -33,10 +36,10 @@ public class Echiquier implements BoardGames {
 	private boolean isCastlingPossible; 
 
 
-	public Echiquier() {
+	public Echiquier(ModeFactory modefactory) {
 		super();
-		this.jeuBlanc = new Jeu(Couleur.BLANC);
-		this.jeuNoir = new Jeu(Couleur.NOIR);
+		this.jeuBlanc = new Jeu(Couleur.BLANC, modefactory);
+		this.jeuNoir = new Jeu(Couleur.NOIR, modefactory);
 		this.jeuCourant = this.jeuBlanc;
 		this.jeuOppose = this.jeuNoir;
 		this.setMessage("Les blancs doivent commencer");
@@ -362,7 +365,7 @@ public class Echiquier implements BoardGames {
 
 
 	public static void main(String[] args) {
-		Echiquier e = new Echiquier();
+		Echiquier e = new Echiquier(new NormalStrategieFactory());
 		boolean isMoveOK = false;
 		
 		System.out.println("Test classe Echiquier\n");

@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import tools.ChessPiecesFactory;
+import tools.ModeFactory;
+import tools.NormalStrategieFactory;
 
 /**
  * @author francoise.perrin
@@ -53,8 +55,8 @@ public class Jeu implements Game {
 	 * @param couleur
 	 * 
 	 */
-	public Jeu(Couleur couleur){
-		this.pieces = ChessPiecesFactory.newPieces(couleur);
+	public Jeu(Couleur couleur, ModeFactory modefactory){
+		this.pieces = ChessPiecesFactory.newPieces(couleur, modefactory);
 		this.couleur = couleur;
 		isPieceToCatch = isMoveOk = false;
 	}
@@ -252,7 +254,7 @@ public class Jeu implements Game {
 	
 
 	public static void main(String[] args) {
-		Jeu jeu = new Jeu(Couleur.BLANC);
+		Jeu jeu = new Jeu(Couleur.BLANC, new NormalStrategieFactory());
 		System.out.println(jeu);
 		System.out.println(jeu.getPiecesIHM());
 	}
