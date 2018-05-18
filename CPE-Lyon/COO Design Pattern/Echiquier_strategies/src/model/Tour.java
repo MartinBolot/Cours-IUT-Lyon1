@@ -17,8 +17,8 @@ public class Tour extends AbstractPiece {
 	 * @param couleur_de_piece
 	 * @param coord
 	 */
-	public Tour(Couleur couleur_de_piece, Coord coord, ModeFactory modefactory) {
-		super(couleur_de_piece, coord, modefactory);
+	public Tour(Couleur couleur_de_piece, Coord coord) {
+		super(couleur_de_piece, coord);
 	}
 
 	/* (non-Javadoc)
