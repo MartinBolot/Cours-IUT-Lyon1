@@ -17,7 +17,6 @@ public abstract class AbstractPiece implements Pieces {
 	private int x, y;
 	private Couleur couleur;
 	protected ComportementPieces comportement;
-	private ModeFactory modefactory;
 	
 
 	/**
@@ -25,12 +24,11 @@ public abstract class AbstractPiece implements Pieces {
 	 * @param couleur
 	 * @param coord
 	 */
-	public AbstractPiece(Couleur couleur, Coord coord, ModeFactory modefactory){
+	public AbstractPiece(Couleur couleur, Coord coord){
 		this.x = coord.x;
 		this.y = coord.y;
 		this.couleur=couleur;
-		this.modefactory = modefactory;
-		this.comportement = this.modefactory.getInitialComportement(
+		this.comportement = tools.Config.factory.getInitialComportement(
 			this.getName()
 		);
 	}
@@ -75,7 +73,7 @@ public abstract class AbstractPiece implements Pieces {
 			this.y=y;
 			ret = true;
 
-			this.comportement = this.modefactory.getComportement(
+			this.comportement = tools.Config.factory.getComportement(
 				this.getX(),
 				this.getY(),
 				this.getName()

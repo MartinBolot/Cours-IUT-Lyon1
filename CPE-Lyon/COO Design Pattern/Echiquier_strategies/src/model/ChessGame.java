@@ -2,7 +2,6 @@ package model;
 
 
 import tools.AbstractSubject;
-import tools.ModeFactory;
 
 /*
  * patterns mis en oeuvre :
@@ -10,8 +9,8 @@ import tools.ModeFactory;
  *  - 
  */
 public class ChessGame extends AbstractSubject implements BoardGames {
-	public ChessGame(ModeFactory modefactory) {
-		this.echiquier = new Echiquier(modefactory);
+	public ChessGame() {
+		this.echiquier = new Echiquier();
 	}
 	
 	public String toString() {

@@ -1,7 +1,5 @@
 package model;
 
-import tools.ModeFactory;
-
 
 
 /**
@@ -16,8 +14,8 @@ public class Fou extends AbstractPiece {
 	 * @param couleur_de_piece
 	 * @param coord
 	 */
-	public Fou(Couleur couleur_de_piece, Coord coord, ModeFactory modefactory) {
-		super(couleur_de_piece, coord, modefactory);
+	public Fou(Couleur couleur_de_piece, Coord coord) {
+		super(couleur_de_piece, coord);
 	}
 
 	/* (non-Javadoc)

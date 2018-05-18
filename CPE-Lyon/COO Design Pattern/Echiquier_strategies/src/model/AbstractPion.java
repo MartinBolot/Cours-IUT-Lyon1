@@ -1,9 +1,5 @@
 package model;
 
-import tools.ModeFactory;
-
-
-
 
 /**
  * @author francoise.perrin
@@ -18,8 +14,8 @@ public abstract class AbstractPion extends AbstractPiece  {
 	 * @param couleur_de_piece
 	 * @param coord
 	 */
-	public AbstractPion(Couleur couleur_de_piece, Coord coord, ModeFactory modefactory) {
-		super(couleur_de_piece, coord, modefactory);
+	public AbstractPion(Couleur couleur_de_piece, Coord coord) {
+		super(couleur_de_piece, coord);
 		this.premierCoup = true;
 	}
 	
@@ -33,7 +29,6 @@ public abstract class AbstractPion extends AbstractPiece  {
 	@Override
 	public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
 			boolean isCastlingPossible) {
-
 		return this.comportement.isMoveOk(
 			this.getX(),
 			this.getY(),
