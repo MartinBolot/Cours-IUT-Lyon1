@@ -29,4 +29,6 @@ public interface ChessGameControlers {
 	
 
 	public boolean isMoveOk(Coord initCoord, Coord finalCoord);
+	
+	public void undoMove();
 }

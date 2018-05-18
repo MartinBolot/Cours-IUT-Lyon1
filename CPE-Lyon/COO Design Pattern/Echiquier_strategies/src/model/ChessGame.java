@@ -29,6 +29,11 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 		this.notifyObservers(echiquier.getPieceIHMs());
 		return moveDone;
 	}
+	
+	public void undoMove() {
+		return;
+	}
+	
 	public boolean isEnd() {
 		return echiquier.isEnd();
 	}

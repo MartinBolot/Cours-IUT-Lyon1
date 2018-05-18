@@ -7,14 +7,14 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -38,7 +38,7 @@ import controler.ChessGameControlers;
  *  
  */
 
-public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener, Observers{
+public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener, KeyListener, Observers{
 
 	/**
 	 * 
@@ -68,6 +68,8 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 	// au milieu du carre lors d'un deplacement  (drag)
 	private int xAdjustment;
 	private int yAdjustment;
+	
+	private boolean ctrlPressed;
 
 
 	/**
@@ -106,6 +108,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 		// Ajout des écouteurs pour écouter les évènements souris
 		layeredPane.addMouseListener(this);
 		layeredPane.addMouseMotionListener(this);
+		addKeyListener(this);
 
 		// le remplissage du damier avec les pièces disposées
 		// en fonction de leur place initiale lors de la création de l'échiquier
@@ -338,6 +341,34 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 	@Override
 	public void mouseExited(MouseEvent e) {
 
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_CONTROL) {
+			ctrlPressed = true;
+		}
+		// CTRL + Z
+		if(ctrlPressed && e.getKeyCode() == KeyEvent.VK_Z) {
+			this.chessGameControler.undoMove();
+		}
+		// CTRL + Y
+		if(ctrlPressed && e.getKeyCode() == KeyEvent.VK_Z) {
+			// TODO
+			//this.chessGameControler.redoMove();
+		}
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_CONTROL) {
+			ctrlPressed = false;
+		}
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
 	}
 	
 	@SuppressWarnings("unchecked")

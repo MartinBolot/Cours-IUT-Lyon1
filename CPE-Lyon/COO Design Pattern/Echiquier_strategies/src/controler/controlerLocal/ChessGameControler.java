@@ -54,5 +54,9 @@ public class ChessGameControler implements ChessGameControlers {
 		return this.chessGame.isMoveOk(initCoord, finalCoord);
 	}
 	
+	public void undoMove() {
+		this.chessGame.undoMove();
+	}
+	
 	private ChessGame chessGame;
 }
