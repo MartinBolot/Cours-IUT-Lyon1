@@ -1,6 +1,9 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tools.AbstractSubject;
 
 /*
@@ -11,6 +14,7 @@ import tools.AbstractSubject;
 public class ChessGame extends AbstractSubject implements BoardGames {
 	public ChessGame() {
 		this.echiquier = new Echiquier();
+		this.saveState();
 	}
 	
 	public String toString() {
@@ -24,6 +28,7 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 			if(moveDone) {
 				//this.notifyObservers(echiquier.getPieceIHMs());
 				echiquier.switchJoueur();
+				this.saveState();
 			}
 		}
 		this.notifyObservers(echiquier.getPieceIHMs());
@@ -31,7 +36,8 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 	}
 	
 	public void undoMove() {
-		return;
+		this.echiquier = this.states.get(this.states.size()-2);
+		this.notifyObservers(echiquier.getPieceIHMs());
 	}
 	
 	public boolean isEnd() {
@@ -52,5 +58,15 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 		return this.echiquier.isMoveOk(initCoord.x, initCoord.y, finalCoord.x, finalCoord.y);
 	}
 	
+	private void saveState() {
+		if(this.states.size() == MAX_SIZE) {
+			this.states.remove(0);
+		}
+		this.states.add((Echiquier) this.echiquier.clone());
+		System.out.println(this.states);
+	}
+	
 	private Echiquier echiquier;
+	private List<Echiquier> states = new ArrayList<Echiquier>();
+	private final int MAX_SIZE = 10;
 }

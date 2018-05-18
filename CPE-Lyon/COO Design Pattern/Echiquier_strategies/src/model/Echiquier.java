@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 
-public class Echiquier implements BoardGames {
+public class Echiquier implements BoardGames, Cloneable {
 
 	private Jeu jeuBlanc;
 	private Jeu jeuNoir;
@@ -360,6 +360,22 @@ public class Echiquier implements BoardGames {
 		return false;
 	}
 
+	
+	@Override
+	protected Object clone() {
+		Object o = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			o = super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		// on renvoie le clone
+		return o;
+	}
 
 	public static void main(String[] args) {
 		Echiquier e = new Echiquier();

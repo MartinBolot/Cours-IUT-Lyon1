@@ -353,9 +353,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			this.chessGameControler.undoMove();
 		}
 		// CTRL + Y
-		if(ctrlPressed && e.getKeyCode() == KeyEvent.VK_Z) {
+		if(ctrlPressed && e.getKeyCode() == KeyEvent.VK_Y) {
 			// TODO
-			//this.chessGameControler.redoMove();
+			this.chessGameControler.redoMove();
 		}
 	}
 	
@@ -391,6 +391,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 			panel.removeAll();
 			panel.add(piece);
 		}
+		
+		this.repaint();
+		this.revalidate();
 	}
 
 }
