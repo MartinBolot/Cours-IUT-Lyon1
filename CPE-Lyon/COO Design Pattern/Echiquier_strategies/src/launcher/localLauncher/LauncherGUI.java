@@ -50,14 +50,16 @@ public class LauncherGUI {
 		
 		ModeFactory modeFactory = null;
 		
-		if(modeChoisi.equalsIgnoreCase("Tempete")) {
+		if(modeChoisi.equalsIgnoreCase("tempete")) {
 			modeFactory = new TempeteStrategyFactory();
 		}
 		else {
 			modeFactory = new NormalStrategieFactory();
 		}
 		
-		chessGame = new ChessGame(modeFactory);
+		tools.Config.factory = modeFactory;
+		
+		chessGame = new ChessGame();
 		chessGameControler = new ChessGameControler(chessGame);
 		
 		frame = new ChessGameGUI("Jeu d'échec", chessGameControler,  dim);

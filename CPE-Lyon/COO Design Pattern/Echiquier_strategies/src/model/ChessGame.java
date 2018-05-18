@@ -1,8 +1,10 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tools.AbstractSubject;
-import tools.ModeFactory;
 
 /*
  * patterns mis en oeuvre :
@@ -10,8 +12,9 @@ import tools.ModeFactory;
  *  - 
  */
 public class ChessGame extends AbstractSubject implements BoardGames {
-	public ChessGame(ModeFactory modefactory) {
-		this.echiquier = new Echiquier(modefactory);
+	public ChessGame() {
+		this.echiquier = new Echiquier();
+		this.saveState();
 	}
 	
 	public String toString() {
@@ -25,11 +28,18 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 			if(moveDone) {
 				//this.notifyObservers(echiquier.getPieceIHMs());
 				echiquier.switchJoueur();
+				this.saveState();
 			}
 		}
 		this.notifyObservers(echiquier.getPieceIHMs());
 		return moveDone;
 	}
+	
+	public void undoMove() {
+		this.echiquier = this.states.get(this.states.size()-2);
+		this.notifyObservers(echiquier.getPieceIHMs());
+	}
+	
 	public boolean isEnd() {
 		return echiquier.isEnd();
 	}
@@ -48,5 +58,15 @@ public class ChessGame extends AbstractSubject implements BoardGames {
 		return this.echiquier.isMoveOk(initCoord.x, initCoord.y, finalCoord.x, finalCoord.y);
 	}
 	
+	private void saveState() {
+		if(this.states.size() == MAX_SIZE) {
+			this.states.remove(0);
+		}
+		this.states.add((Echiquier) this.echiquier.clone());
+		System.out.println(this.states);
+	}
+	
 	private Echiquier echiquier;
+	private List<Echiquier> states = new ArrayList<Echiquier>();
+	private final int MAX_SIZE = 10;
 }

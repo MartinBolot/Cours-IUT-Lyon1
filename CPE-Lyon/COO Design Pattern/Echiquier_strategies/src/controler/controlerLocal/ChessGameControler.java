@@ -1,5 +1,8 @@
 package controler.controlerLocal;
 
+import command.Command;
+import command.Invoker;
+import command.MoveCommand;
 import model.Coord;
 import model.ChessGame;
 import model.Couleur;
@@ -54,5 +57,16 @@ public class ChessGameControler implements ChessGameControlers {
 		return this.chessGame.isMoveOk(initCoord, finalCoord);
 	}
 	
+	public void undoMove() {
+		Command command = new MoveCommand(this.chessGame);
+		this.invoker.undo(command);
+	}
+	
+	public void redoMove() {
+		Command command = new MoveCommand(this.chessGame);
+		this.invoker.undo(command);
+	}
+	
 	private ChessGame chessGame;
+	private Invoker invoker = new Invoker();
 }

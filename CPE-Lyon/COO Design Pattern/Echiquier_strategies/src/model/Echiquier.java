@@ -3,9 +3,6 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 
-import tools.ModeFactory;
-import tools.NormalStrategieFactory;
-
 
 /**
  * @author francoise.perrin - 
@@ -21,7 +18,7 @@ import tools.NormalStrategieFactory;
  *
  */
 
-public class Echiquier implements BoardGames {
+public class Echiquier implements BoardGames, Cloneable {
 
 	private Jeu jeuBlanc;
 	private Jeu jeuNoir;
@@ -36,10 +33,10 @@ public class Echiquier implements BoardGames {
 	private boolean isCastlingPossible; 
 
 
-	public Echiquier(ModeFactory modefactory) {
+	public Echiquier() {
 		super();
-		this.jeuBlanc = new Jeu(Couleur.BLANC, modefactory);
-		this.jeuNoir = new Jeu(Couleur.NOIR, modefactory);
+		this.jeuBlanc = new Jeu(Couleur.BLANC);
+		this.jeuNoir = new Jeu(Couleur.NOIR);
 		this.jeuCourant = this.jeuBlanc;
 		this.jeuOppose = this.jeuNoir;
 		this.setMessage("Les blancs doivent commencer");
@@ -363,9 +360,25 @@ public class Echiquier implements BoardGames {
 		return false;
 	}
 
+	
+	@Override
+	protected Object clone() {
+		Object o = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			o = super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		// on renvoie le clone
+		return o;
+	}
 
 	public static void main(String[] args) {
-		Echiquier e = new Echiquier(new NormalStrategieFactory());
+		Echiquier e = new Echiquier();
 		boolean isMoveOK = false;
 		
 		System.out.println("Test classe Echiquier\n");

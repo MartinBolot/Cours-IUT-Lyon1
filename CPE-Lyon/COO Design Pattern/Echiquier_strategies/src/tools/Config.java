@@ -1,5 +1,6 @@
 package tools;
 
 public class Config {
-	//private ModeFactory 
+	//private ModeFactory
+	public static ModeFactory factory;
 }
