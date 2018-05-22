@@ -17,6 +17,7 @@ Maven : Déclaration de la dépendance -> installation du projet
 web service, JSP, JavaBean, EJB et JMS.
 
 4) Qu’est ce que Spring ? qu’apporte Spring boot vis-à-vis de Spring ?
+Spring est un framework qui facilite les développements
 
 5) Qu’est ce que Spring Boot ? Quels sont les points communs/différences entre JEE et Spring Boot ?
 
