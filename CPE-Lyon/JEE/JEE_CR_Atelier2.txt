@@ -1,0 +1,47 @@
+
+
+1) Qu’est ce que des Services Web Full Rest ? Quelles sont les contraintes imposées par ce type de
+service ?
+Il s'agit de services Web qui respecent intégralement les principes REST. La principale contraite est la partie StateLess soit sans état.
+
+2) Qu’est ce qu’un gestionnaire de dépendance ? Maven est-il le seul ? Quel est l’avantage d’utiliser un
+gestionnaire de dépendances ? Quelles sont les grandes étapes de fonctionnement de Maven ?
+Un gestionnaire de dépendance permet de déclarer, gérer et partager les dépendances logicielles d'un projet. Maven n'est pas le seul outil à le faire.
+L'avantage est de pouvoir découpler le code source de l'application du code tiers.
+Cela facilite le processus de mise à jour dans le cadre de l'utilisation d'une bibliothèque de version par exemple.
+Cela amélore la capacité du code à être sous gestionnaire de version.
+Maven : Déclaration de la dépendance -> installation du projet
+
+
+3) Qu’est ce qu’une application classique Entreprise Java Application ? Donner un exemple d’usage avec
+web service, JSP, JavaBean, EJB et JMS.
+
+4) Qu’est ce que Spring ? qu’apporte Spring boot vis-à-vis de Spring ?
+
+5) Qu’est ce que Spring Boot ? Quels sont les points communs/différences entre JEE et Spring Boot ?
+
+6) Qu’est ce qu’une annotation ? Quels apports présentent les Annotations ?
+
+7) Comment fait-on pour créer un Web Service Rest avec Spring Boot ?
+
+8) Qu’est ce qu’un container de Servlet ? Comment fonctionne un container de Servlet ?
+
+9) Expliquer la philosophie « Convention over Configuration » de Spring boot ?
+
+10) Expliquer ce qu’il se passe lors de l’exécution «SpringApplication .run(App.class,args) »
+
+11) Qu’est ce qu’un DAO ? En quoi est-ce intéressant d’utiliser ce pattern ? Qu’est ce qu’un Singleton ?
+
+12) Que permet de réaliser les Entity dans Spring boot ? Est-ce spécifique à SpringBoot ?
+
+13) Combien d’instances avez-vous crées lors de l’usage de «Service » en Spring boot? Pourquoi ?
+
+14) Que fournit le CRUD Repository de Spring boot ? Que sont les CRUD ?
+
+15) Qui réalise l’implémentation de la méthode findByProperty lors de la création d’un repository en
+Spring Boot ?
+
+15) Comment gère -t-on les relations One To One, One to Many et Many to Many avec JPA ?
+
+16) Qu’est ce qu’une Architecture SOA ? Qu’est ce qu’une architecture Micro Service ? Il y a-t-il d’autres
+architectures existantes ? Quels sont leurs avantages/inconvénients ?
