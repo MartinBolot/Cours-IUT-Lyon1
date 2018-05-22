@@ -1,0 +1,56 @@
+Après avoir expliqué en quoi vos prototypes respectent le pattern MVC, expliquer les avantages et
+	inconvénients des approches Web Statique + Web Service et Dynamique.
+	
+--
+
+QUESTIONS
+1) Qu’est-ce que le pattern MVC ? Quels avantages présente-t-il ?
+Le pattern MVC repose sur la séparation entre trois entités : le modèle, la vue et le contrôleur.
+Le principe est de séparer son code en fonction de responsabilités :
+	- le modèle contient le code liées aux données,
+	- la vue contient le code en charge de l'affichage
+	- le ou les contrôleurs ont pour rôle de faire le lien entre le modèle et la vue
+
+2) Qu’est-ce que le Web dynamique ? pourquoi est-il intéressant ?
+
+3) Comment sont récupérés les fichiers par le Web Browser en Web statique ? Quels sont les avantages d’utiliser du Web Statique avec des services REST ?
+
+4) Comment fonctionne l’AJAX ?
+
+5) Qu’est-ce que JEE ?
+Une spécification à implémenter
+
+6) Comment fonctionne un serveur JEE ?
+
+
+7) Qu’est-ce qu’un Web Container en JEE ?
+
+8) Que représente les Servlet dans JEE ?
+Une unité de prise en charge de message HTTP (retourne du code - html, texte, xml, ...)
+
+9) Qu’est-ce que JSP ?
+10) Quel est le cycle de vie d’un JSP ?
+
+11) Qu’est-ce que les expressions EL ?
+Variables en mémoire partagé (espace commun => SessionScope) par les différentes classes java (et jsp) pour générer dynamiquement du contenu
+
+12) Que permettent de faire les expressions EL ?
+Avoir un contenu servi dynamiquement
+
+13) Qu’apporte JSTL aux JSP ?
+Du dynamisme
+
+14) Qu’est-ce qu’un Javabean ?
+Une classe qui va pouvoir être partagée en mémoire vers une JSP par ex
+
+15) Quels sont ces propriétés/contraintes ?
+	- Elle doit avoir un constructeur vide
+	- Les getters doivent êter normalisés pour utiliser la notation "object.attribute" (pas d'accès direct)
+	
+16) Comment utilise-t-on les Javabean avec les JSP ?
+Grâce au SessionScope dans les JSP
+
+17) Que permet de faire JDBC ?
+Le lien (connexion) avec une base de données
+
+18) Quelle est la différence entre Statement et PrepareStatement ?
