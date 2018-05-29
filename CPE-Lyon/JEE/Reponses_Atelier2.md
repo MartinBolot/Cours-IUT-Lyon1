@@ -32,7 +32,7 @@ Une annotation est une métadonnée liée à une méthode (la plupart du temps) 
 Elles permettent à la fois d'informer l'utilisateur, mais aussi de donner des directives à un outil qui parse le code
 
 ### 7) Comment fait-on pour créer un Web Service Rest avec Spring Boot ?
-** Source poly ** :
+**Source poly  :**
 
 On crée un contrôleur dans lequel on place des méthodes annotées pour indiquer :
 - *@Path* : Une URI Relative indiquant quelle Classe, Méthode Java sera déclenchée
@@ -61,7 +61,7 @@ C'est la "Convention", on prend ce que l'utilisateur va probablement vouloir.
 On laisse alors l'utilisateur configurer les détails qui l'intéressent. C'est la "Configuration", que Sprint Boot laisse à la discrétion de l'utilisateur.
 
 ### 10) Expliquer ce qu’il se passe lors de l’exécution «SpringApplication.run(App.class,args) »
-** Source docs.spring.io **
+**Source docs.spring.io**
 
 https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/SpringApplication.html
 
