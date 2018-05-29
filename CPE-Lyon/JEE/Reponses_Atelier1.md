@@ -82,7 +82,7 @@ Une classe qui va pouvoir être partagée en mémoire vers une JSP par exemple
 - Elle doit avoir un constructeur vide
 - Les getters doivent êter normalisés pour utiliser la notation "object.attribute" (pas d'accès direct)
 
-** Source poly ** :
+**Source poly  :**
 - Constructeur sans paramètre
 - Doit être sérialisable (implements Serializable)
 - Propriétés normalisées: attribut=nom, méthode d’accès getNom(), setNom(String s)
