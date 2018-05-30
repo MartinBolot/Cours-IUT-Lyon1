@@ -94,3 +94,6 @@ On crée un repository qui étend le CrudRepository, c'est donc le CrudRepositor
 On utilise les annotations
 
 ### 16) Qu’est ce qu’une Architecture SOA ? Qu’est ce qu’une architecture Micro Service ? Il y a-t-il d’autres architectures existantes ? Quels sont leurs avantages/inconvénients ?
+Une architecture SOA est une architecture orienté services. Il s'agit d'une architecture d'application qui va permettre de découper l'application en différents services. Ces services ont pour but de se spécialiser le plus possible.
+Une architecture micro-services est une architecture qui va se baser sur un découpage en petites applications fortement spécialisées. Chaque application de l'architecture va être dotée de sa propre base de données (si besoin) et être complètement indépendante. Son but est de ne faire qu'une chose, mais de la faire au mieux.
+Il existe d'autre architectures telle que l'architecture 1-tiers et 2-tiers. Leur inconvénients sont liés notamment à la montée en charge et à l'optimisation des ressources.
