@@ -13,16 +13,30 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace WSConvertisseur
 {
+    /// <summary>
+    ///     Application Startup
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        ///     Startup constructor
+        /// </summary>
+        /// <param name="configuration">The configuration</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        ///     Gettter for configuration
+        /// </summary>
+        /// <returns>Iconfiguration</returns>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        ///     This method gets called by the runtime. Use this method to add services to the container
+        /// </summary>
+        /// <param name="services">the services</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -43,7 +57,11 @@ namespace WSConvertisseur
             });
         }
 
-            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        ///     This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app">The app</param>
+        /// <param name="env">The environment</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
