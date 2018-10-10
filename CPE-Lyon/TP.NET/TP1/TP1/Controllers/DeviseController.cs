@@ -22,7 +22,7 @@ namespace WSConvertisseur.Controllers
         /// <returns>IEnumerable</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Devise>), 200)]
-        public IEnumerable<Devise> GetAll()
+        public async Task<IEnumerable<Devise>> GetAll()
         {
             return devises.AsEnumerable();
         }
@@ -37,7 +37,7 @@ namespace WSConvertisseur.Controllers
         [HttpGet("{id}", Name = "GetDevise")]
         [ProducesResponseType(typeof(Devise), 200)]
         [ProducesResponseType(404)]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             Devise devise = devises.FirstOrDefault((d) => d.Id == id);
             if(devise == null)
@@ -58,7 +58,7 @@ namespace WSConvertisseur.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(Devise), 201)]
         [ProducesResponseType(400)]
-        public IActionResult Post([FromBody]Devise devise)
+        public async Task<IActionResult> Post([FromBody]Devise devise)
         {
             if(!ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace WSConvertisseur.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public IActionResult Put(int id, [FromBody] Devise devise)
+        public async Task<IActionResult> Put(int id, [FromBody] Devise devise)
         {
             if (!ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace WSConvertisseur.Controllers
         [HttpDelete("{id}", Name = "DeleteDevise")]
         [ProducesResponseType(typeof(Devise), 200)]
         [ProducesResponseType(404)]
-        public IActionResult DeleteById(int id)
+        public async Task<IActionResult> DeleteById(int id)
         {
             Devise devise = devises.FirstOrDefault((d) => d.Id == id);
             if (devise == null)
