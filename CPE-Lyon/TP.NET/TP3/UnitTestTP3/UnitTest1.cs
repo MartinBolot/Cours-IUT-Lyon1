@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using TP3.Controllers;
 using TP3.Models.EntityFramework;
+using TP3.Models.Repository;
+using TP3.Models.DataManager;
+using System;
 
 namespace UnitTestTP3
 {
@@ -20,7 +23,8 @@ namespace UnitTestTP3
             );
 
             context = new FilmsContext(builder.Options);
-            compteController = new CompteController(context);
+            _dataRepository = new CompteManager(context);
+            compteController = new CompteController(_dataRepository);
         }
 
         [TestCleanup]
@@ -61,7 +65,7 @@ namespace UnitTestTP3
             Compte compte = new Compte();
             compte.Nom = "test";
             compte.Prenom = "test";
-            compte.Mel = "test@test.com";
+            compte.Mel = "test@test.com" + DateTime.Now;
             compte.Rue = "rue du test";
             compte.CodePostal = "69300";
             compte.Ville = "Caluire";
@@ -77,5 +81,6 @@ namespace UnitTestTP3
 
         private CompteController compteController;
         private FilmsContext context;
+        private IDataRepository<Compte> _dataRepository;
     }
 }

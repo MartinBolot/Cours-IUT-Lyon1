@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TP3.Models.DataManager;
 using TP3.Models.EntityFramework;
+using TP3.Models.Repository;
 
 namespace TP3.Controllers
 {
@@ -13,11 +15,11 @@ namespace TP3.Controllers
     [Route("api/Compte")]
     public class CompteController : Controller
     {
-        private readonly FilmsContext _context;
-
-        public CompteController(FilmsContext context)
+        private readonly IDataRepository<Compte> _dataRepository;
+        
+        public CompteController(IDataRepository<Compte> dataRepository)
         {
-            _context = context;
+            _dataRepository = dataRepository;
         }
 
         // GET: api/Compte
@@ -26,9 +28,9 @@ namespace TP3.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Compte> GetCompte()
+        public async Task<IEnumerable<Compte>> GetCompte()
         {
-            return _context.Compte;
+            return await _dataRepository.GetAll();
         }
 
         // GET: api/Compte/5
@@ -45,7 +47,7 @@ namespace TP3.Controllers
                 return BadRequest(ModelState);
             }
 
-            var compte = await _context.Compte.SingleOrDefaultAsync(m => m.CompteId == id);
+            var compte = await _dataRepository.GetById(id);
 
             if (compte == null)
             {
@@ -68,9 +70,7 @@ namespace TP3.Controllers
                 return BadRequest(ModelState);
             }
 
-            var compte = await _context.Compte.SingleOrDefaultAsync(
-                m => m.Mel.Equals(email)
-            );
+            var compte = await _dataRepository.GetByString(email);
 
             if (compte == null)
             {
@@ -100,23 +100,14 @@ namespace TP3.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(compte).State = EntityState.Modified;
+            var compteToUpdate = await _dataRepository.GetById(id);
 
-            try
+            if (compteToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CompteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            _dataRepository.Update(compteToUpdate, compte);
 
             return NoContent();
         }
@@ -135,13 +126,11 @@ namespace TP3.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Compte.Add(compte);
-            await _context.SaveChangesAsync();
+            _dataRepository.Add(compte);
 
-            return CreatedAtAction("GetCompte", new { id = compte.CompteId }, compte);
+            return CreatedAtAction("GetCompteById", new { id = compte.CompteId }, compte);
         }
 
-        /*
         // DELETE: api/Compte/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompte([FromRoute] int id)
@@ -151,22 +140,22 @@ namespace TP3.Controllers
                 return BadRequest(ModelState);
             }
 
-            var compte = await _context.Compte.SingleOrDefaultAsync(m => m.CompteId == id);
+            var compte = await _dataRepository.GetById(id);
             if (compte == null)
             {
                 return NotFound();
             }
 
-            _context.Compte.Remove(compte);
-            await _context.SaveChangesAsync();
+            _dataRepository.Delete(compte);
 
             return Ok(compte);
         }
-        */
 
+        /*
         private bool CompteExists(int id)
         {
             return _context.Compte.Any(e => e.CompteId == id);
         }
+        */
     }
 }

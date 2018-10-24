@@ -12,6 +12,8 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using TP3.Models.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using TP3.Models.Repository;
+using TP3.Models.DataManager;
 
 namespace TP3
 {
@@ -52,6 +54,9 @@ namespace TP3
             var connection = "Server=localhost\\SQLEXPRESS; Database=Films;Trusted_Connection=True;";
             services.AddDbContext<FilmsContext>
                 (options => options.UseSqlServer(connection));
+
+            // dependency injection
+            services.AddScoped<IDataRepository<Compte>, CompteManager>();
         }
 
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
