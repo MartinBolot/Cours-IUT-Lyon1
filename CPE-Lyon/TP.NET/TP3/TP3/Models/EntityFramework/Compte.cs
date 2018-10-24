@@ -71,5 +71,6 @@ namespace TP3.Models.EntityFramework
         public ICollection<Avis> AvisCompte { get; set; }
         [InverseProperty("CompteFavori")]
         public ICollection<Favori> FavoriCompte { get; set; }
+
     }
 }

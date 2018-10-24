@@ -10,11 +10,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using TP3.Models.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 namespace TP3
 {
     public class Startup
     {
+        /// <summary>
+        /// startup
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,7 +28,7 @@ namespace TP3
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -41,9 +47,14 @@ namespace TP3
                 );
                 c.IncludeXmlComments(xmlFile);
             });
+
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = "Server=localhost\\SQLEXPRESS; Database=Films;Trusted_Connection=True;";
+            services.AddDbContext<FilmsContext>
+                (options => options.UseSqlServer(connection));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

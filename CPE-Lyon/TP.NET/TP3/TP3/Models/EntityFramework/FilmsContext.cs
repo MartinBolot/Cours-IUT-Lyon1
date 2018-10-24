@@ -32,7 +32,7 @@ namespace TP3.Models.EntityFramework
                 // See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(
                     "Server=localhost\\SQLEXPRESS; Database=Films;Trusted_Connection=True;"
-                    );
+                );
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
