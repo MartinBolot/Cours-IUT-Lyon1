@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="TP3Client.View.RootPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TP3Client.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Dark"
+>
+    <SplitView
+        x:Name="MySplitView"
+        DisplayMode="CompactOverlay"
+        IsPaneOpen="False"
+        CompactPaneLength="50"
+        OpenPaneLength="180">
+        <SplitView.Pane>
+            <StackPanel Background="Gray">
+                <Button
+                    Click="HamburgerButton_Click"
+                    x:Name="HamburgerButton"
+                    FontFamily="Segoe MDL2 Assets"
+                    Content="&#xE700;"
+                    Width="50"
+                    Height="50"
+                    Background="Transparent"
+                />
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Click="PrecedentButton_Click"
+                        x:Name="Back"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE72B;"
+                        Width="50"
+                        Height="50"
+                        Background="Transparent"
+                    />
+                    <TextBlock Text="Précédent" FontSize="18" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Home" FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE80F;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Movies" FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE714;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Films" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Account" FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE8CF;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Compte" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Settings" FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE713;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Paramètres" FontSize="18" VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+</Page>

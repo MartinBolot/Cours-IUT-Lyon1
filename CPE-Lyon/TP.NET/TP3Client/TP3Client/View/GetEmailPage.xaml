@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="TP3Client.View.GetEmailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TP3Client.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Dark">
+
+    <RelativePanel>
+        <TextBlock Margin="10" Name="search_email" RelativePanel.AlignHorizontalCenterWithPanel="True">
+            Email
+        </TextBlock>
+        <TextBox
+            Margin="10"
+            RelativePanel.Below="search_email"
+            Name="search_email_value"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+        />
+        <Button
+            Command="{Binding BtnSetConversion}"
+            Margin="10"
+            RelativePanel.Below="search_email_value"
+            Name="bouton"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+        >
+            Rechercher
+        </Button>
+
+        <TextBlock Margin="10" Name="result_nom" RelativePanel.AlignHorizontalCenterWithPanel="True">
+            Nom
+        </TextBlock>
+        <TextBox x:Name="TxtNom" Text="{Binding NomResult, Mode=OneWay}"/>
+    </RelativePanel>
+</Page>
