@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="WatcherAuthProject:ejb">
+    <output-path>$PROJECT_DIR$/WatcherAuthProject/target</output-path>
+    <root id="archive" name="WatcherAuthProject.jar">
+      <element id="artifact" artifact-name="WatcherAuthProject:ejb exploded" />
+    </root>
+  </artifact>
+</component>

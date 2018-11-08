@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="WatcherAuthJ2E:ear">
+    <output-path>$PROJECT_DIR$/WatcherAuthJ2E/target</output-path>
+    <root id="archive" name="WatcherAuthJ2E.ear">
+      <element id="artifact" artifact-name="WatcherAuthJ2E:ear exploded" />
+    </root>
+  </artifact>
+</component>
