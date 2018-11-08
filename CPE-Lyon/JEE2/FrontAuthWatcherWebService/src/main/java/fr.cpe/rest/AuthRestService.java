@@ -1,5 +1,8 @@
 package fr.cpe.rest;
 
+import fr.cpe.model.User;
+import fr.cpe.model.UserTransport;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -7,7 +10,8 @@ import javax.ws.rs.core.MediaType;
 public interface AuthRestService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    void authenticate(String json);
+    @Produces(MediaType.APPLICATION_JSON)
+    UserTransport authenticate(User json);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

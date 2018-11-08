@@ -1,11 +1,14 @@
 package fr.cpe.rest.impl;
 
+import fr.cpe.model.User;
+import fr.cpe.model.UserTransport;
 import fr.cpe.rest.AuthRestService;
 
 public class AuthRestServiceImpl implements AuthRestService {
     @Override
-    public void authenticate(String json) {
-        System.out.println(json);
+    public UserTransport authenticate(User user) {
+        System.out.println(user);
+        return new UserTransport(user);
     }
 
     @Override
