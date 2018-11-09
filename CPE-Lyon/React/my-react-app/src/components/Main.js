@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import globalReducer from '../reducers/index'
 import '../App.css';
 import '../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 import LeftSide from "./LeftSide/LeftSide";
@@ -50,33 +53,36 @@ class Main extends Component {
   }
 
   render() {
+    const store=createStore(globalReducer);
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <h1>Welcome to robot shop</h1>
+      <Provider store={store}>
+        <div className="container-fluid">
+          <div className="row">
+            <h1>Welcome to robot shop</h1>
+          </div>
+          <div className="row">
+              <div className="col-md-4 col-lg-4">
+                <LeftSide
+                  robots={jsonSource.robots}
+                  selectedRobotId={this.state.selectedRobotId}
+                  handleLeftSideClick={this.handleLeftSideClick}
+                />
+              </div>
+              <div className="col-md-4 col-lg-4">
+                <MiddleSide
+                  parts={this.state.parts}
+                  selectedPartId={this.state.selectedPartId}
+                  handleMiddleSideClick={this.handleMiddleSideClick}/>
+              </div>
+              <div className="col-md-4 col-lg-4" >
+                <RightSide
+                  part={this.state.part}
+                  selectedPartId={this.state.selectedPartId}
+                />
+              </div>
+          </div>
         </div>
-        <div className="row">
-            <div className="col-md-4 col-lg-4">
-              <LeftSide
-                robots={jsonSource.robots}
-                selectedRobotId={this.state.selectedRobotId}
-                handleLeftSideClick={this.handleLeftSideClick}
-              />
-            </div>
-            <div className="col-md-4 col-lg-4">
-              <MiddleSide
-                parts={this.state.parts}
-                selectedPartId={this.state.selectedPartId}
-                handleMiddleSideClick={this.handleMiddleSideClick}/>
-            </div>
-            <div className="col-md-4 col-lg-4" >
-              <RightSide
-                part={this.state.part}
-                selectedPartId={this.state.selectedPartId}
-              />
-            </div>
-        </div>
-      </div>
+      </Provider>
     );
   }
 }
