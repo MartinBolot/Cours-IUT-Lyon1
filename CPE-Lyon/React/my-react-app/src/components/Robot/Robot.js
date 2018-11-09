@@ -8,14 +8,17 @@ class Robot extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  handleClick() {
     this.props.handleRobotClick(this.props.robot.id);
   }
 
   render() {
-    const primaryClass = this.props.selected ? "panel-primary" : "";
+    const primaryClass = (
+      "panel panel-default " +
+      (this.props.selected ? "panel-primary" : "")
+    );
     return (
-      <div className={"panel panel-default" + " " + primaryClass}>
+      <div className={primaryClass}>
         <div className="panel-heading">
           <h3
             className="panel-title"
@@ -27,9 +30,10 @@ class Robot extends Component {
         <div className="panel-body">
           <Label label={this.props.robot.label}/>
           <Visual
-            robotId={this.props.robot.id}
+            id={this.props.robot.id}
             type={this.props.robot.visual_type}
-            source={this.props.robot.visual_src}/>
+            src={this.props.robot.visual_src}
+          />
           </div>
       </div>
 

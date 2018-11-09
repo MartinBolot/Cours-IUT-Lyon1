@@ -39,37 +39,55 @@
      {
         "id":"A1",
         "title":"WheelA",
-        "price":10
+        "price":10,
+        "visual_type":"img",
+        "visual_src":"https://cdn.shopify.com/s/files/1/0672/9409/products/robot_wheels.jpg?v=1446565265",
+         "description":"Haec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. "
 
     },
      {
         "id":"A2",
         "title":"WheelB",
-        "price":15
+        "price":15,
+        "visual_type":"img",
+        "visual_src":"http://cdn.active-robots.com/media/catalog/product/cache/1/image/470x/9df78eab33525d08d6e5fb8d27136e95/1/4/14108.jpg",
+         "description":"Haec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. "
 
     },
      {
         "id":"A3",
         "title":"WheelC",
-        "price":150
+        "price":150,
+        "visual_type":"video",
+        "visual_src":"https://www.youtube.com/embed/Z_w_Wyxo1NI",
+         "description":"Haec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. "
 
     },
      {
         "id":"A4",
         "title":"Contrôleur de Servomoteurs USB SSC-32U Lynxmotion",
-        "price":57
+        "price":57,
+        "visual_type":"img",
+        "visual_src":"https://www.gotronic.fr/ori-commande-de-servomoteurs-usb-ssc32u-23261.jpg",
+         "description":"Haec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. "
 
     },
      {
         "id":"A5",
         "title":"Ordinateur Monocarte Raspberry Pi 3",
-        "price":52
+        "price":52,
+        "visual_type":"video",
+        "visual_src":"https://www.youtube.com/embed/erwD3ck6w2A",
+         "description":"Haec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. "
 
     },
      {
         "id":"A7",
         "title":"Microcontrôleur Arduino Uno R3 USB",
-        "price":27
+        "price":27,
+        "visual_type":"img",
+        "visual_src":"http://www.robotshop.com/media/files/images3/rb-ard-34-1_1.jpg",
+         "description":"Haec igitur lex in amicitia sanciatur, ut neque rogemus res turpes nec faciamus rogati. Turpis enim excusatio est et minime accipienda cum in ceteris peccatis, tum si quis contra rem publicam se amici causa fecisse fateatur. "
     }
  ]
 }

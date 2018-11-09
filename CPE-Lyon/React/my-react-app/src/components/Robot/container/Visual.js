@@ -8,7 +8,8 @@ class Visual extends Component {
           <div className="thumbnail">
             <img
               alt=""
-              className='imgCard' src={this.props.source}
+              className='imgCard'
+              src={this.props.src}
             />
           </div>
         );
@@ -19,7 +20,7 @@ class Visual extends Component {
             {/*<video className='imgCard'>
               <source src={this.props.source}/>
             </video>*/}
-            <iframe title={this.props.robotId} src={this.props.source} />
+            <iframe title={this.props.id} src={this.props.src} />
           </div>
       );
       }

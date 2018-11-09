@@ -3,6 +3,7 @@ import '../App.css';
 import '../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css';
 import LeftSide from "./LeftSide/LeftSide";
 import MiddleSide from "./MiddleSide/MiddleSide";
+import RightSide from "./RightSide/RightSide";
 import * as jsonSource from "../sources/robots_parts";
 
 class Main extends Component {
@@ -10,9 +11,12 @@ class Main extends Component {
     super(props);
     this.state = {
       parts: jsonSource.parts,
-      selectedId: null,
+      part: null,
+      selectedRobotId: null,
+      selectedPartId: null,
     };
     this.handleLeftSideClick = this.handleLeftSideClick.bind(this);
+    this.handleMiddleSideClick = this.handleMiddleSideClick.bind(this);
   }
 
   handleLeftSideClick(id) {
@@ -31,7 +35,17 @@ class Main extends Component {
 
     this.setState({
       parts: filteredParts,
-      selectedId: id,
+      selectedRobotId: id,
+    });
+  }
+
+  handleMiddleSideClick(id) {
+    const selectedPart = jsonSource.parts.filter((part) => {
+      return part.id === id;
+    });
+    this.setState({
+      part: selectedPart[0],
+      selectedPartId: id
     });
   }
 
@@ -45,14 +59,22 @@ class Main extends Component {
             <div className="col-md-4 col-lg-4">
               <LeftSide
                 robots={jsonSource.robots}
-                selectedId={this.state.selectedId}
+                selectedRobotId={this.state.selectedRobotId}
                 handleLeftSideClick={this.handleLeftSideClick}
               />
             </div>
             <div className="col-md-4 col-lg-4">
-              <MiddleSide parts={this.state.parts} />
+              <MiddleSide
+                parts={this.state.parts}
+                selectedPartId={this.state.selectedPartId}
+                handleMiddleSideClick={this.handleMiddleSideClick}/>
             </div>
-            <div className="col-md-4 col-lg-4" ></div>
+            <div className="col-md-4 col-lg-4" >
+              <RightSide
+                part={this.state.part}
+                selectedPartId={this.state.selectedPartId}
+              />
+            </div>
         </div>
       </div>
     );
