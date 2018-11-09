@@ -7,11 +7,6 @@ class LeftSide extends Component {
     this.state = {
       robots: this.props.robots,
     }
-    this.handleRobotClick = this.handleRobotClick.bind(this);
-  }
-
-  handleRobotClick(id) {
-    this.props.handleLeftSideClick(id);
   }
 
   render() {
@@ -21,7 +16,6 @@ class LeftSide extends Component {
               key={index}
               robot={robot}
               selected={this.props.selectedRobotId === robot.id}
-              handleRobotClick={this.handleRobotClick}
             />
           );
       });

@@ -10,6 +10,7 @@ class MiddleSide extends Component {
     this.props.handleMiddleSideClick(id);
   }
   render() {
+    if(this.props.parts) {
       return this.props.parts.map((part, index) => {
           return (
             <Part
@@ -20,6 +21,10 @@ class MiddleSide extends Component {
             />
           );
       });
+    }
+    else {
+      return( <div>No robot selected</div> );
+    }
   }
 }
 

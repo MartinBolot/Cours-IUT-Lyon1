@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Label from "./container/Label";
 import Visual from "./container/Visual";
+import { setSelectedRobot } from "./../../actions"
 
 class Robot extends Component {
   constructor(props) {
@@ -9,7 +11,7 @@ class Robot extends Component {
   }
 
   handleClick() {
-    this.props.handleRobotClick(this.props.robot.id);
+    this.props.dispatch(setSelectedRobot(this.props.robot))
   }
 
   render() {
@@ -41,4 +43,4 @@ class Robot extends Component {
   }
 }
 
-export default Robot;
+export default connect()(Robot);
