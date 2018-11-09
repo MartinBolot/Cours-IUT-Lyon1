@@ -7,11 +7,21 @@ class LeftSide extends Component {
     this.state = {
       robots: this.props.robots,
     }
+    this.handleRobotClick = this.handleRobotClick.bind(this);
   }
+
+  handleRobotClick(id) {
+    this.props.handleLeftSideClick(id);
+  }
+
   render() {
       return this.state.robots.map((robot, index) => {
           return (
-            <Robot key={index} robot={robot}/>
+            <Robot
+              key={index}
+              robot={robot}
+              handleRobotClick={this.handleRobotClick}
+            />
           );
       });
   }

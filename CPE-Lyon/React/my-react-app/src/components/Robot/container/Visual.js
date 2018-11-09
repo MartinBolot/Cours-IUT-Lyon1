@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
 class Visual extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     switch(this.props.type) {
       case "img": {
         return(
           <div className="thumbnail">
-            <img className='imgCard' src={this.props.source} />
+            <img
+              alt=""
+              className='imgCard' src={this.props.source}
+            />
           </div>
         );
       }
@@ -19,7 +19,7 @@ class Visual extends Component {
             {/*<video className='imgCard'>
               <source src={this.props.source}/>
             </video>*/}
-            <iframe src={this.props.source} />
+            <iframe title={this.props.robotId} src={this.props.source} />
           </div>
       );
       }
