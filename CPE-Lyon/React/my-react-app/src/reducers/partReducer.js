@@ -1,13 +1,13 @@
+import { updateSelectedPart } from "../actions";
 const partReducer = (state={}, action) => {
-  /*switch (action.type) {
-    case "UPDATE_SELECTED_ROBOT":
+  switch (action.type) {
+    case updateSelectedPart: {
       return action.obj;
-      break;
-    default: {
-      return action.state;
     }
-  }*/
-  return state;
+    default: {
+      return state;
+    }
+  }
 };
 
 export default partReducer;

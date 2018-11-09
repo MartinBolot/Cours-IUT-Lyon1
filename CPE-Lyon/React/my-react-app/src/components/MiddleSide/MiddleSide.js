@@ -6,9 +6,7 @@ class MiddleSide extends Component {
     super(props);
     this.handlePartClick = this.handlePartClick.bind(this);
   }
-  handlePartClick(id) {
-    this.props.handleMiddleSideClick(id);
-  }
+
   render() {
     if(this.props.parts) {
       return this.props.parts.map((part, index) => {
@@ -17,7 +15,6 @@ class MiddleSide extends Component {
               key={index}
               part={part}
               selected={this.props.selectedPartId === part.id}
-              handlePartClick={this.handlePartClick}
             />
           );
       });

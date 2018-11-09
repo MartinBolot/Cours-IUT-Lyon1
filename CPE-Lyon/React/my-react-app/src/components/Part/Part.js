@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setSelectedPart } from "./../../actions"
 import Description from "./container/Description";
 
 class Part extends Component {
@@ -8,7 +10,7 @@ class Part extends Component {
   }
 
   handleClick() {
-    this.props.handlePartClick(this.props.part.id);
+    this.props.dispatch(setSelectedPart(this.props.part))
   }
 
   render(){
@@ -30,4 +32,4 @@ class Part extends Component {
   }
 }
 
-export default Part;
+export default connect()(Part);

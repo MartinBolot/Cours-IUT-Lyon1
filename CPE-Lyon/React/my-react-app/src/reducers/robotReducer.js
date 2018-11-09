@@ -1,12 +1,8 @@
-import * as jsonSource from "../sources/robots_parts";
-
-const robots = jsonSource.robots;
-const parts = jsonSource.parts;
+import { updateSelectedRobot } from "../actions";
 
 const robotReducer = (state={}, action) => {
-  console.log(action);
   switch (action.type) {
-    case "UPDATE_SELECTED_ROBOT": {
+    case updateSelectedRobot: {
       return action.obj;
     }
     default: {

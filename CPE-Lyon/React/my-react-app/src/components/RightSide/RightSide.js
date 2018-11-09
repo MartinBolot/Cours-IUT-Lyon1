@@ -3,7 +3,7 @@ import Panel from "./container/Panel";
 
 class RightSide extends Component {
   render() {
-    const isPartSelected = this.props.part !== null;
+    const isPartSelected = this.props.part != null;
     if(isPartSelected) {
       return(
         <div>

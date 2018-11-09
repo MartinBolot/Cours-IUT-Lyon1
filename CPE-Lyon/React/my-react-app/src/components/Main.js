@@ -8,27 +8,10 @@ import RightSide from "./RightSide/RightSide";
 import * as jsonSource from "../sources/robots_parts";
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      part: null,
-      selectedPartId: null,
-    };
-    this.handleMiddleSideClick = this.handleMiddleSideClick.bind(this);
-  }
-
-  handleMiddleSideClick(id) {
-    const selectedPart = jsonSource.parts.filter((part) => {
-      return part.id === id;
-    });
-    this.setState({
-      part: selectedPart[0],
-      selectedPartId: id
-    });
-  }
-
   render() {
     let filteredParts;
+    let selectedPart;
+
     if(this.props.selectedRobotId) {
       const robot = jsonSource.robots.filter((robot) => {
         return robot.id === this.props.selectedRobotId;
@@ -40,8 +23,11 @@ class Main extends Component {
         );
       });
     }
-    else {
-      filteredParts = this.props.parts;
+
+    if(this.props.selectedPartId) {
+      selectedPart = jsonSource.parts.filter((part) => {
+        return part.id === this.props.selectedPartId;
+      })[0];
     }
 
     return (
@@ -59,13 +45,13 @@ class Main extends Component {
             <div className="col-md-4 col-lg-4">
               <MiddleSide
                 parts={filteredParts}
-                selectedPartId={this.state.selectedPartId}
-                handleMiddleSideClick={this.handleMiddleSideClick}/>
+                selectedPartId={this.props.selectedPartId}
+              />
             </div>
             <div className="col-md-4 col-lg-4" >
               <RightSide
-                part={this.state.part}
-                selectedPartId={this.state.selectedPartId}
+                part={selectedPart}
+                selectedPartId={this.props.selectedPartId}
               />
             </div>
         </div>
@@ -76,7 +62,8 @@ class Main extends Component {
 
 const mapStateToProps = (state, ownprops) => {
   return {
-    selectedRobotId: state.robotReducer.id
+    selectedRobotId: state.robotReducer.id,
+    selectedPartId: state.partReducer.id
   }
 };
 
