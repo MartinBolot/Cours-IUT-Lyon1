@@ -20,6 +20,7 @@ class LeftSide extends Component {
             <Robot
               key={index}
               robot={robot}
+              selected={this.props.selectedId === robot.id}
               handleRobotClick={this.handleRobotClick}
             />
           );

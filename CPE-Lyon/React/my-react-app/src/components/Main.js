@@ -10,27 +10,28 @@ class Main extends Component {
     super(props);
     this.state = {
       parts: jsonSource.parts,
-    }
+      selectedId: null,
+    };
+    this.handleLeftSideClick = this.handleLeftSideClick.bind(this);
   }
 
   handleLeftSideClick(id) {
     // get the robot having the right id
     const robot = jsonSource.robots.filter((robot) => {
       return robot.id === id;
-    });
-
-    console.log(robot);
+    })[0];
 
     // update according to this robot parts
     const filteredParts = jsonSource.parts.filter((part) => {
       // does the robots have this part ?
       return (
-        robot.parts ? robot.parts.indexOf(part.id) != 0 : false
+        robot.parts ? robot.parts.includes(part.id) : false
       );
     });
 
     this.setState({
       parts: filteredParts,
+      selectedId: id,
     });
   }
 
@@ -44,6 +45,7 @@ class Main extends Component {
             <div className="col-md-4 col-lg-4">
               <LeftSide
                 robots={jsonSource.robots}
+                selectedId={this.state.selectedId}
                 handleLeftSideClick={this.handleLeftSideClick}
               />
             </div>

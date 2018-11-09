@@ -13,8 +13,9 @@ class Robot extends Component {
   }
 
   render() {
+    const primaryClass = this.props.selected ? "panel-primary" : "";
     return (
-      <div className="panel panel-default">
+      <div className={"panel panel-default" + " " + primaryClass}>
         <div className="panel-heading">
           <h3
             className="panel-title"
