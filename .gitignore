@@ -2,3 +2,4 @@
 ./COO Design Pattern/*/.classpath
 ./COO Design Pattern/*/.project
 CPE-Lyon/JEE2/.idea/*
+#CPE-Lyon/JEE2/*/target/*
