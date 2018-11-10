@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="ejb-jar" name="MiddleAuthWatcherEJB:ejb">
-    <output-path>$PROJECT_DIR$/MiddleAuthWatcherEJB/target</output-path>
-    <root id="archive" name="MiddleAuthWatcherEJB.jar">
-      <element id="artifact" artifact-name="MiddleAuthWatcherEJB:ejb exploded" />
-    </root>
-  </artifact>
-</component>

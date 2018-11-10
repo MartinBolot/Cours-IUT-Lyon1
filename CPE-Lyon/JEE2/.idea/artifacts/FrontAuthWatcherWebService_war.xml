@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="FrontAuthWatcherWebService:war">
-    <output-path>$PROJECT_DIR$/FrontAuthWatcherWebService/target</output-path>
-    <root id="archive" name="FrontAuthWatcherWebService.war">
-      <element id="artifact" artifact-name="FrontAuthWatcherWebService:war exploded" />
-    </root>
-  </artifact>
-</component>
