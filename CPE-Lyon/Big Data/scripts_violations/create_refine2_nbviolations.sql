@@ -12,7 +12,7 @@ stored as orc;
 insert into table refine2_nbviolations
 select
 	IssueDate,
-	((NbViolations-1)/(1015-1))
+	((NbViolations-0)/(49427-0))
 from refine1_nbviolations;
 
 -- count to check

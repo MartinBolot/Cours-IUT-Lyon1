@@ -1,6 +1,9 @@
+-- chose schema
 use formation50;
-drop table if exists refine1_violations;
-create table refine1_violations
+-- drop table
+drop table if exists raw_violations;
+-- create raw table
+create external table raw_violations
 (
 	SummonsNumber int,
 	PlateID string,
@@ -46,8 +49,10 @@ create table refine1_violations
 	HydrantViolation string,
 	DoubleParkingViolation string
 )
-stored as orc;
-insert into table refine1_violations
-select * from raw_violations
-/*limit 1000000*/;
-select count(1) from refine1_violations;
+row format delimited fields terminated by ','
+stored as textfile
+location '/user/formation50/violations/raw_violations'
+tblproperties ("skip.header.line.count"="1");
+
+-- count to check
+select count(1) from raw_violations;
