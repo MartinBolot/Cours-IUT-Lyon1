@@ -1,7 +1,2 @@
-- Créer tables sans external (internal par défaut)
-- Ajouter les données des contraventions de l'année fiscale 2017
 - Ajouter une étape de suppression des valeurs aberrantes
-- Faire des scripts hive
-- Harmoniser les noms de tables
-- Recalculer les agrégats et les utiliser dans tableau
 - Ajouter la géoloc
