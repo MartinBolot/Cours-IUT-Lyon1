@@ -4,10 +4,11 @@
 */
 
 /* open csv data file and put it in a dataFrame */
-val VIOLATIONS_FILE = "extract_violations.csv"
-val df = spark.read.format("csv").option("header", "true").load(VIOLATIONS_FILE)
-
-//val locations = df.select($"House Number", $"Street Name", $"Intersecting Street")
+val VIOLATIONS_FILE_2016 = "Parking_Violations_Issued_-_Fiscal_Year_2016.csv"
+val VIOLATIONS_FILE_2017 = "Parking_Violations_Issued_-_Fiscal_Year_2017.csv"
+val df2016 = spark.read.format("csv").option("header", "true").load(VIOLATIONS_FILE_2016)
+val df2017 = spark.read.format("csv").option("header", "true").load(VIOLATIONS_FILE_2017)
+val df = df2016.unionAll(df2017)
 
 /* map columns to a function */
 def getUrlQuery(houseNumber: String = "", streetName: String = "", intersectingStreet: String = "") : String = {
@@ -46,4 +47,4 @@ val updatedDf = df.withColumn("location", findLocation(
 updatedDf.show()
 
 /* write output csv file */
-updatedDf.coalesce(1).write.mode("overwrite").csv("csv_export_location")
+updatedDf.coalesce(1).write.mode("overwrite").csv("csv_export_violations")
