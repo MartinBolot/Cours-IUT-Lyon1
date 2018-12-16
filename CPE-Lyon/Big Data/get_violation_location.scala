@@ -8,7 +8,15 @@ val VIOLATIONS_FILE_2016 = "Parking_Violations_Issued_-_Fiscal_Year_2016.csv"
 val VIOLATIONS_FILE_2017 = "Parking_Violations_Issued_-_Fiscal_Year_2017.csv"
 val df2016 = spark.read.format("csv").option("header", "true").load(VIOLATIONS_FILE_2016)
 val df2017 = spark.read.format("csv").option("header", "true").load(VIOLATIONS_FILE_2017)
-val df = df2016.unionAll(df2017)
+val refinedDf2016 = df2016.select(
+	$"Plate ID", $"Registration State", $"Issue Date", $"Violation Code",
+	$"House Number", $"Street Name", $"Intersecting Street"
+)
+val refinedDf2017 = df2017.select(
+	$"Plate ID", $"Registration State", $"Issue Date", $"Violation Code",
+	$"House Number", $"Street Name", $"Intersecting Street"
+)
+val df = refinedDf2016.unionAll(refinedDf2017)
 
 /* map columns to a function */
 def getUrlQuery(houseNumber: String = "", streetName: String = "", intersectingStreet: String = "") : String = {
