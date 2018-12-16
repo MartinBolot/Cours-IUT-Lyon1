@@ -20,29 +20,23 @@ val df = refinedDf2016.unionAll(refinedDf2017)
 
 /* map columns to a function */
 def getUrlQuery(houseNumber: String = "", streetName: String = "", intersectingStreet: String = "") : String = {
-	s"${houseNumber.replace(" ","+")}+,+${streetName.replace(" ", "+")}+,+${intersectingStreet.replace(" ", "+")}+,+NEW-YORK"
+	s"${houseNumber.replace(" ","+").replace("&", "")}+,+${streetName.replace(" ", "+").replace("&", "")}+,+${intersectingStreet.replace(" ", "+").replace("&", "")}+,+NEW-YORK"
 }
 /* build url from query and limit */
 def getLocationUrl(query: String = "", limit : Int = 0) : String = {
 	s"http://178.33.122.183:2322/api/?q=${query}&limit=${limit}"
-}
-/* add limitation to the result (first n results) */
-def limitedParamUrl(url: String = "") : String = {
-	url + "&limit=1"
 }
 
 /* user defined function to retrieve new column value */
 val findLocation = udf((houseNumber: String, streetName: String, intersectingStreet: String) => {
 	scala.io.Source
 		.fromURL(
-			limitedParamUrl(
-				getLocationUrl(
-					getUrlQuery(
-						(if (houseNumber != null) houseNumber else "" ),
-						(if (streetName != null) streetName else ""),
-						(if (intersectingStreet != null) intersectingStreet else "")
-					) , 1
-				)
+			getLocationUrl(
+				getUrlQuery(
+					(if (houseNumber != null) houseNumber else "" ),
+					(if (streetName != null) streetName else ""),
+					(if (intersectingStreet != null) intersectingStreet else "")
+				) , 1
 			)
 		)
 		.mkString
