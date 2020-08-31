@@ -1,0 +1,2 @@
+- Ajouter une étape de suppression des valeurs aberrantes
+- Ajouter la géoloc
